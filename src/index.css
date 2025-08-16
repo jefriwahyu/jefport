@@ -79,7 +79,7 @@
     --border: 214 32% 91%;
     --primary: 250 65% 65%;
     --primary-foreground: 213 31% 91%;
-    --card: 222 47% 4%;
+    --card: 222 47% 8%;
   }
 
   * {
@@ -128,7 +128,7 @@
 
 @utility gradient-border {
   @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)));
+  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
   background-clip: padding-box;
   border: 1px solid transparent;
 }
