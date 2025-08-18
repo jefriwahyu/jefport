@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Code, Star, Sparkles } from "lucide-react";
 
 const projects = [
   {
@@ -35,71 +35,167 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w 5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Featured <span className="text-primary"> Projects</span>
-        </h2>
+    <section id="projects" className="py-24 px-4 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/3 left-1/4 w-48 h-48 bg-primary/4 rounded-full blur-3xl animate-pulse delay-700"></div>
+      </div>
 
-        <p className="text-center">
-          A collection of my notable projects showcasing my skills and
-          expertise.
-        </p>
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Enhanced Header Section */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-6 py-3 mb-6">
+            <Code className="w-5 h-5 text-primary" />
+            <span className="text-sm font-medium text-primary">My Work</span>
+            <Star className="w-4 h-4 text-primary animate-pulse" />
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+            Featured <span className="text-primary">Projects</span>
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          <p className="text-center text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
+            A collection of my notable projects showcasing my skills and expertise in modern web development.
+          </p>
+        </div>
+
+        {/* Projects Grid - Enhanced */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-16">
           {projects.map((project, key) => (
             <div
               key={key}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
+              className="group relative bg-card/60 backdrop-blur-xl border-border/50 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-700 hover:translate-y-[-8px] hover:rotate-1"
             >
-              <div className="h-48 overflow-hidden">
+              {/* Gradient Border Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+              
+              {/* Image Container with Enhanced Effects */}
+              <div className="relative h-56 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-fuill object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                 />
+                
+                {/* Image Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Floating Action Buttons */}
+                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-[-10px] group-hover:translate-y-0 transition-all duration-500 delay-200">
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-white/20 backdrop-blur-md rounded-lg text-white hover:bg-white/30 hover:scale-110 transition-all duration-300 shadow-lg"
+                  >
+                    <ExternalLink size={16} />
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-white/20 backdrop-blur-md rounded-lg text-white hover:bg-white/30 hover:scale-110 transition-all duration-300 shadow-lg"
+                  >
+                    <Github size={16} />
+                  </a>
+                </div>
+
+                {/* Project Number Badge */}
+                <div className="absolute top-4 left-4 w-8 h-8 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  {project.id}
+                </div>
               </div>
 
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span className="px-2 py-1 text-xs font-medium rounded-full bg-primary/50 text-secondary">
+              {/* Content Section - Enhanced */}
+              <div className="p-8 relative">
+                {/* Decorative Elements */}
+                <div className="absolute top-0 left-8 w-12 h-1 bg-gradient-to-r from-primary to-transparent rounded-full opacity-60"></div>
+                
+                {/* Tags with Enhanced Styling */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span 
+                      key={tagIndex}
+                      className="px-3 py-1.5 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
+
+                {/* Title with Animation */}
+                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-4">
                   {project.description}
                 </p>
 
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
+                {/* Action Buttons - Enhanced */}
+                <div className="flex justify-between items-center pt-4 border-t border-border/30">
+                  <div className="flex items-center gap-4">
                     <a
                       href={project.demoUrl}
                       target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      rel="noopener noreferrer"
+                      className="group/btn flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300"
                     >
-                      <ExternalLink size={20} />
+                      <div className="p-2 rounded-lg bg-primary/10 group-hover/btn:bg-primary/20 transition-colors duration-300">
+                        <ExternalLink size={14} />
+                      </div>
+                      <span className="group-hover/btn:translate-x-1 transition-transform duration-300">Live Demo</span>
                     </a>
+                    
                     <a
                       href={project.githubUrl}
                       target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      rel="noopener noreferrer"
+                      className="group/btn flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300"
                     >
-                      <Github size={20} />
+                      <div className="p-2 rounded-lg bg-primary/10 group-hover/btn:bg-primary/20 transition-colors duration-300">
+                        <Github size={14} />
+                      </div>
+                      <span className="group-hover/btn:translate-x-1 transition-transform duration-300">Source Code</span>
                     </a>
                   </div>
+                  
+                  {/* Interactive Sparkle */}
+                  <Sparkles className="w-4 h-4 text-primary/60 animate-pulse group-hover:animate-spin group-hover:text-primary transition-all duration-500" />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <a href="https://github.com/jefriwahyu" className="cosmic-button w-fit flex items-center mx-auto gap-2" target="_blank">
-            Check My GitHub <ArrowRight size={16} />
-          </a>
+        {/* Enhanced CTA Section */}
+        <div className="text-center mt-20">
+          <div className="inline-flex flex-col items-center gap-6 p-8 bg-card/60 backdrop-blur-xl border-border/50 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <div className="w-12 h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+              <span className="text-sm font-medium">Want to see more?</span>
+              <div className="w-12 h-px bg-gradient-to-r from-primary via-transparent to-transparent"></div>
+            </div>
+            
+            <p className="text-muted-foreground text-sm max-w-md">
+              Explore my complete portfolio of projects, experiments, and contributions on GitHub.
+            </p>
+            
+            <a 
+              href="https://github.com/jefriwahyu" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cosmic-button group flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <Github className="w-5 h-5 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
+              <span className="relative z-10">Explore My GitHub</span>
+              <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
