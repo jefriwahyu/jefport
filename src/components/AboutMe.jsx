@@ -1,4 +1,4 @@
-import { Briefcase, Code, User } from "lucide-react";
+import { Briefcase, Code, Database, PaintBucket, User } from "lucide-react";
 
 export const AboutMe = () => {
   return (
@@ -32,10 +32,10 @@ export const AboutMe = () => {
               </a>
 
               <a
-                href=""
+                href="public/resume/CV_JefriWP_ENG.pdf"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
-                Download Resume
+                Download CV
               </a>
             </div>
           </div>
@@ -57,12 +57,12 @@ export const AboutMe = () => {
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary" />
+                  <PaintBucket className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">UI/UX Design</h4>
+                  <h4 className="font-semibold text-lg">Front-End Development</h4>
                   <p className="text-muted-foreground">
-                    Crafting user-centered designs for web applications.
+                    Creating visually appealing and user-friendly interfaces.
                   </p>
                 </div>
               </div>
@@ -70,12 +70,12 @@ export const AboutMe = () => {
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
+                  <Database className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">Project Management</h4>
+                  <h4 className="font-semibold text-lg">Back-End Development</h4>
                   <p className="text-muted-foreground">
-                    Overseeing projects from conception to completion.
+                    Building and maintaining the server-side logic and database.
                   </p>
                 </div>
               </div>

@@ -23,10 +23,10 @@ export const HeroSection = () => {
             and user-friendly experiences.
           </p>
 
-          <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-            <a href="#projects" className="cosmic-button">
-              View Projects
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
+              <a href="#projects" className="cosmic-button">
+                View My Work
+              </a>
           </div>
         </div>
       </div>

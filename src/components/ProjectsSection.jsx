@@ -1,4 +1,11 @@
-import { ExternalLink, Github, ArrowRight, Code, Star, Sparkles } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  ArrowRight,
+  Code,
+  Star,
+  Sparkles,
+} from "lucide-react";
 
 const projects = [
   {
@@ -46,18 +53,13 @@ export const ProjectsSection = () => {
       <div className="container mx-auto max-w-7xl relative z-10">
         {/* Enhanced Header Section */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-6 py-3 mb-6">
-            <Code className="w-5 h-5 text-primary" />
-            <span className="text-sm font-medium text-primary">My Work</span>
-            <Star className="w-4 h-4 text-primary animate-pulse" />
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Featured <span className="text-primary">Projects</span>
           </h2>
 
           <p className="text-center text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-            A collection of my notable projects showcasing my skills and expertise in modern web development.
+            A collection of my notable projects showcasing my skills and
+            expertise in modern web development.
           </p>
         </div>
 
@@ -70,7 +72,7 @@ export const ProjectsSection = () => {
             >
               {/* Gradient Border Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-              
+
               {/* Image Container with Enhanced Effects */}
               <div className="relative h-56 overflow-hidden">
                 <img
@@ -78,10 +80,10 @@ export const ProjectsSection = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                 />
-                
+
                 {/* Image Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 {/* Floating Action Buttons */}
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-[-10px] group-hover:translate-y-0 transition-all duration-500 delay-200">
                   <a
@@ -112,11 +114,11 @@ export const ProjectsSection = () => {
               <div className="p-8 relative">
                 {/* Decorative Elements */}
                 <div className="absolute top-0 left-8 w-12 h-1 bg-gradient-to-r from-primary to-transparent rounded-full opacity-60"></div>
-                
+
                 {/* Tags with Enhanced Styling */}
                 <div className="flex flex-wrap gap-2 mb-5">
                   {project.tags.map((tag, tagIndex) => (
-                    <span 
+                    <span
                       key={tagIndex}
                       className="px-3 py-1.5 text-xs font-semibold rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm"
                     >
@@ -147,9 +149,11 @@ export const ProjectsSection = () => {
                       <div className="p-2 rounded-lg bg-primary/10 group-hover/btn:bg-primary/20 transition-colors duration-300">
                         <ExternalLink size={14} />
                       </div>
-                      <span className="group-hover/btn:translate-x-1 transition-transform duration-300">Live Demo</span>
+                      <span className="group-hover/btn:translate-x-1 transition-transform duration-300">
+                        Live Demo
+                      </span>
                     </a>
-                    
+
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -159,10 +163,12 @@ export const ProjectsSection = () => {
                       <div className="p-2 rounded-lg bg-primary/10 group-hover/btn:bg-primary/20 transition-colors duration-300">
                         <Github size={14} />
                       </div>
-                      <span className="group-hover/btn:translate-x-1 transition-transform duration-300">Source Code</span>
+                      <span className="group-hover/btn:translate-x-1 transition-transform duration-300">
+                        Source Code
+                      </span>
                     </a>
                   </div>
-                  
+
                   {/* Interactive Sparkle */}
                   <Sparkles className="w-4 h-4 text-primary/60 animate-pulse group-hover:animate-spin group-hover:text-primary transition-all duration-500" />
                 </div>
@@ -179,13 +185,14 @@ export const ProjectsSection = () => {
               <span className="text-sm font-medium">Want to see more?</span>
               <div className="w-12 h-px bg-gradient-to-r from-primary via-transparent to-transparent"></div>
             </div>
-            
+
             <p className="text-muted-foreground text-sm max-w-md">
-              Explore my complete portfolio of projects, experiments, and contributions on GitHub.
+              Explore my complete portfolio of projects, experiments, and
+              contributions on GitHub.
             </p>
-            
-            <a 
-              href="https://github.com/jefriwahyu" 
+
+            <a
+              href="https://github.com/jefriwahyu"
               target="_blank"
               rel="noopener noreferrer"
               className="cosmic-button group flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 relative overflow-hidden"

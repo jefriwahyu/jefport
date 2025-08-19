@@ -59,7 +59,7 @@ export const ContactSection = () => {
             <Sparkles className="w-4 h-4 text-primary animate-pulse" />
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Get In <span className="text-primary">Touch</span>
           </h2>
 
