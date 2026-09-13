@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+import { TiltCard } from "./TiltCard";
+import { Magnetic } from "./Magnetic";
 
 const projects = [
   {
@@ -61,8 +63,8 @@ export const ProjectsSection = () => {
         />
 
         {/* Featured project */}
-        <Reveal>
-          <article className="group relative glass rounded-[2rem] overflow-hidden mb-8 card-hover grid lg:grid-cols-2">
+        <Reveal variant="clip">
+          <TiltCard max={4} className="group relative glass rounded-[2rem] overflow-hidden mb-8 card-hover grid lg:grid-cols-2">
             <div className="absolute top-5 left-5 z-20 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-400 text-amber-950 text-xs font-bold shadow-lg">
               <Sparkles className="w-3.5 h-3.5" />
               Featured
@@ -94,34 +96,38 @@ export const ProjectsSection = () => {
                 {featured.description}
               </p>
               <div className="flex flex-wrap gap-3">
-                <a
-                  href={featured.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cosmic-button !py-3 text-sm"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Live Demo
-                </a>
-                <a
-                  href={featured.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ghost-button !py-3 text-sm"
-                >
-                  <Github className="w-4 h-4" />
-                  Source Code
-                </a>
+                <Magnetic>
+                  <a
+                    href={featured.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cosmic-button !py-3 text-sm"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Live Demo
+                  </a>
+                </Magnetic>
+                <Magnetic>
+                  <a
+                    href={featured.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ghost-button !py-3 text-sm"
+                  >
+                    <Github className="w-4 h-4" />
+                    Source Code
+                  </a>
+                </Magnetic>
               </div>
             </div>
-          </article>
+          </TiltCard>
         </Reveal>
 
         {/* Rest grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {rest.map((project, idx) => (
-            <Reveal key={project.id} delay={idx * 120}>
-              <article className="group relative glass rounded-[1.75rem] overflow-hidden card-hover h-full flex flex-col text-left">
+            <Reveal key={project.id} delay={idx * 120} className="h-full">
+              <TiltCard max={7} className="group relative glass rounded-[1.75rem] overflow-hidden card-hover h-full flex flex-col text-left">
                 <div className="relative h-60 overflow-hidden shrink-0">
                   <img
                     src={project.image}
@@ -195,7 +201,7 @@ export const ProjectsSection = () => {
                     </a>
                   </div>
                 </div>
-              </article>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -210,16 +216,18 @@ export const ProjectsSection = () => {
             <p className="text-muted-foreground text-sm md:text-base">
               Want to see experiments, mini-projects & contributions?
             </p>
-            <a
-              href="https://github.com/jefriwahyu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cosmic-button group"
-            >
-              <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Explore My GitHub
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            <Magnetic>
+              <a
+                href="https://github.com/jefriwahyu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cosmic-button group"
+              >
+                <Github className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                Explore My GitHub
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Magnetic>
           </div>
         </Reveal>
       </div>

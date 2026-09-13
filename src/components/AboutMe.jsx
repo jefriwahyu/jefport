@@ -1,6 +1,8 @@
 import { Code, Palette, Database, CheckCircle2, Award, Coffee, Download, ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+import { TiltCard } from "./TiltCard";
+import { Magnetic } from "./Magnetic";
 
 const highlights = [
   "Clean, maintainable & scalable code",
@@ -44,7 +46,7 @@ export const AboutMe = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Visual card */}
-          <Reveal className="relative">
+          <Reveal variant="clip" className="relative">
             <div className="relative mx-auto max-w-md">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/25 via-pink-500/15 to-amber-400/20 rounded-[2rem] blur-2xl" />
               <div className="relative glass rounded-[2rem] p-8 md:p-10 overflow-hidden">
@@ -109,14 +111,18 @@ export const AboutMe = () => {
             </Reveal>
             <Reveal delay={250}>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="#contact" className="cosmic-button group">
-                  Get In Touch
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-                <a href="/resume/CV_JefriWP_ENG.pdf" className="ghost-button">
-                  <Download className="w-4 h-4" />
-                  Download CV
-                </a>
+                <Magnetic>
+                  <a href="#contact" className="cosmic-button group">
+                    Get In Touch
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </Magnetic>
+                <Magnetic>
+                  <a href="/resume/CV_JefriWP_ENG.pdf" className="ghost-button">
+                    <Download className="w-4 h-4" />
+                    Download CV
+                  </a>
+                </Magnetic>
               </div>
             </Reveal>
           </div>
@@ -125,15 +131,15 @@ export const AboutMe = () => {
         {/* Service cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16">
           {cards.map((c, i) => (
-            <Reveal key={c.title} delay={i * 120}>
-              <div className="group relative glass rounded-3xl p-7 overflow-hidden card-hover text-left h-full">
+            <Reveal key={c.title} delay={i * 120} className="h-full">
+              <TiltCard max={7} className="group relative glass rounded-3xl p-7 overflow-hidden card-hover text-left h-full">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r opacity-80 from-primary via-pink-500 to-amber-400" />
                 <div className={`p-3.5 rounded-2xl bg-gradient-to-br ${c.gradient} text-white shadow-lg mb-5 group-hover:scale-110 group-hover:-rotate-6 transition-transform w-fit`}>
                   <c.icon className="w-6 h-6" />
                 </div>
                 <h4 className="font-display font-bold text-lg mb-2">{c.title}</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{c.desc}</p>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

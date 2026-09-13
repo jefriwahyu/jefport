@@ -1,7 +1,13 @@
 import { useEffect, useRef, createElement } from "react";
 import { cn } from "@/lib/utils";
 
-export const Reveal = ({ children, delay = 0, className, as }) => {
+export const Reveal = ({
+  children,
+  delay = 0,
+  className,
+  as,
+  variant = "up",
+}) => {
   const ref = useRef(null);
   const Tag = as || "div";
 
@@ -27,7 +33,7 @@ export const Reveal = ({ children, delay = 0, className, as }) => {
     Tag,
     {
       ref,
-      className: cn("reveal", className),
+      className: cn("reveal", `reveal-${variant}`, className),
       style: { "--reveal-delay": `${delay}ms` },
     },
     children

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -12,6 +12,12 @@ import {
   Code2,
   Rocket,
 } from "lucide-react";
+import { gsap } from "@/lib/gsap";
+import { prefersReducedMotion, shouldUseHeavyEffects } from "@/lib/motion";
+import { Magnetic } from "./Magnetic";
+import { Counter } from "./Counter";
+
+const Hero3D = lazy(() => import("./Hero3D"));
 
 const roles = [
   "Web Developer",
@@ -34,9 +40,9 @@ const techStack = [
 ];
 
 const stats = [
-  { value: "2+", label: "Years Experience" },
-  { value: "10+", label: "Projects Built" },
-  { value: "8+", label: "Technologies" },
+  { value: 2, suffix: "+", label: "Years Experience" },
+  { value: 10, suffix: "+", label: "Projects Built" },
+  { value: 8, suffix: "+", label: "Technologies" },
 ];
 
 function useTypewriter(words, typeSpeed = 75, deleteSpeed = 40, pause = 1600) {
@@ -45,6 +51,10 @@ function useTypewriter(words, typeSpeed = 75, deleteSpeed = 40, pause = 1600) {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    if (prefersReducedMotion()) {
+      setText(words[0]);
+      return;
+    }
     const current = words[index % words.length];
     let timeout;
     if (!deleting && text === current) {
@@ -72,12 +82,47 @@ function useTypewriter(words, typeSpeed = 75, deleteSpeed = 40, pause = 1600) {
 
 export const HeroSection = () => {
   const typed = useTypewriter(roles);
+  const contentRef = useRef(null);
+  const [show3D] = useState(() => shouldUseHeavyEffects());
+
+  // Cinematic parallax: content drifts & fades as hero scrolls away
+  useEffect(() => {
+    if (prefersReducedMotion() || !contentRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.to(contentRef.current, {
+        yPercent: 14,
+        opacity: 0.15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
+  const socials = [
+    { icon: Github, href: "https://github.com/jefriwahyu", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/jefriwahyuu/", label: "Instagram" },
+    { icon: Mail, href: "mailto:jefrywahyu63@gmail.com", label: "Email" },
+  ];
 
   return (
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-4 pt-32 pb-20 overflow-hidden"
     >
+      {/* Interactive 3D layer (desktop only, lazy-loaded) */}
+      {show3D && (
+        <Suspense fallback={null}>
+          <Hero3D />
+        </Suspense>
+      )}
+
       {/* Backdrop decor */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-grid opacity-70" />
@@ -86,7 +131,7 @@ export const HeroSection = () => {
         <div className="absolute bottom-0 -right-24 w-[420px] h-[420px] bg-amber-400/10 blur-[120px] rounded-full animate-blob" style={{ animationDelay: "4s" }} />
       </div>
 
-      <div className="container max-w-6xl mx-auto text-center z-10 relative">
+      <div ref={contentRef} className="container max-w-6xl mx-auto text-center z-10 relative">
         {/* Availability badge */}
         <div className="opacity-0 animate-fade-in inline-flex items-center gap-2.5 pl-2 pr-5 py-1.5 rounded-full glass text-sm mb-8 hover:scale-105 transition-transform">
           <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15">
@@ -140,45 +185,47 @@ export const HeroSection = () => {
 
         {/* CTA */}
         <div className="opacity-0 animate-fade-in-delay-4 flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <a href="#projects" className="cosmic-button group w-full sm:w-auto">
-            <span className="absolute inset-y-0 left-0 w-1/3 bg-white/25 blur-md -skew-x-12 animate-shine pointer-events-none" />
-            <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-            View My Work
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          <Magnetic className="w-full sm:w-auto">
+            <a href="#projects" className="cosmic-button group w-full sm:w-auto">
+              <span className="absolute inset-y-0 left-0 w-1/3 bg-white/25 blur-md -skew-x-12 animate-shine pointer-events-none" />
+              <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              View My Work
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </Magnetic>
           <div className="flex gap-3 w-full sm:w-auto">
-            <a href="#contact" className="ghost-button flex-1 sm:flex-none">
-              Let's Talk
-            </a>
-            <a
-              href="/resume/CV_JefriWP_ENG.pdf"
-              className="ghost-button !px-4 flex-1 sm:flex-none"
-              aria-label="Download CV"
-            >
-              <Download className="w-4 h-4" />
-              <span className="sm:hidden">CV</span>
-            </a>
+            <Magnetic className="flex-1 sm:flex-none">
+              <a href="#contact" className="ghost-button w-full">
+                Let's Talk
+              </a>
+            </Magnetic>
+            <Magnetic className="flex-1 sm:flex-none">
+              <a
+                href="/resume/CV_JefriWP_ENG.pdf"
+                className="ghost-button !px-4 w-full"
+                aria-label="Download CV"
+              >
+                <Download className="w-4 h-4" />
+                <span className="sm:hidden">CV</span>
+              </a>
+            </Magnetic>
           </div>
         </div>
 
         {/* Socials */}
         <div className="opacity-0 animate-fade-in-delay-5 flex justify-center gap-3 mb-14">
-          {[
-            { icon: Github, href: "https://github.com/jefriwahyu", label: "GitHub" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/", label: "LinkedIn" },
-            { icon: Instagram, href: "https://www.instagram.com/jefriwahyuu/", label: "Instagram" },
-            { icon: Mail, href: "mailto:jefrywahyu63@gmail.com", label: "Email" },
-          ].map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target={s.href.startsWith("http") ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="w-11 h-11 rounded-2xl glass flex items-center justify-center text-muted-foreground hover:text-primary hover:-translate-y-1 hover:shadow-[0_12px_30px_-8px_hsl(var(--primary)/0.5)] hover:border-primary/40 transition-all duration-300"
-            >
-              <s.icon className="w-5 h-5" />
-            </a>
+          {socials.map((s) => (
+            <Magnetic key={s.label}>
+              <a
+                href={s.href}
+                target={s.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="w-11 h-11 rounded-2xl glass flex items-center justify-center text-muted-foreground hover:text-primary hover:-translate-y-1 hover:shadow-[0_12px_30px_-8px_hsl(var(--primary)/0.5)] hover:border-primary/40 transition-all duration-300"
+              >
+                <s.icon className="w-5 h-5" />
+              </a>
+            </Magnetic>
           ))}
         </div>
 
@@ -189,7 +236,9 @@ export const HeroSection = () => {
               key={s.label}
               className="glass rounded-2xl px-2 py-4 md:py-6 card-hover"
             >
-              <div className="font-display text-2xl md:text-4xl font-bold text-gradient">{s.value}</div>
+              <div className="font-display text-2xl md:text-4xl font-bold text-gradient">
+                <Counter end={s.value} suffix={s.suffix} />
+              </div>
               <div className="text-[11px] md:text-sm text-muted-foreground font-medium mt-1">{s.label}</div>
             </div>
           ))}

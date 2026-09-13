@@ -1,4 +1,5 @@
 import { ArrowUp, Github, Linkedin, Instagram, Mail, Heart } from "lucide-react";
+import { Magnetic } from "./Magnetic";
 
 const links = [
   { name: "Home", href: "#hero" },
@@ -67,13 +68,15 @@ export const Footer = () => {
                 <s.icon className="w-[18px] h-[18px]" />
               </a>
             ))}
-            <button
-              onClick={scrollToTop}
-              aria-label="Scroll to top"
-              className="ml-1 w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40 transition-all group"
-            >
-              <ArrowUp className="h-[18px] w-[18px] group-hover:-translate-y-0.5 transition-transform" />
-            </button>
+            <Magnetic className="ml-1">
+              <button
+                onClick={scrollToTop}
+                aria-label="Scroll to top"
+                className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/40 transition-all group"
+              >
+                <ArrowUp className="h-[18px] w-[18px] group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+            </Magnetic>
           </div>
         </div>
 

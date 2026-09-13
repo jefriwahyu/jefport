@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Code, Database, Wrench, Sparkles, LayoutGrid } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+import { TiltCard } from "./TiltCard";
 
 const skills = [
   { name: "HTML/CSS", level: 85, category: "frontend" },
@@ -90,8 +91,8 @@ export const SkillsSection = () => {
           {filteredSkills.map((skill, key) => {
             const IconComponent = getCategoryIcon(skill.category);
             return (
-              <Reveal key={skill.name} delay={(key % 6) * 80}>
-                <div className="group relative glass rounded-3xl p-6 overflow-hidden card-hover text-left h-full">
+              <Reveal key={skill.name} delay={(key % 6) * 80} className="h-full">
+                <TiltCard max={6} className="group relative glass rounded-3xl p-6 overflow-hidden card-hover text-left h-full">
                   <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary via-pink-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
 
@@ -123,7 +124,7 @@ export const SkillsSection = () => {
                       <span>{skill.level >= 80 ? "Advanced" : skill.level >= 75 ? "Proficient" : "Intermediate"}</span>
                     </div>
                   </div>
-                </div>
+                </TiltCard>
               </Reveal>
             );
           })}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Instagram, Linkedin, Mail, MapPin, Phone, Send, CheckCircle2, Copy, Github } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
+import { Magnetic } from "./Magnetic";
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -63,7 +64,7 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* Info */}
-          <Reveal className="lg:col-span-2">
+          <Reveal variant="clip" className="lg:col-span-2">
             <div className="glass rounded-[1.75rem] p-6 md:p-8 h-full flex flex-col">
               <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-3 text-left">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -133,7 +134,7 @@ export const ContactSection = () => {
           </Reveal>
 
           {/* Form */}
-          <Reveal delay={120} className="lg:col-span-3">
+          <Reveal delay={120} variant="clip" className="lg:col-span-3">
             <div className="glass rounded-[1.75rem] p-6 md:p-8 h-full relative overflow-hidden">
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-pink-500 to-amber-400" />
               <h3 className="font-display text-xl font-bold mb-6 text-left">Send a Message</h3>
@@ -186,15 +187,17 @@ export const ContactSection = () => {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`cosmic-button w-full group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-                >
-                  <span className="absolute inset-y-0 left-0 w-1/3 bg-white/20 blur-md -skew-x-12 animate-shine pointer-events-none" />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                  <Send size={17} className={isSubmitting ? "animate-pulse" : "group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"} />
-                </button>
+                <Magnetic className="w-full" strength={0.12}>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`cosmic-button w-full group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  >
+                    <span className="absolute inset-y-0 left-0 w-1/3 bg-white/20 blur-md -skew-x-12 animate-shine pointer-events-none" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    <Send size={17} className={isSubmitting ? "animate-pulse" : "group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"} />
+                  </button>
+                </Magnetic>
                 <p className="text-center text-xs text-muted-foreground">
                   Usually replies within 24 hours
                 </p>
