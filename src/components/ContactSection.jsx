@@ -1,275 +1,206 @@
 import { useState } from 'react';
-import { Instagram, Linkedin, Mail, MapPin, Phone, Send, MessageCircle, Sparkles } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, Phone, Send, CheckCircle2, Copy, Github } from "lucide-react";
+import { Reveal } from "./Reveal";
+import { SectionHeading } from "./SectionHeading";
 
 export const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate form submission
     setTimeout(() => {
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 2000);
+    }, 1400);
   };
 
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("jefrywahyu63@gmail.com");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* clipboard unavailable */ }
+  };
+
+  const contactItems = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "jefrywahyu63@gmail.com",
+      href: "mailto:jefrywahyu63@gmail.com",
+      action: true,
+    },
+    { icon: Phone, label: "Phone / WA", value: "+62 822-3114-4869", href: "tel:+6282231144869" },
+    { icon: MapPin, label: "Location", value: "Kediri, East Java, Indonesia" },
+  ];
+
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-24 px-4 relative bg-secondary/30 overflow-hidden">
-      {/* Floating Background Elements */}
+    <section id="contact" className="py-24 md:py-32 px-4 relative overflow-hidden">
+      <div className="absolute inset-0 bg-secondary/40 border-y border-border/50" />
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-4 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-56 sm:w-80 sm:h-80 bg-primary/4 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-10 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[130px] animate-pulse" />
+        <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-[130px] animate-pulse" style={{ animationDelay: "1.2s" }} />
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Header Section with Enhanced Typography */}
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
-            <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-            <span className="text-xs sm:text-sm font-medium text-primary">Let's Connect</span>
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary animate-pulse" />
-          </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
-            Get In <span className="text-primary">Touch</span>
-          </h2>
+        <SectionHeading
+          tag="Let's Connect"
+          title="Get In"
+          highlight="Touch"
+          description="Have a project in mind? Let's turn your idea into something amazing together."
+        />
 
-          <p className="text-center text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed px-4">
-            Ready to bring your ideas to life? Drop me a message and let's create something amazing together!
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          {/* Info */}
+          <Reveal className="lg:col-span-2">
+            <div className="glass rounded-[1.75rem] p-6 md:p-8 h-full flex flex-col">
+              <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-3 text-left">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                Contact Info
+              </h3>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
-          {/* Contact Information - Enhanced Cards */}
-          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-            <div className="bg-card/60 backdrop-blur-xl border-border/50 rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:translate-y-[-4px]">
-              <div className="flex items-center gap-3 mb-6 sm:mb-8">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground">Contact Info</h3>
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse delay-300"></div>
-              </div>
-              
-              <div className="space-y-4 sm:space-y-6">
-                {/* Email - Fixed Mobile Layout */}
-                <div className="group flex items-start sm:items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl bg-background/50 border border-transparent hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
-                  <div className="relative flex-shrink-0">
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                      <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+              <div className="space-y-3">
+                {contactItems.map((item) => (
+                  <div
+                    key={item.label}
+                    className="group flex items-center gap-4 p-4 rounded-2xl bg-background/60 border border-transparent hover:border-primary/30 hover:bg-primary/5 transition-all"
+                  >
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-pink-500/10 border border-primary/20 shrink-0 group-hover:scale-110 transition-transform">
+                      <item.icon className="h-5 w-5 text-primary" />
                     </div>
-                    <div className="absolute -top-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary/20 rounded-full animate-ping group-hover:animate-pulse"></div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Email</h4>
-                    <a
-                      href="mailto:jefrywahyu63@gmail.com"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm break-all sm:break-words"
-                    >
-                      jefrywahyu63@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                {/* Phone - Fixed Mobile Layout */}
-                <div className="group flex items-start sm:items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl bg-background/50 border border-transparent hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
-                  <div className="relative flex-shrink-0">
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                      <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                    <div className="flex-1 min-w-0 text-left">
+                      <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{item.label}</div>
+                      {item.href ? (
+                        <a href={item.href} className="text-sm font-semibold hover:text-primary transition-colors break-all">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <div className="text-sm font-semibold">{item.value}</div>
+                      )}
                     </div>
-                    <div className="absolute -top-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary/20 rounded-full animate-ping group-hover:animate-pulse"></div>
+                    {item.action && (
+                      <button
+                        onClick={copyEmail}
+                        aria-label="Copy email"
+                        className="p-2 rounded-lg hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all shrink-0"
+                      >
+                        {copied ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+                      </button>
+                    )}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Phone</h4>
-                    <a
-                      href="tel:+6282231144869"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm"
-                    >
-                      +62 822-3114-4869
-                    </a>
-                  </div>
-                </div>
-
-                {/* Location - Fixed Mobile Layout */}
-                <div className="group flex items-start sm:items-center space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-xl bg-background/50 border border-transparent hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
-                  <div className="relative flex-shrink-0">
-                    <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300">
-                      <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                    </div>
-                    <div className="absolute -top-1 -right-1 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary/20 rounded-full animate-ping group-hover:animate-pulse"></div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Location</h4>
-                    <span className="text-muted-foreground text-xs sm:text-sm">
-                      Kediri, East Java, Indonesia
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              {/* Social Media - Enhanced */}
-              <div className="mt-6 sm:mt-8 pt-6 border-t border-border/50">
-                <h4 className="font-semibold text-foreground mb-4 text-center text-sm sm:text-base">Connect With Me</h4>
-                <div className="flex justify-center gap-3 sm:gap-4">
-                  <a
-                    href="https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-2.5 sm:p-3 rounded-xl bg-primary/10 hover:bg-primary hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:text-white transition-colors duration-300" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/jefriwahyuu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-2.5 sm:p-3 rounded-xl bg-primary/10 hover:bg-primary hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:text-white transition-colors duration-300" />
-                  </a>
+              <div className="mt-6 pt-6 border-t border-border/60">
+                <div className="text-sm font-bold mb-4 text-center">Follow Me</div>
+                <div className="flex justify-center gap-3">
+                  {[
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/", label: "LinkedIn" },
+                    { icon: Instagram, href: "https://www.instagram.com/jefriwahyuu/", label: "Instagram" },
+                    { icon: Github, href: "https://github.com/jefriwahyu", label: "GitHub" },
+                    { icon: Mail, href: "mailto:jefrywahyu63@gmail.com", label: "Email" },
+                  ].map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target={s.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all"
+                    >
+                      <s.icon className="w-5 h-5" />
+                    </a>
+                  ))}
                 </div>
+                {copied && (
+                  <p className="text-center text-xs text-emerald-500 font-semibold mt-3 animate-fade-in">
+                    Email copied to clipboard!
+                  </p>
+                )}
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Contact Form - Enhanced */}
-          <div className="lg:col-span-3">
-            <div className="bg-card/60 backdrop-blur-xl border-border/50 rounded-2xl p-6 sm:p-8 shadow-2xl hover:shadow-3xl transition-all duration-500">
-              <div className="flex items-center gap-3 mb-6 sm:mb-8">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground">Send Message</h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent"></div>
-              </div>
+          {/* Form */}
+          <Reveal delay={120} className="lg:col-span-3">
+            <div className="glass rounded-[1.75rem] p-6 md:p-8 h-full relative overflow-hidden">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-pink-500 to-amber-400" />
+              <h3 className="font-display text-xl font-bold mb-6 text-left">Send a Message</h3>
 
-              {/* Status Messages - Enhanced */}
               {submitStatus === 'success' && (
-                <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-400 rounded-xl text-xs sm:text-sm backdrop-blur-sm animate-in fade-in slide-in-from-top duration-500">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    Message sent successfully!
-                  </div>
-                </div>
-              )}
-              {submitStatus === 'error' && (
-                <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-500/10 border border-red-500/20 text-red-700 dark:text-red-400 rounded-xl text-xs sm:text-sm backdrop-blur-sm animate-in fade-in slide-in-from-top duration-500">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    Failed to send message. Please try again.
+                <div className="mb-5 p-4 bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 rounded-2xl text-sm animate-fade-in">
+                  <div className="flex items-center gap-2 font-semibold">
+                    <CheckCircle2 className="w-4 h-4" />
+                    Message sent! I'll get back to you soon.
                   </div>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                {/* Name Input */}
-                <div className="group">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-semibold mb-2 sm:mb-3 text-foreground group-focus-within:text-primary transition-colors duration-300"
-                  >
-                    Your Name
-                  </label>
-                  <div className="relative">
+              <form onSubmit={handleSubmit} className="space-y-4 text-left">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-bold mb-2">
+                      Your Name
+                    </label>
                     <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-border/50 bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 hover:border-primary/30 placeholder:text-muted-foreground/60 text-sm sm:text-base"
-                      placeholder="Enter your full name..."
+                      type="text" id="name" name="name"
+                      value={formData.name} onChange={handleChange} required
+                      className="w-full px-5 py-3.5 rounded-2xl border border-border bg-background/70 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-muted-foreground/60 text-sm"
+                      placeholder="John Doe"
                     />
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-bold mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email" id="email" name="email"
+                      value={formData.email} onChange={handleChange} required
+                      className="w-full px-5 py-3.5 rounded-2xl border border-border bg-background/70 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-muted-foreground/60 text-sm"
+                      placeholder="john@example.com"
+                    />
                   </div>
                 </div>
 
-                {/* Email Input */}
-                <div className="group">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-semibold mb-2 sm:mb-3 text-foreground group-focus-within:text-primary transition-colors duration-300"
-                  >
-                    Email Address
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-border/50 bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 hover:border-primary/30 placeholder:text-muted-foreground/60 text-sm sm:text-base"
-                      placeholder="your.email@example.com"
-                    />
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
-                </div>
-
-                {/* Message Input */}
-                <div className="group">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-semibold mb-2 sm:mb-3 text-foreground group-focus-within:text-primary transition-colors duration-300"
-                  >
+                <div>
+                  <label htmlFor="message" className="block text-sm font-bold mb-2">
                     Your Message
                   </label>
-                  <div className="relative">
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl border border-border/50 bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-300 hover:border-primary/30 resize-none placeholder:text-muted-foreground/60 text-sm sm:text-base"
-                      placeholder="Tell me about your project, ideas, or just say hello..."
-                    />
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
+                  <textarea
+                    id="message" name="message"
+                    value={formData.message} onChange={handleChange} required
+                    rows={5}
+                    className="w-full px-5 py-3.5 rounded-2xl border border-border bg-background/70 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none placeholder:text-muted-foreground/60 text-sm"
+                    placeholder="Tell me about your project, timeline and goals..."
+                  />
                 </div>
 
-                {/* Submit Button - Enhanced */}
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={isSubmitting}
-                  className={`
-                    cosmic-button w-full flex items-center justify-center gap-2 sm:gap-3 py-3 sm:py-4 px-6 sm:px-8 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl group relative overflow-hidden text-sm sm:text-base
-                    ${isSubmitting 
-                      ? 'opacity-70 cursor-not-allowed' 
-                      : 'hover:scale-[1.02] active:scale-[0.98]'
-                    }
-                  `}
+                  className={`cosmic-button w-full group ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="relative z-10">
-                    {isSubmitting ? 'Sending Message...' : 'Send Message'}
-                  </span>
-                  <Send size={16} className={`
-                    relative z-10 transition-transform duration-300 sm:w-[18px] sm:h-[18px]
-                    ${isSubmitting ? "animate-pulse" : "group-hover:translate-x-1"}
-                  `} />
+                  <span className="absolute inset-y-0 left-0 w-1/3 bg-white/20 blur-md -skew-x-12 animate-shine pointer-events-none" />
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  <Send size={17} className={isSubmitting ? "animate-pulse" : "group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"} />
                 </button>
+                <p className="text-center text-xs text-muted-foreground">
+                  Usually replies within 24 hours
+                </p>
               </form>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
