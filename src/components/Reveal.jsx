@@ -29,6 +29,22 @@ export const Reveal = ({
     return () => observer.disconnect();
   }, []);
 
+  // NOTE: variant "clip" renders a neutral outer wrapper for the
+  // IntersectionObserver. The clip-path lives on the INNER element because
+  // IO measures the target's *visible* (post-clip) area — an element
+  // clipped to zero area would never intersect and never reveal.
+  if (variant === "clip") {
+    return (
+      <div
+        ref={ref}
+        className={cn(className)}
+        style={{ "--reveal-delay": `${delay}ms` }}
+      >
+        <div className="reveal-clip-inner">{children}</div>
+      </div>
+    );
+  }
+
   return createElement(
     Tag,
     {

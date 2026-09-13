@@ -292,11 +292,6 @@
   opacity: 0;
   transform: translateY(36px) scale(0.98);
 }
-.reveal-clip {
-  opacity: 0;
-  transform: translateY(28px);
-  clip-path: inset(6% 3% 94% 3% round 28px);
-}
 .reveal-scale {
   opacity: 0;
   transform: scale(0.9) translateY(16px);
@@ -306,10 +301,32 @@
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-.reveal-clip.is-visible {
+
+/* Cinematic curtain reveal. The clip-path lives on the INNER element;
+   the IO-observed wrapper stays unclipped so it can actually intersect. */
+.reveal-clip-inner {
+  opacity: 0;
+  transform: translateY(28px);
+  clip-path: inset(6% 3% 94% 3% round 28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, clip-path;
+}
+.is-visible > .reveal-clip-inner {
   opacity: 1;
   transform: translateY(0);
   clip-path: inset(0 0 0 0 round 28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-scale,
+  .reveal-clip-inner {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
 }
 
 /* 3D tilt cards */
@@ -383,14 +400,6 @@ html.lenis body {
 }
 .lenis.lenis-stopped {
   overflow: hidden;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
 
 /* Dotted grid backdrop */
