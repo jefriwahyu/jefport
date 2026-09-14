@@ -6,6 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const navItems = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
@@ -103,7 +104,7 @@ export const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "relative px-5 py-2 text-sm font-semibold transition-all duration-300 rounded-full",
+                    "relative px-3.5 lg:px-5 py-2 text-sm font-semibold transition-all duration-300 rounded-full whitespace-nowrap",
                     activeSection === item.name
                       ? "text-primary-foreground bg-primary shadow-lg shadow-primary/30"
                       : "text-muted-foreground hover:text-foreground hover:bg-primary/10"

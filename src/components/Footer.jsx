@@ -4,6 +4,7 @@ import { Magnetic } from "./Magnetic";
 const links = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
@@ -53,9 +54,9 @@ export const Footer = () => {
           <div className="flex items-center gap-2.5">
             {[
               { icon: Github, href: "https://github.com/jefriwahyu", label: "GitHub" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/", label: "LinkedIn" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/jefriwp", label: "LinkedIn" },
               { icon: Instagram, href: "https://www.instagram.com/jefriwahyuu/", label: "Instagram" },
-              { icon: Mail, href: "mailto:jefrywahyu63@gmail.com", label: "Email" },
+              { icon: Mail, href: "mailto:jefriwahyudiana@gmail.com", label: "Email" },
             ].map((s) => (
               <a
                 key={s.label}
@@ -81,7 +82,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {currentYear} Jefri Wahyu Putra. All rights reserved.</p>
+          <p>© {currentYear} Jefri Wahyudiana Putra. All rights reserved.</p>
           <p className="font-medium">React • Tailwind • Vite</p>
         </div>
       </div>

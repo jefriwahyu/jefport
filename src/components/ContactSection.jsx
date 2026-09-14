@@ -28,7 +28,7 @@ export const ContactSection = () => {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("jefrywahyu63@gmail.com");
+      await navigator.clipboard.writeText("jefriwahyudiana@gmail.com");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch { /* clipboard unavailable */ }
@@ -38,12 +38,12 @@ export const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "jefrywahyu63@gmail.com",
-      href: "mailto:jefrywahyu63@gmail.com",
+      value: "jefriwahyudiana@gmail.com",
+      href: "mailto:jefriwahyudiana@gmail.com",
       action: true,
     },
     { icon: Phone, label: "Phone / WA", value: "+62 822-3114-4869", href: "tel:+6282231144869" },
-    { icon: MapPin, label: "Location", value: "Kediri, East Java, Indonesia" },
+    { icon: MapPin, label: "Location", value: "Bandung, West Java, Indonesia" },
   ];
 
   return (
@@ -107,10 +107,10 @@ export const ContactSection = () => {
                 <div className="text-sm font-bold mb-4 text-center">Follow Me</div>
                 <div className="flex justify-center gap-3">
                   {[
-                    { icon: Linkedin, href: "https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/", label: "LinkedIn" },
+                    { icon: Linkedin, href: "https://www.linkedin.com/in/jefriwp", label: "LinkedIn" },
                     { icon: Instagram, href: "https://www.instagram.com/jefriwahyuu/", label: "Instagram" },
                     { icon: Github, href: "https://github.com/jefriwahyu", label: "GitHub" },
-                    { icon: Mail, href: "mailto:jefrywahyu63@gmail.com", label: "Email" },
+                    { icon: Mail, href: "mailto:jefriwahyudiana@gmail.com", label: "Email" },
                   ].map((s) => (
                     <a
                       key={s.label}

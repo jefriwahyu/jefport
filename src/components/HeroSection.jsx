@@ -20,29 +20,29 @@ import { Counter } from "./Counter";
 const Hero3D = lazy(() => import("./Hero3D"));
 
 const roles = [
-  "Web Developer",
-  "Frontend Engineer",
   "Backend Developer",
+  "Fullstack Developer",
+  "QA Engineer",
   "Flutter Developer",
 ];
 
 const techStack = [
-  "React",
-  "JavaScript",
-  "PHP",
+  "Laravel",
+  "ASP.NET Core",
+  "Vue.js",
   "Flutter",
-  "Tailwind CSS",
-  "Node.js",
+  "FastAPI",
+  "Express.js",
   "Python",
   "MySQL",
-  "CodeIgniter",
-  "Git",
+  "SQL Server",
+  "Tailwind CSS",
 ];
 
 const stats = [
   { value: 2, suffix: "+", label: "Years Experience" },
-  { value: 10, suffix: "+", label: "Projects Built" },
-  { value: 8, suffix: "+", label: "Technologies" },
+  { value: 6, suffix: "+", label: "Projects Completed" },
+  { value: 15, suffix: "+", label: "Technologies" },
 ];
 
 function useTypewriter(words, typeSpeed = 75, deleteSpeed = 40, pause = 1600) {
@@ -106,9 +106,9 @@ export const HeroSection = () => {
 
   const socials = [
     { icon: Github, href: "https://github.com/jefriwahyu", label: "GitHub" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/jefri-wahyudiana-putra-96b8a8194/", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/jefriwp", label: "LinkedIn" },
     { icon: Instagram, href: "https://www.instagram.com/jefriwahyuu/", label: "Instagram" },
-    { icon: Mail, href: "mailto:jefrywahyu63@gmail.com", label: "Email" },
+    { icon: Mail, href: "mailto:jefriwahyudiana@gmail.com", label: "Email" },
   ];
 
   return (
@@ -149,7 +149,7 @@ export const HeroSection = () => {
             <div className="absolute -inset-2 bg-gradient-to-r from-primary via-pink-500 to-amber-400 rounded-full blur-lg opacity-60 group-hover:opacity-90 transition-opacity animate-gradient bg-[length:200%_auto]" />
             <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full p-[3px] bg-gradient-to-br from-primary via-pink-500 to-amber-400">
               <div className="w-full h-full rounded-full bg-card flex items-center justify-center overflow-hidden">
-                <span className="font-display text-3xl md:text-4xl font-bold text-gradient">JW</span>
+                <span className="font-display text-3xl md:text-4xl font-bold text-gradient">JP</span>
               </div>
             </div>
             <div className="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-card border border-border shadow-lg flex items-center justify-center animate-float">
@@ -160,11 +160,11 @@ export const HeroSection = () => {
 
         <p className="opacity-0 animate-fade-in-delay-1 flex items-center justify-center gap-2 text-sm md:text-base font-medium text-muted-foreground mb-4">
           <MapPin className="w-4 h-4 text-primary" />
-          Kediri, Indonesia — Hello, I'm
+          Bandung, Indonesia — Hello, I'm
         </p>
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] mb-5">
-          <span className="opacity-0 animate-fade-in-delay-1 block">Jefri Wahyu</span>
+          <span className="opacity-0 animate-fade-in-delay-1 block">Jefri Wahyudiana</span>
           <span className="opacity-0 animate-fade-in-delay-2 block text-gradient pb-2">
             Putra
           </span>
@@ -178,9 +178,9 @@ export const HeroSection = () => {
         </div>
 
         <p className="opacity-0 animate-fade-in-delay-3 text-muted-foreground text-base md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
-          I craft <span className="text-foreground font-semibold">responsive, fast & delightful</span> web
-          and mobile experiences — from idea to production with clean code and
-          thoughtful design.
+          <span className="text-foreground font-semibold">Backend & Fullstack Developer</span> building
+          secure, reliable software — from an e-voting system serving 3,400+ voters
+          to AI-powered apps — with clean code and QA discipline.
         </p>
 
         {/* CTA */}
@@ -201,7 +201,7 @@ export const HeroSection = () => {
             </Magnetic>
             <Magnetic className="flex-1 sm:flex-none">
               <a
-                href="/resume/CV_JefriWP_ENG.pdf"
+                href="/resume/CV_Jefri_Wahyudiana_Putra.pdf"
                 className="ghost-button !px-4 w-full"
                 aria-label="Download CV"
               >
