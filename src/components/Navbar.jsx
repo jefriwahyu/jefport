@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { useLang } from "@/lib/i18n";
 
 const navItems = [
   { name: "home", href: "#hero" },
@@ -15,6 +16,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
+  const { lang, toggle } = useLang();
 
   useEffect(() => {
     const onScroll = () => {
@@ -73,6 +75,15 @@ export const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <button
+              onClick={toggle}
+              aria-label={lang === "id" ? "Ganti ke Bahasa Inggris" : "Switch to Indonesian"}
+              className="font-mono text-xs font-bold px-2.5 py-1.5 rounded-sm border border-border text-muted-foreground hover:text-primary hover:border-primary/60 transition-colors"
+            >
+              <span className={lang === "id" ? "text-primary" : ""}>ID</span>
+              <span className="mx-1 opacity-40">|</span>
+              <span className={lang === "en" ? "text-primary" : ""}>EN</span>
+            </button>
             <span className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
               online

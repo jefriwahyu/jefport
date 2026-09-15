@@ -1,6 +1,7 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import { prefersReducedMotion, shouldUseHeavyEffects } from "@/lib/motion";
+import { useLang, content } from "@/lib/i18n";
 import { HudPanel } from "./HudPanel";
 
 const HeroWire = lazy(() => import("./Hero3D"));
@@ -49,6 +50,8 @@ function useTypewriter(words, typeSpeed = 65, deleteSpeed = 32, pause = 1700) {
 export const HeroSection = () => {
   const typed = useTypewriter(roles);
   const [show3D] = useState(() => shouldUseHeavyEffects());
+  const { lang } = useLang();
+  const t = content[lang].hero;
 
   return (
     <section
@@ -76,7 +79,7 @@ export const HeroSection = () => {
           <div className="relative flex items-center gap-4 md:gap-8">
             {/* Left readout */}
             <div className="hidden sm:flex flex-col items-end gap-1 font-mono text-[11px] leading-tight text-muted-foreground" aria-hidden="true">
-              <span className="text-primary">id: wahyudi</span>
+              <span className="text-primary">id: jefri</span>
               <span>clr: #00ff41</span>
               <span>scan: 001</span>
             </div>
@@ -115,11 +118,13 @@ export const HeroSection = () => {
             {/* Right readout */}
             <div className="hidden sm:flex flex-col gap-1 font-mono text-[11px] leading-tight text-muted-foreground" aria-hidden="true">
               <span className="text-primary">sts: online</span>
-              <span>role: backend</span>
-              <span>lvl: 86</span>
             </div>
           </div>
         </div>
+
+        <p className="text-center font-mono text-xs text-muted-foreground mb-4">
+          {t.greeting}
+        </p>
 
         <HudPanel>
           <div id="hero-terminal" className="term-panel overflow-hidden">
@@ -137,7 +142,7 @@ export const HeroSection = () => {
               </p>
               <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight mt-2 text-foreground">
                 Jefri Wahyudiana Putra
-                <span className="text-muted-foreground font-medium text-lg md:text-2xl"> (Wahyudi)</span>
+                <span className="text-muted-foreground font-medium text-lg md:text-2xl"> (jefri)</span>
               </h1>
 
               <p className="text-sm md:text-base text-muted-foreground mt-5">
@@ -149,22 +154,21 @@ export const HeroSection = () => {
               </p>
 
               <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed mt-4 font-sans">
-                Fresh graduate D3 Informatika yang membangun sistem back-end yang aman
-                dan andal — dari e-voting hingga aplikasi AI.
+                {t.tagline}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mt-7">
                 <a href="#projects" className="term-btn">
-                  [ Lihat Projects ]
+                  [ {t.ctaProjects} ]
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a href="/resume/CV_Jefri_Wahyudiana_Putra.pdf" className="term-btn-ghost">
                   <Download className="w-4 h-4" />
-                  [ Download CV ]
+                  [ {t.ctaCv} ]
                 </a>
                 <a href="#contact" className="term-btn-ghost">
                   <Mail className="w-4 h-4" />
-                  [ Hubungi Saya ]
+                  [ {t.ctaContact} ]
                 </a>
               </div>
             </div>
@@ -172,7 +176,7 @@ export const HeroSection = () => {
         </HudPanel>
 
         <p className="text-center font-mono text-xs text-muted-foreground mt-8">
-          <span className="text-primary">▸</span> scroll untuk menjelajah
+          <span className="text-primary">▸</span> {t.scrollHint}
           <span className="animate-blink">_</span>
         </p>
       </div>

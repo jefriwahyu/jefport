@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { askJarvis } from "@/lib/jarvis";
+import { askJarvis, STRINGS } from "@/lib/jarvis";
+import { useLang } from "@/lib/i18n";
 import { HudPanel } from "./HudPanel";
 
 export const Jarvis = () => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      from: "jarvis",
-      text: "Sistem aktif. Tanyakan apa saja tentang CV atau project saya.",
-    },
-  ]);
+  const { lang } = useLang();
+  const ui = STRINGS[lang] || STRINGS.id;
+  const [messages, setMessages] = useState([{ from: "jarvis", text: ui.greeting }]);
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -30,7 +28,7 @@ export const Jarvis = () => {
     setInput("");
     setMessages((m) => [...m, { from: "user", text }]);
     setTyping(true);
-    const { text: reply } = await askJarvis(text);
+    const { text: reply } = await askJarvis(text, lang);
     setTyping(false);
     setMessages((m) => [...m, { from: "jarvis", text: reply }]);
   };
@@ -93,7 +91,7 @@ export const Jarvis = () => {
               {typing && (
                 <div className="text-left">
                   <span className="inline-block px-3 py-2 rounded-sm bg-secondary border border-border text-primary font-bold">
-                    ▊ typing
+                    {ui.typing}
                     <span className="animate-blink">_</span>
                   </span>
                 </div>
@@ -113,7 +111,7 @@ export const Jarvis = () => {
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="tanya soal CV / project..."
+                placeholder={ui.placeholder}
                 className="flex-1 bg-transparent font-mono text-[13px] placeholder:text-muted-foreground/60 focus:outline-none"
                 maxLength={300}
               />

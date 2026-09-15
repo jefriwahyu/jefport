@@ -13,5 +13,10 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     }
+  },
+  build: {
+    // Hero3D (three.js) is lazy-loaded into its own chunk; raise the
+    // warning limit so only unexpected bloat is flagged.
+    chunkSizeWarningLimit: 600,
   }
 })

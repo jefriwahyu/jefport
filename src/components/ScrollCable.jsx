@@ -78,13 +78,24 @@ export const ScrollCable = () => {
         startY = r.top + window.scrollY + r.height - 6;
       }
       const last = sections[sections.length - 1];
-      const endY = Math.min(H, pageY(last) + last.offsetHeight * 0.55);
+      // Terminus: exactly above the send-message form box.
+      // Always anchor to the form when present — never fall back to the
+      // section middle (that landed inside the boxes on desktop).
+      let endX = 0.5 * W;
+      let endY = Math.min(H, pageY(last) + last.offsetHeight * 0.55);
+      const formEl = document.getElementById("contact-form");
+      if (formEl) {
+        const r = formEl.getBoundingClientRect();
+        const vw = document.documentElement.clientWidth || 1;
+        endX = ((r.left + r.width / 2) / vw) * W;
+        endY = Math.min(H, r.top + window.scrollY - 12);
+      }
       spanStart = startY;
       spanEnd = Math.max(endY, startY + 1);
 
       let d = `M ${startX} ${startY}`;
       let prev = { x: startX, y: startY };
-      const all = [...pts, { x: 0.5 * W, y: endY }];
+      const all = [...pts, { x: endX, y: endY }];
       all.forEach((p) => {
         const dy = p.y - prev.y;
         d += ` C ${prev.x} ${prev.y + dy * 0.5}, ${p.x} ${p.y - dy * 0.5}, ${p.x} ${p.y}`;

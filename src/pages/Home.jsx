@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { prefersReducedMotion } from "@/lib/motion";
+import { LanguageProvider } from "@/lib/i18n";
 import { Navbar } from "../components/Navbar";
 import { HeroSection } from "../components/HeroSection";
 import { AboutMe } from "../components/AboutMe";
@@ -75,6 +76,7 @@ export const Home = () => {
     typeof window !== "undefined" && prefersReducedMotion();
 
   return (
+    <LanguageProvider>
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       {booting && <BootSequence onDone={finishBoot} />}
       {/* Scroll FX layers (behind content, non-interactive).
@@ -96,5 +98,6 @@ export const Home = () => {
       </div>
       <Jarvis />
     </div>
+    </LanguageProvider>
   );
 };
