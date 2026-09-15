@@ -39,7 +39,7 @@ export const ContactSection = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <HudPanel>
+          <HudPanel data-cable-item>
             <div className="term-panel px-5 py-5 h-full">
               <p className="font-mono text-xs text-muted-foreground mb-4">
                 <span className="text-primary">$</span> cat contact.txt
@@ -61,7 +61,7 @@ export const ContactSection = () => {
             </div>
           </HudPanel>
 
-          <HudPanel>
+          <HudPanel data-cable-item>
             <form onSubmit={handleSubmit} className="term-panel px-5 py-5 h-full">
               <p className="font-mono text-xs text-muted-foreground mb-4">
                 <span className="text-primary">$</span> send --message

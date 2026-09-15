@@ -19,7 +19,7 @@ export const EducationSection = () => {
           description="Pendidikan formal dan sertifikasi."
         />
 
-        <HudPanel className="mb-4">
+        <HudPanel className="mb-4" data-cable-item>
           <div className="term-panel px-5 py-5 md:px-7 md:py-6">
             <p className="font-mono text-xs text-primary font-bold mb-2">[ 2023 — 2026 ]</p>
             <h3 className="font-mono text-base md:text-lg font-bold">
@@ -37,7 +37,7 @@ export const EducationSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {certifications.map((cert) => (
-            <div key={cert.title} className="term-panel term-card-hover px-5 py-4">
+            <div key={cert.title} data-cable-item className="term-panel term-card-hover px-5 py-4">
               <p className="font-mono text-sm font-bold text-foreground leading-snug">
                 <span className="text-primary mr-2">✓</span>
                 {cert.title}

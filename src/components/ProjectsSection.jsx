@@ -50,7 +50,7 @@ export const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, i) => (
-            <HudPanel key={project.name}>
+            <HudPanel key={project.name} data-cable-item>
               <article className="term-panel term-card-hover h-full px-5 py-5 flex flex-col">
                 <div className="flex items-center justify-between mb-3">
                   <p className="font-mono text-sm font-bold text-primary">

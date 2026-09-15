@@ -38,8 +38,8 @@ export const ExperienceSection = () => {
         />
 
         <div className="space-y-4">
-          {experiences.map((exp) => (
-            <HudPanel key={exp.company}>
+              {experiences.map((exp) => (
+                <HudPanel key={exp.company} data-cable-item>
               <article className="term-panel term-card-hover px-5 py-5 md:px-7 md:py-6">
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-3 font-mono text-xs">
                   <span className="text-primary font-bold">[ {exp.period} ]</span>

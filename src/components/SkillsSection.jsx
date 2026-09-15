@@ -83,7 +83,7 @@ export const SkillsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4" key={active}>
           {visible.map((group) => (
-            <div key={group.id} className="term-panel px-5 py-5">
+            <div key={group.id} data-cable-item className="term-panel px-5 py-5">
               <p className="font-mono text-sm font-bold text-primary mb-4">
                 <span className="text-muted-foreground">~/</span>
                 {group.id}/
