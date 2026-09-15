@@ -71,15 +71,53 @@ export const HeroSection = () => {
       <div className="scanlines" aria-hidden="true" />
 
       <div className="container max-w-3xl mx-auto relative z-10">
-        {/* Avatar with slow scan ring */}
-        <div className="flex justify-center mb-8">
-          <div className="scan-ring w-24 h-24 md:w-28 md:h-28 rounded-full bg-card border border-border overflow-hidden">
-            <img
-              src="/fotoprofil.png"
-              alt="Foto profil Jefri Wahyudiana Putra"
-              className="w-full h-full object-cover"
-              loading="eager"
-            />
+        {/* Avatar HUD assembly */}
+        <div className="flex justify-center mb-10">
+          <div className="relative flex items-center gap-4 md:gap-8">
+            {/* Left readout */}
+            <div className="hidden sm:flex flex-col items-end gap-1 font-mono text-[11px] leading-tight text-muted-foreground" aria-hidden="true">
+              <span className="text-primary">id: wahyudi</span>
+              <span>clr: #00ff41</span>
+              <span>scan: 001</span>
+            </div>
+
+            <div className="relative group">
+              {/* Glow halo */}
+              <div className="absolute -inset-6 rounded-full bg-primary/20 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-300" aria-hidden="true" />
+              {/* Counter-rotating dashed orbit */}
+              <svg
+                className="absolute -inset-3.5 w-[calc(100%+28px)] h-[calc(100%+28px)] animate-spin-rev text-primary/50"
+                viewBox="0 0 100 100"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="1" strokeDasharray="6 8" />
+                <circle cx="50" cy="2" r="2.5" fill="currentColor" stroke="none" />
+              </svg>
+              {/* Photo with scan ring + theme treatment */}
+              <div className="scan-ring relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-card border border-primary/40 overflow-hidden">
+                <img
+                  src="/fotoprofil.png"
+                  alt="Foto profil Jefri Wahyudiana Putra"
+                  className="w-full h-full object-cover saturate-[.85] contrast-[1.05] transition-transform duration-500 group-hover:scale-105"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30 pointer-events-none" aria-hidden="true" />
+              </div>
+              {/* Status chip */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] font-bold px-2.5 py-1 rounded-sm bg-background border border-primary/60 text-primary shadow-[0_0_16px_-4px_hsl(var(--primary)/0.7)]">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mr-1.5 animate-blink" aria-hidden="true" />
+                ID VERIFIED
+              </div>
+            </div>
+
+            {/* Right readout */}
+            <div className="hidden sm:flex flex-col gap-1 font-mono text-[11px] leading-tight text-muted-foreground" aria-hidden="true">
+              <span className="text-primary">sts: online</span>
+              <span>role: backend</span>
+              <span>lvl: 86</span>
+            </div>
           </div>
         </div>
 

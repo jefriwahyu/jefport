@@ -27,6 +27,7 @@
 
   --animate-blink: blink 1.1s step-end infinite;
   --animate-spin-slower: spin-slower 9s linear infinite;
+  --animate-spin-rev: spin-rev 18s linear infinite;
 
   @keyframes blink {
     0%, 100% { opacity: 1; }
@@ -34,6 +35,9 @@
   }
   @keyframes spin-slower {
     to { transform: rotate(360deg); }
+  }
+  @keyframes spin-rev {
+    to { transform: rotate(-360deg); }
   }
 }
 
@@ -96,6 +100,7 @@
   @media (prefers-reduced-motion: reduce) {
     .animate-blink,
     .animate-spin-slower,
+    .animate-spin-rev,
     .scan-ring::before {
       animation: none;
     }
