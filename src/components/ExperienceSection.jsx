@@ -1,5 +1,6 @@
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
+import { handleSpotMove } from "@/lib/spotlight";
 
 const experiences = [
   {
@@ -40,7 +41,11 @@ export const ExperienceSection = () => {
         <div className="space-y-4">
               {experiences.map((exp) => (
                 <HudPanel key={exp.company} data-cable-item>
-              <article className="term-panel term-card-hover px-5 py-5 md:px-7 md:py-6">
+              <article
+                onMouseMove={handleSpotMove}
+                className="term-panel term-card-hover spot-wrap group px-5 py-5 md:px-7 md:py-6"
+              >
+                <span className="spot" aria-hidden="true" />
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-3 font-mono text-xs">
                   <span className="text-primary font-bold">[ {exp.period} ]</span>
                   <span className="text-muted-foreground">{exp.location}</span>

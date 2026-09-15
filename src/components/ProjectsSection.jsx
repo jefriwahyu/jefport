@@ -1,6 +1,7 @@
 import { ArrowUpRight, Github } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
+import { handleSpotMove } from "@/lib/spotlight";
 
 const projects = [
   {
@@ -51,9 +52,13 @@ export const ProjectsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, i) => (
             <HudPanel key={project.name} data-cable-item>
-              <article className="term-panel term-card-hover h-full px-5 py-5 flex flex-col">
+              <article
+                onMouseMove={handleSpotMove}
+                className="term-panel term-card-hover spot-wrap group h-full px-5 py-5 flex flex-col"
+              >
+                <span className="spot" aria-hidden="true" />
                 <div className="flex items-center justify-between mb-3">
-                  <p className="font-mono text-sm font-bold text-primary">
+                  <p className="font-mono text-sm font-bold text-primary group-hover:text-glow transition-all">
                     <span className="text-muted-foreground">0{i + 1} :: </span>
                     {project.name}
                   </p>

@@ -101,7 +101,8 @@
     .animate-blink,
     .animate-spin-slower,
     .animate-spin-rev,
-    .scan-ring::before {
+    .scan-ring::before,
+    .spot-wrap:hover::after {
       animation: none;
     }
   }
@@ -180,6 +181,54 @@
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
+}
+
+/* ---------- HUD card hover FX (spotlight + scan sweep) ---------- */
+.spot-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.spot,
+.spot-wrap::after {
+  border-radius: inherit;
+  pointer-events: none;
+}
+/* Cursor-tracked glow (position fed via --mx/--my, paint-only) */
+.spot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    hsl(var(--primary) / 0.14),
+    transparent 62%
+  );
+}
+.spot-wrap:hover .spot {
+  opacity: 1;
+}
+/* One scan beam sweep per hover-enter (transform-only) */
+.spot-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    hsl(var(--primary) / 0.09),
+    transparent
+  );
+  transform: translateX(-130%) skewX(-8deg);
+}
+.spot-wrap:hover::after {
+  animation: spot-sweep 0.7s ease;
+}
+@keyframes spot-sweep {
+  from { transform: translateX(-130%) skewX(-8deg); }
+  to { transform: translateX(340%) skewX(-8deg); }
 }
 
 /* ---------- Premium scroll-cable system ---------- */

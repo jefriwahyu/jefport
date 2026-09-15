@@ -1,5 +1,6 @@
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
+import { handleSpotMove } from "@/lib/spotlight";
 
 const certifications = [
   { title: "Google Cybersecurity Professional Certificate", issuer: "Coursera", date: "Nov 2025" },
@@ -20,7 +21,11 @@ export const EducationSection = () => {
         />
 
         <HudPanel className="mb-4" data-cable-item>
-          <div className="term-panel px-5 py-5 md:px-7 md:py-6">
+          <div
+            onMouseMove={handleSpotMove}
+            className="term-panel spot-wrap group px-5 py-5 md:px-7 md:py-6"
+          >
+            <span className="spot" aria-hidden="true" />
             <p className="font-mono text-xs text-primary font-bold mb-2">[ 2023 — 2026 ]</p>
             <h3 className="font-mono text-base md:text-lg font-bold">
               Universitas Logistik dan Bisnis Internasional
@@ -37,7 +42,13 @@ export const EducationSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {certifications.map((cert) => (
-            <div key={cert.title} data-cable-item className="term-panel term-card-hover px-5 py-4">
+            <div
+              key={cert.title}
+              data-cable-item
+              onMouseMove={handleSpotMove}
+              className="term-panel term-card-hover spot-wrap group px-5 py-4"
+            >
+              <span className="spot" aria-hidden="true" />
               <p className="font-mono text-sm font-bold text-foreground leading-snug">
                 <span className="text-primary mr-2">✓</span>
                 {cert.title}
