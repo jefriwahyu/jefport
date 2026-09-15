@@ -73,8 +73,13 @@ export const HeroSection = () => {
       <div className="container max-w-3xl mx-auto relative z-10">
         {/* Avatar with slow scan ring */}
         <div className="flex justify-center mb-8">
-          <div className="scan-ring w-24 h-24 md:w-28 md:h-28 rounded-full bg-card border border-border flex items-center justify-center">
-            <span className="font-mono text-3xl md:text-4xl font-extrabold text-primary text-glow">JP</span>
+          <div className="scan-ring w-24 h-24 md:w-28 md:h-28 rounded-full bg-card border border-border overflow-hidden">
+            <img
+              src="/fotoprofil.png"
+              alt="Foto profil Jefri Wahyudiana Putra"
+              className="w-full h-full object-cover"
+              loading="eager"
+            />
           </div>
         </div>
 
