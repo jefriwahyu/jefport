@@ -150,10 +150,24 @@ export default function Hero3D() {
     window.addEventListener("resize", onResize);
 
     const hero = mount.closest("section");
+    // Pause WebGL work once the hero scrolls out of view — the canvas
+    // isn't visible there, so skip render + layout reads entirely.
+    let heroVisible = true;
+    let visObserver = null;
+    if (hero && typeof IntersectionObserver !== "undefined") {
+      visObserver = new IntersectionObserver(
+        ([entry]) => {
+          heroVisible = entry.isIntersecting;
+        },
+        { threshold: 0 }
+      );
+      visObserver.observe(hero);
+    }
     const clock = new THREE.Clock();
     let rafId;
     const animate = () => {
       rafId = requestAnimationFrame(animate);
+      if (!heroVisible) return;
       const t = clock.getElapsedTime();
       currentX += (targetX - currentX) * 0.045;
       currentY += (targetY - currentY) * 0.045;
@@ -184,6 +198,7 @@ export default function Hero3D() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      visObserver?.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("resize", onResize);
       scene.traverse((obj) => {

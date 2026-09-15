@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "./SectionHeading";
+import { Counter } from "./Counter";
 import { useLang, content } from "@/lib/i18n";
 
 const groups = [
@@ -8,34 +9,45 @@ const groups = [
     id: "backend",
     label: "Backend",
     skills: [
-      "Laravel / PHP",
-      "FastAPI / Python",
-      "CodeIgniter 4",
-      "ASP.NET Core / C#",
-      "Express.js / Node",
+      { name: "Laravel / PHP", level: 82 },
+      { name: "FastAPI / Python", level: 78 },
+      { name: "CodeIgniter 4", level: 78 },
+      { name: "ASP.NET Core / C#", level: 76 },
+      { name: "Express.js / Node", level: 75 },
     ],
   },
   {
     id: "frontend",
     label: "Frontend & Mobile",
     skills: [
-      "Vue.js 3",
-      "React",
-      "Flutter",
-      "Tailwind CSS",
-      "JavaScript",
-      "HTML / CSS",
+      { name: "Vue.js 3", level: 78 },
+      { name: "React", level: 76 },
+      { name: "Flutter", level: 77 },
+      { name: "Tailwind CSS", level: 84 },
+      { name: "JavaScript", level: 80 },
+      { name: "HTML / CSS", level: 85 },
     ],
   },
   {
     id: "database",
     label: "Database",
-    skills: ["MySQL", "SQL Server", "PostgreSQL", "MongoDB"],
+    skills: [
+      { name: "MySQL", level: 80 },
+      { name: "SQL Server", level: 76 },
+      { name: "PostgreSQL", level: 74 },
+      { name: "MongoDB", level: 74 },
+    ],
   },
   {
     id: "tools",
     label: "Tools & AI",
-    skills: ["Git / GitHub", "VS Code", "Postman", "YOLOv8", "Roboflow"],
+    skills: [
+      { name: "Git / GitHub", level: 82 },
+      { name: "VS Code", level: 85 },
+      { name: "Postman", level: 78 },
+      { name: "YOLOv8", level: 72 },
+      { name: "Roboflow", level: 70 },
+    ],
   },
 ];
 
@@ -79,13 +91,21 @@ export const SkillsSection = () => {
                 <span className="text-muted-foreground">~/</span>
                 {group.id}/
               </p>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="space-y-3.5">
                 {group.skills.map((skill) => (
-                  <li
-                    key={skill}
-                    className="px-3 py-1.5 border border-border rounded-sm font-mono text-[13px] text-foreground/90"
-                  >
-                    {skill}
+                  <li key={skill.name}>
+                    <div className="flex items-baseline justify-between font-mono text-[13px] mb-1.5">
+                      <span className="text-foreground">{skill.name}</span>
+                      <span className="text-primary font-bold">
+                        <Counter end={skill.level} suffix="%" duration={1200} />
+                      </span>
+                    </div>
+                    <div className="h-1 bg-secondary rounded-none overflow-hidden">
+                      <div
+                        className="h-full bg-primary/70"
+                        style={{ width: `${skill.level}%` }}
+                      />
+                    </div>
                   </li>
                 ))}
               </ul>

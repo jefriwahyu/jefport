@@ -142,7 +142,6 @@ export const HeroSection = () => {
               </p>
               <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight mt-2 text-foreground">
                 Jefri Wahyudiana Putra
-                <span className="text-muted-foreground font-medium text-lg md:text-2xl"> (jefri)</span>
               </h1>
 
               <p className="text-sm md:text-base text-muted-foreground mt-5">

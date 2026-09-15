@@ -48,6 +48,10 @@ export const ScrollCable = () => {
     const fired = new Set();
     const nodePage = { x: 0, y: 0 };
     let disposed = false;
+    // Boxes eligible for the node-proximity glow (refreshed on rebuild
+    // and whenever the DOM adds/removes cable items, e.g. Skills tabs).
+    let glowItems = [];
+    let glowDirty = true;
 
     const pageY = (el) => el.getBoundingClientRect().top + window.scrollY;
 
@@ -104,12 +108,16 @@ export const ScrollCable = () => {
 
       [maskPath, ...shapePaths].forEach((path) => path.setAttribute("d", d));
       pathLen = maskPath.getTotalLength();
+      glowDirty = true;
       update();
     };
 
     const update = () => {
       ticking = false;
       if (disposed || pathLen === 0) return;
+      // Cable SVG is display:none on mobile — skip the expensive
+      // getPointAtLength work there (section triggers still run).
+      if (svg.clientWidth === 0) return;
       // Track the viewport center within the cable span: the tip sits
       // exactly where the user is reading — no perceived lag.
       const mid = window.scrollY + window.innerHeight * 0.5;
@@ -123,6 +131,32 @@ export const ScrollCable = () => {
         node.setAttribute("transform", `translate(${pt.x} ${pt.y})`);
       } catch {
         /* path not ready */
+      }
+      updateGlow();
+    };
+
+    // Light up whichever content box the node is currently inside of;
+    // boxes go dark again as soon as the node leaves them.
+    const updateGlow = () => {
+      if (glowDirty) {
+        glowItems = Array.from(document.querySelectorAll("[data-cable-item]"));
+        glowDirty = false;
+      }
+      if (glowItems.length === 0) return;
+      // viewBox → viewport coords (same mapping as the burst layer).
+      const vx = nodePage.x * (svg.clientWidth / VB_W);
+      const vy = nodePage.y * (svg.clientHeight / vbH) - window.scrollY;
+      for (const el of glowItems) {
+        if (!el.isConnected) continue;
+        const r = el.getBoundingClientRect();
+        const inside =
+          vx >= r.left - 30 &&
+          vx <= r.right + 30 &&
+          vy >= r.top - 50 &&
+          vy <= r.bottom + 50;
+        const lit = el.classList.contains("cable-lit");
+        if (inside && !lit) el.classList.add("cable-lit");
+        else if (!inside && lit) el.classList.remove("cable-lit");
       }
     };
 
@@ -271,6 +305,7 @@ export const ScrollCable = () => {
           });
         });
       });
+      glowDirty = true;
     });
     mo.observe(document.body, { childList: true, subtree: true });
 

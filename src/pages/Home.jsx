@@ -12,7 +12,7 @@ import { ProjectsSection } from "../components/ProjectsSection";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 import { BootSequence } from "../components/BootSequence";
-import { Jarvis } from "../components/Jarvis";
+import { Janis } from "../components/Janis";
 import { ScrollCable } from "../components/ScrollCable";
 import { DustField } from "../components/DustField";
 
@@ -35,10 +35,11 @@ export const Home = () => {
     };
   }, [booting]);
 
-  // Lenis smooth scroll (wheel only; skipped on touch-reduced setups)
+  // Lenis smooth scroll (wheel only; skipped on touch-reduced setups).
+  // Kept snappy (short duration) so it never feels laggy behind the wheel.
   useEffect(() => {
     if (booting || prefersReducedMotion()) return;
-    const lenis = new Lenis({ duration: 0.9, smoothWheel: true });
+    const lenis = new Lenis({ duration: 0.7, smoothWheel: true });
     const onClick = (e) => {
       const anchor = e.target.closest?.('a[href^="#"]');
       if (!anchor) return;
@@ -47,7 +48,7 @@ export const Home = () => {
       const target = document.querySelector(hash);
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -84, duration: 1.5 });
+      lenis.scrollTo(target, { offset: -84, duration: 1.2 });
     };
     document.addEventListener("click", onClick);
     let rafId;
@@ -96,7 +97,7 @@ export const Home = () => {
       <div className="relative z-10">
         <Footer />
       </div>
-      <Jarvis />
+      <Janis />
     </div>
     </LanguageProvider>
   );

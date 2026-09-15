@@ -166,10 +166,10 @@ function localAnswer(input, lang) {
 }
 
 /**
- * Ask Jarvis. Tries the (optional) external LLM endpoint first so a future
+ * Ask Janis. Tries the (optional) external LLM endpoint first so a future
  * backend can take over, then falls back to the local CV knowledge base.
  */
-export async function askJarvis(question, lang = "id") {
+export async function askJanis(question, lang = "id") {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 2500);

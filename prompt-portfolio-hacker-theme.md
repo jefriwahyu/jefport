@@ -21,15 +21,15 @@ Buatkan saya website portfolio pribadi dengan konsep berikut:
 - Selain titik-titik di atas, **tidak ada animasi tambahan** — sisanya statis dan cepat load. Prioritas: simpel, tajam, mudah dibaca, bukan "ramai efek".
 - Fully responsive (mobile-first).
 
-### Elemen HUD ala Jarvis (Iron Man)
+### Elemen HUD ala Janis (Iron Man)
 - Satu kali **boot-up sequence** saat halaman pertama dibuka: teks singkat mengetik sendiri seperti "INITIALIZING SYSTEM...", "LOADING PROFILE...", lalu fade ke hero. Jalan sekali saja, tidak berulang.
 - **Corner brackets** (garis sudut ala HUD, bentuk `⌐` `¬` di keempat pojok) pada card/panel utama — statis, bukan animasi, cukup untuk kesan "interface", tidak dipakai di semua elemen.
 - Foto profil/avatar dikasih **ring scan tipis** yang berputar sangat pelan dan halus di sekelilingnya — satu-satunya animasi looping di seluruh situs, dan hanya di hero.
 - Skill bar/percentage ditampilkan sebagai **readout angka** (angka naik dari 0 ke nilai akhir saat pertama kali terlihat di layar/on scroll-into-view), bukan progress bar animasi berulang.
 - Warna dan garis tetap konsisten dengan tema hacker (hijau neon/cyan), jangan tambah warna baru — HUD ini styling tambahan di atas tema yang sudah ada, bukan tema baru.
 
-### AI Assistant "Jarvis" (Chatbot)
-- Tombol mengambang di pojok kanan bawah, label singkat seperti `[ JARVIS ]` atau ikon mic/AI kecil.
+### AI Assistant "Janis" (Chatbot)
+- Tombol mengambang di pojok kanan bawah, label singkat seperti `[ JANIS ]` atau ikon mic/AI kecil.
 - Saat dibuka: panel chat bergaya HUD (border tipis neon, font monospace), sapaan awal singkat, misalnya "Sistem aktif. Tanyakan apa saja tentang CV atau project saya."
 - Fungsinya: menjawab pertanyaan pengunjung seputar **CV, skill, pengalaman, dan project saya saja** (bukan asisten umum) — jawaban dibatasi ke konten CV yang sudah disediakan di prompt ini.
 - Implementasi: backend kecil yang memanggil LLM API (Anthropic API atau OpenAI API) dengan system prompt berisi ringkasan CV saya, supaya jawaban tetap relevan dan tidak ngarang. Kalau ditanya di luar topik, jawab sopan bahwa dia hanya bisa membahas seputar profil/project di situs ini.
@@ -85,7 +85,7 @@ Buatkan saya website portfolio pribadi dengan konsep berikut:
 - Tailwind CSS untuk styling cepat
 - Framer Motion (React) atau CSS transitions murni — gunakan seminimal mungkin, sesuai poin efek di atas
 - Three.js/React Three Fiber untuk objek wireframe 3D di hero (low-poly, lazy-loaded)
-- Untuk fitur chatbot "Jarvis": endpoint backend kecil (bisa pakai stack backend yang sama dengan project lain — Golang/FastAPI/Express) yang meneruskan pertanyaan ke LLM API, jangan panggil API key langsung dari frontend
+- Untuk fitur chatbot "Janis": endpoint backend kecil (bisa pakai stack backend yang sama dengan project lain — Golang/FastAPI/Express) yang meneruskan pertanyaan ke LLM API, jangan panggil API key langsung dari frontend
 - Static site untuk bagian utama, bisa di-hosting di infra portfolio yang sudah disiapkan; endpoint chatbot dijalankan sebagai service terpisah di server yang sama
 
 ---

@@ -3,10 +3,13 @@ import { cn } from "@/lib/utils";
 /**
  * Static HUD corner brackets (top-left, top-right, bottom-left, bottom-right).
  * Purely decorative, no animation — the "interface" accent.
+ * Pass `staticBrackets` to also disable the group-hover bracket swell,
+ * leaving the card hover as the single unified hover effect.
  */
-export const HudPanel = ({ children, className, bracketClassName, ...rest }) => {
-  const corner =
-    "absolute w-3.5 h-3.5 border-primary/40 group-hover:border-primary group-hover:w-5 group-hover:h-5 transition-all duration-300 pointer-events-none";
+export const HudPanel = ({ children, className, bracketClassName, staticBrackets = false, ...rest }) => {
+  const corner = staticBrackets
+    ? "absolute w-3.5 h-3.5 border-primary/40 pointer-events-none"
+    : "absolute w-3.5 h-3.5 border-primary/40 group-hover:border-primary group-hover:w-5 group-hover:h-5 transition-all duration-300 pointer-events-none";
   return (
     <div className={cn("relative group", className)} {...rest}>
       <span className={cn(corner, "top-0 left-0 border-t-2 border-l-2", bracketClassName)} aria-hidden="true" />

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import emailjs from 'emailjs-com';
 import { Send } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
@@ -26,34 +25,21 @@ export const ContactSection = () => {
     setIsSending(true);
     setStatus(null);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    // No EmailJS config (local dev / env missing): fall back to mailto
-    // so the message is never silently dropped.
-    if (!serviceId || !templateId || !publicKey) {
-      const subject = encodeURIComponent(`Portfolio contact from ${formData.name}`);
-      const body = encodeURIComponent(`${formData.message}\n\n— ${formData.name} (${formData.email})`);
-      window.location.href = `mailto:jefriwahyudiana@gmail.com?subject=${subject}&body=${body}`;
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setIsSending(false);
-      setTimeout(() => setStatus(null), 6000);
-      return;
-    }
-
+    // Sends a real email to the site owner via FormSubmit (no API key
+    // needed). First-ever submission triggers a one-time activation
+    // email to the inbox — it must be confirmed once.
     try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
+      const res = await fetch("https://formsubmit.co/ajax/jefriwahyudiana@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
           message: formData.message,
-        },
-        publicKey
-      );
+          _subject: `Portfolio contact from ${formData.name}`,
+        }),
+      });
+      if (!res.ok) throw new Error(`formsubmit ${res.status}`);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch {

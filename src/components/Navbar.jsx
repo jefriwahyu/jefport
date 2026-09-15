@@ -19,8 +19,13 @@ export const Navbar = () => {
   const { lang, toggle } = useLang();
 
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        setIsScrolled(window.scrollY > 24);
       const current = navItems
         .map((i) => i.href.slice(1))
         .find((id) => {
@@ -33,6 +38,7 @@ export const Navbar = () => {
         const item = navItems.find((i) => i.href === `#${current}`);
         if (item) setActive(item.name);
       }
+      });
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

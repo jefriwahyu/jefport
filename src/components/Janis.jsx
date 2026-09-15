@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Send, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { askJarvis, STRINGS } from "@/lib/jarvis";
+import { askJanis, STRINGS } from "@/lib/janis";
 import { useLang } from "@/lib/i18n";
 import { HudPanel } from "./HudPanel";
 
-export const Jarvis = () => {
+export const Janis = () => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const { lang } = useLang();
   const ui = STRINGS[lang] || STRINGS.id;
-  const [messages, setMessages] = useState([{ from: "jarvis", text: ui.greeting }]);
+  const [messages, setMessages] = useState([{ from: "janis", text: ui.greeting }]);
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -28,9 +28,9 @@ export const Jarvis = () => {
     setInput("");
     setMessages((m) => [...m, { from: "user", text }]);
     setTyping(true);
-    const { text: reply } = await askJarvis(text, lang);
+    const { text: reply } = await askJanis(text, lang);
     setTyping(false);
-    setMessages((m) => [...m, { from: "jarvis", text: reply }]);
+    setMessages((m) => [...m, { from: "janis", text: reply }]);
   };
 
   return (
@@ -38,7 +38,7 @@ export const Jarvis = () => {
       {/* Floating trigger */}
       <button
         onClick={() => setOpen((o) => !o)}
-        aria-label={open ? "Tutup Jarvis" : "Buka Jarvis"}
+        aria-label={open ? "Tutup Janis" : "Buka Janis"}
         className={cn(
           "fixed bottom-5 right-5 z-[90] font-mono text-sm font-bold px-4 py-2.5 rounded-sm border transition-colors",
           open
@@ -48,7 +48,7 @@ export const Jarvis = () => {
       >
         <span className="inline-flex items-center gap-2">
           {!open && <span className="w-2 h-2 rounded-full bg-primary animate-blink" aria-hidden="true" />}
-          [ JARVIS ]
+          [ JANIS ]
         </span>
       </button>
 
@@ -60,7 +60,7 @@ export const Jarvis = () => {
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/60">
               <span className="font-mono text-xs font-bold text-primary inline-flex items-center gap-2">
                 <Terminal className="w-4 h-4" />
-                jarvis://assistant — online
+                janis://assistant — online
               </span>
               <button
                 onClick={() => setOpen(false)}
@@ -83,7 +83,7 @@ export const Jarvis = () => {
                         : "bg-secondary text-muted-foreground border border-border"
                     )}
                   >
-                    {m.from === "jarvis" && <span className="text-primary font-bold">&gt; </span>}
+                    {m.from === "janis" && <span className="text-primary font-bold">&gt; </span>}
                     {m.text}
                   </span>
                 </div>

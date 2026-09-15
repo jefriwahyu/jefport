@@ -62,9 +62,8 @@
     @apply border-border;
   }
 
-  html {
-    @apply scroll-smooth;
-  }
+  /* No `scroll-smooth` here on purpose: Lenis drives wheel + anchor
+     scrolling in Home.jsx, and native smooth would fight it (laggy feel). */
 
   body {
     @apply bg-background text-foreground antialiased;
@@ -276,6 +275,16 @@ html.cable-on [data-cable-item].cable-in {
   40% { opacity: 0.6; transform: translateX(3px); }
   60% { opacity: 1; transform: translateX(-2px); }
   100% { opacity: 0; transform: translateX(0); }
+}
+
+/* Node-proximity glow: a content box lights up while the cable node
+   travels inside it, and goes dark again once the node leaves. */
+[data-cable-item].cable-lit > .term-panel,
+[data-cable-item].cable-lit.term-panel {
+  border-color: hsl(var(--primary) / 0.8);
+  box-shadow:
+    0 0 30px -6px hsl(var(--primary) / 0.75),
+    inset 0 0 24px -18px hsl(var(--primary) / 0.8);
 }
 
 @media (prefers-reduced-motion: reduce) {
