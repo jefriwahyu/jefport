@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
 import { prefersReducedMotion, isMobileViewport } from "@/lib/motion";
+import { cableNode } from "@/lib/cableNode";
+
+const TWINKLE_RADIUS = 120;
 
 /**
  * Digital dust: tiny square specks drifting slowly, with scroll parallax.
@@ -48,11 +51,12 @@ export const DustField = () => {
           depth: 0.3 + Math.random() * 0.7,
           a: 0.1 + Math.random() * 0.35,
           green: Math.random() < 0.8,
+          ph: Math.random() * Math.PI * 2, // twinkle phase
         });
       }
     };
 
-    const frame = () => {
+    const frame = (now = 0) => {
       if (!running) return;
       const parallax = window.scrollY;
       ctx.clearRect(0, 0, w, h);
@@ -67,10 +71,23 @@ export const DustField = () => {
         if (p.x > w + 4) p.x = -4;
         let y = (p.y - parallax * 0.12 * p.depth) % (h + 8);
         if (y < -4) y += h + 8;
+        // Twinkle near the cable node: specks inside the radius flare
+        // up and blink, then settle back to their base alpha.
+        let alpha = p.a;
+        let size = p.s;
+        const dx = p.x - cableNode.x;
+        const dy = y - cableNode.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < TWINKLE_RADIUS) {
+          const fall = 1 - dist / TWINKLE_RADIUS;
+          const tw = 0.5 + 0.5 * Math.sin(now * 0.006 + p.ph);
+          alpha = Math.min(1, p.a + fall * (0.25 + 0.65 * tw));
+          if (fall > 0.6 && tw > 0.7) size = p.s + 1;
+        }
         ctx.fillStyle = p.green
-          ? `rgba(0,255,65,${p.a})`
-          : `rgba(230,255,230,${p.a * 0.8})`;
-        ctx.fillRect(p.x, y, p.s, p.s);
+          ? `rgba(0,255,65,${alpha})`
+          : `rgba(230,255,230,${alpha * 0.8})`;
+        ctx.fillRect(p.x, y, size, size);
       }
       rafId = requestAnimationFrame(frame);
     };

@@ -1,29 +1,17 @@
 import { useEffect, useRef } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
 
-const LINES = [
-  "$ whoami",
-  "> jefri — backend dev",
-  "$ uptime --career",
-  "> e-voting: 3.458 voters",
-  "> tests: 214 passed",
-  "> status: shipping",
-];
-const TICK_MS = 50;
-const CHARS_PER_TICK = 2;
-const DONE_PAUSE_MS = 2600;
-const FONT = '12px "JetBrains Mono", ui-monospace, monospace';
-const LINE_H = 20;
-const PAD_X = 16;
-const PAD_Y = 26;
+const GLYPHS = "01{}[]();<>=+-*/#$&|!?:;,.abcdef0123456789".split("");
+const FONT_SIZE = 13;
+const FONT = `${FONT_SIZE}px "JetBrains Mono", ui-monospace, monospace`;
 
 /**
- * Running-code backdrop that lives INSIDE the whoami box. Types out
- * terminal lines in a loop on a transparent canvas (drawn very faint so
- * the real content stays readable). Visibility is driven purely by CSS:
- * the layer fades in while the cable node is inside the box
+ * Code-rain backdrop that lives INSIDE the whoami box. Faint code glyphs
+ * fall in a loop on a transparent canvas (very dim so the real content
+ * stays readable). Visibility is driven purely by CSS: the layer fades
+ * in while the cable node is inside the box
  * ([data-cable-item].cable-lit) and fades out when it leaves.
- * Typing pauses when the tab is hidden or the box is off-screen.
+ * The rain pauses when the tab is hidden or the box is off-screen.
  */
 export const WhoamiCodeBg = () => {
   const canvasRef = useRef(null);
@@ -37,55 +25,60 @@ export const WhoamiCodeBg = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let lineIdx = 0;
-    let charIdx = 0;
-    let waiting = false;
+    let drops = [];
+    let rafId = 0;
     let inView = true;
     let visible = !document.hidden;
     let disposed = false;
-    let timer = 0;
+    let last = performance.now();
 
-    const draw = () => {
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.clearRect(0, 0, w, h);
-      ctx.font = FONT;
-      ctx.fillStyle = "rgba(0, 255, 65, 0.10)";
-      for (let i = 0; i < lineIdx; i++) {
-        ctx.fillText(LINES[i], PAD_X, PAD_Y + i * LINE_H);
-      }
-      if (lineIdx < LINES.length) {
-        ctx.fillText(
-          LINES[lineIdx].slice(0, charIdx),
-          PAD_X,
-          PAD_Y + lineIdx * LINE_H
-        );
-      }
+    const seed = () => {
+      const cols = Math.max(8, Math.floor(canvas.width / FONT_SIZE));
+      drops = Array.from({ length: cols }, () => ({
+        y: Math.random() * (canvas.height / FONT_SIZE),
+        speed: 3 + Math.random() * 7, // rows per second
+        a: 0.05 + Math.random() * 0.09,
+      }));
     };
 
-    const tick = () => {
-      if (disposed || waiting || !inView || !visible) return;
-      charIdx += CHARS_PER_TICK;
-      if (charIdx >= LINES[lineIdx].length) {
-        lineIdx += 1;
-        charIdx = 0;
-        if (
-          lineIdx >= LINES.length ||
-          PAD_Y + lineIdx * LINE_H > canvas.height - 8
-        ) {
-          waiting = true;
-          draw();
-          setTimeout(() => {
-            if (disposed) return;
-            lineIdx = 0;
-            charIdx = 0;
-            waiting = false;
-            draw();
-          }, DONE_PAUSE_MS);
-          return;
+    const frame = (now) => {
+      if (disposed || !inView || !visible) {
+        rafId = 0;
+        return;
+      }
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      const w = canvas.width;
+      const h = canvas.height;
+      // Fade previous trails toward transparent (no bg color matching
+      // needed — the panel background shows through untouched).
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.14)";
+      ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = "source-over";
+      ctx.font = FONT;
+      for (let i = 0; i < drops.length; i++) {
+        const d = drops[i];
+        ctx.fillStyle = `rgba(0, 255, 65, ${d.a})`;
+        ctx.fillText(
+          GLYPHS[(Math.random() * GLYPHS.length) | 0],
+          i * FONT_SIZE,
+          d.y * FONT_SIZE
+        );
+        d.y += d.speed * dt;
+        if (d.y * FONT_SIZE > h + FONT_SIZE) {
+          d.y = -Math.random() * 6;
+          d.speed = 3 + Math.random() * 7;
         }
       }
-      draw();
+      rafId = requestAnimationFrame(frame);
+    };
+
+    const kick = () => {
+      if (!rafId && !disposed && inView && visible) {
+        last = performance.now();
+        rafId = requestAnimationFrame(frame);
+      }
     };
 
     const resize = () => {
@@ -94,33 +87,32 @@ export const WhoamiCodeBg = () => {
       if (!w || !h) return;
       canvas.width = w;
       canvas.height = h;
-      lineIdx = 0;
-      charIdx = 0;
-      waiting = false;
-      draw();
+      seed();
+      kick();
     };
 
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
     resize();
-    timer = setInterval(tick, TICK_MS);
 
     const panel = canvas.closest("[data-cable-item]");
     let io = null;
     if (panel && typeof IntersectionObserver !== "undefined") {
       io = new IntersectionObserver(([entry]) => {
         inView = entry.isIntersecting;
+        kick();
       });
       io.observe(panel);
     }
     const onVis = () => {
       visible = !document.hidden;
+      kick();
     };
     document.addEventListener("visibilitychange", onVis);
 
     return () => {
       disposed = true;
-      clearInterval(timer);
+      cancelAnimationFrame(rafId);
       ro.disconnect();
       io?.disconnect();
       document.removeEventListener("visibilitychange", onVis);

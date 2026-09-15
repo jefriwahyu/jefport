@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
+import { cableNode } from "@/lib/cableNode";
 
 const TARGETS = ["about", "experience", "skills", "projects", "education", "contact"];
 // Organic left/right weave across the viewport (fractions of width)
@@ -146,6 +147,9 @@ export const ScrollCable = () => {
       // viewBox → viewport coords (same mapping as the burst layer).
       const vx = nodePage.x * (svg.clientWidth / VB_W);
       const vy = nodePage.y * (svg.clientHeight / vbH) - window.scrollY;
+      // Publish for ambient layers (dust twinkle near the node).
+      cableNode.x = vx;
+      cableNode.y = vy;
       for (const el of glowItems) {
         if (!el.isConnected) continue;
         const r = el.getBoundingClientRect();
