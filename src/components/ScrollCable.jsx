@@ -40,6 +40,10 @@ export const ScrollCable = () => {
     const VB_W = 1000;
     let vbH = window.innerHeight * 2;
     let pathLen = 0;
+    // Cable span in page coordinates — node/progress track the viewport
+    // center within this span so the line follows reading position exactly.
+    let spanStart = 0;
+    let spanEnd = 1;
     let ticking = false;
     const fired = new Set();
     const nodePage = { x: 0, y: 0 };
@@ -62,12 +66,24 @@ export const ScrollCable = () => {
         x: LANE_X[i % LANE_X.length] * W,
         y: pageY(el) + Math.min(140, el.offsetHeight * 0.18),
       }));
-      const startY = Math.max(0, pts[0].y - 160);
+      // Origin: bottom edge of the hero terminal box (falls back above
+      // the first section if the hero terminal is missing).
+      let startX = LANE_X[0] * W;
+      let startY = Math.max(0, pts[0].y - 160);
+      const heroTerm = document.getElementById("hero-terminal");
+      if (heroTerm) {
+        const r = heroTerm.getBoundingClientRect();
+        const vw = document.documentElement.clientWidth || 1;
+        startX = ((r.left + r.width / 2) / vw) * W;
+        startY = r.top + window.scrollY + r.height - 6;
+      }
       const last = sections[sections.length - 1];
       const endY = Math.min(H, pageY(last) + last.offsetHeight * 0.55);
+      spanStart = startY;
+      spanEnd = Math.max(endY, startY + 1);
 
-      let d = `M ${LANE_X[0] * W} ${startY}`;
-      let prev = { x: LANE_X[0] * W, y: startY };
+      let d = `M ${startX} ${startY}`;
+      let prev = { x: startX, y: startY };
       const all = [...pts, { x: 0.5 * W, y: endY }];
       all.forEach((p) => {
         const dy = p.y - prev.y;
@@ -83,11 +99,10 @@ export const ScrollCable = () => {
     const update = () => {
       ticking = false;
       if (disposed || pathLen === 0) return;
-      const max = Math.max(
-        1,
-        document.documentElement.scrollHeight - window.innerHeight
-      );
-      const p = Math.min(1, Math.max(0, window.scrollY / max));
+      // Track the viewport center within the cable span: the tip sits
+      // exactly where the user is reading — no perceived lag.
+      const mid = window.scrollY + window.innerHeight * 0.5;
+      const p = Math.min(1, Math.max(0, (mid - spanStart) / (spanEnd - spanStart)));
       maskPath.style.strokeDashoffset = String(1 - p);
       try {
         const pt = maskPath.getPointAtLength(p * pathLen);

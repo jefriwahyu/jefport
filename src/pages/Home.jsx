@@ -37,7 +37,7 @@ export const Home = () => {
   // Lenis smooth scroll (wheel only; skipped on touch-reduced setups)
   useEffect(() => {
     if (booting || prefersReducedMotion()) return;
-    const lenis = new Lenis({ duration: 1.15, smoothWheel: true });
+    const lenis = new Lenis({ duration: 0.9, smoothWheel: true });
     const onClick = (e) => {
       const anchor = e.target.closest?.('a[href^="#"]');
       if (!anchor) return;
