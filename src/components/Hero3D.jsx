@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const PALETTE = ["#8b5cf6", "#ec4899", "#f59e0b", "#c4b5fd", "#f0abfc"];
+const PALETTE = ["#00ff41", "#00cc33", "#66ff99", "#e6ffe6", "#009929"];
 
 export default function Hero3D() {
   const mountRef = useRef(null);
@@ -30,10 +30,10 @@ export default function Hero3D() {
     camera.position.z = 8;
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-    const keyLight = new THREE.PointLight(0x8b5cf6, 80, 40);
+    const keyLight = new THREE.PointLight(0x00ff41, 80, 40);
     keyLight.position.set(4, 3, 4);
     scene.add(keyLight);
-    const rimLight = new THREE.PointLight(0xec4899, 50, 40);
+    const rimLight = new THREE.PointLight(0x00cc33, 50, 40);
     rimLight.position.set(-5, -2, 3);
     scene.add(rimLight);
 
@@ -43,10 +43,10 @@ export default function Hero3D() {
     const wire = new THREE.Mesh(
       new THREE.IcosahedronGeometry(1.9, 1),
       new THREE.MeshBasicMaterial({
-        color: 0x8b5cf6,
+        color: 0x00ff41,
         wireframe: true,
         transparent: true,
-        opacity: 0.42,
+        opacity: 0.4,
       })
     );
     group.add(wire);
@@ -54,40 +54,40 @@ export default function Hero3D() {
     const core = new THREE.Mesh(
       new THREE.IcosahedronGeometry(0.85, 3),
       new THREE.MeshStandardMaterial({
-        color: 0x2e1065,
-        emissive: 0x7c3aed,
+        color: 0x031503,
+        emissive: 0x00cc33,
         emissiveIntensity: 0.9,
-        roughness: 0.3,
-        metalness: 0.6,
+        roughness: 0.35,
+        metalness: 0.5,
       })
     );
     group.add(core);
 
-    const ringPink = new THREE.Mesh(
+    const ringMain = new THREE.Mesh(
       new THREE.TorusGeometry(2.9, 0.018, 8, 140),
       new THREE.MeshBasicMaterial({
-        color: 0xec4899,
+        color: 0x00ff41,
         transparent: true,
-        opacity: 0.55,
+        opacity: 0.5,
       })
     );
-    ringPink.rotation.x = Math.PI / 2.4;
-    group.add(ringPink);
+    ringMain.rotation.x = Math.PI / 2.4;
+    group.add(ringMain);
 
-    const ringAmber = new THREE.Mesh(
+    const ringDim = new THREE.Mesh(
       new THREE.TorusGeometry(3.4, 0.012, 8, 140),
       new THREE.MeshBasicMaterial({
-        color: 0xf59e0b,
+        color: 0x009929,
         transparent: true,
         opacity: 0.35,
       })
     );
-    ringAmber.rotation.x = Math.PI / 1.8;
-    ringAmber.rotation.y = 0.4;
-    group.add(ringAmber);
+    ringDim.rotation.x = Math.PI / 1.8;
+    ringDim.rotation.y = 0.4;
+    group.add(ringDim);
 
-    // Particle field
-    const COUNT = 1100;
+    // Particle field (kept light on purpose)
+    const COUNT = 600;
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
     const color = new THREE.Color();
@@ -161,8 +161,8 @@ export default function Hero3D() {
       group.rotation.y = t * 0.12 + currentX * 0.55;
       group.rotation.x = currentY * 0.35 + Math.sin(t * 0.2) * 0.08;
       wire.rotation.z = t * 0.05;
-      ringPink.rotation.z = t * 0.07;
-      ringAmber.rotation.z = -t * 0.05;
+      ringMain.rotation.z = t * 0.07;
+      ringDim.rotation.z = -t * 0.05;
       core.position.y = Math.sin(t * 0.8) * 0.09;
       core.rotation.y = -t * 0.2;
 
