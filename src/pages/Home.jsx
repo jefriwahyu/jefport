@@ -15,7 +15,6 @@ import { BootSequence } from "../components/BootSequence";
 import { Janis } from "../components/Janis";
 import { ScrollCable } from "../components/ScrollCable";
 import { DustField } from "../components/DustField";
-import { CodeRain } from "../components/CodeRain";
 
 const BOOT_KEY = "jefport-booted";
 
@@ -83,7 +82,6 @@ export const Home = () => {
       {booting && <BootSequence onDone={finishBoot} />}
       {/* Scroll FX layers (behind content, non-interactive).
           Cable SVG hides itself on mobile via CSS; triggers still run. */}
-      {!reduceMotion && <CodeRain />}
       {!reduceMotion && <DustField />}
       {!reduceMotion && <ScrollCable />}
       <Navbar />

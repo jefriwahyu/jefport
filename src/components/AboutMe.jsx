@@ -1,6 +1,7 @@
 import { Download, ArrowRight } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
+import { WhoamiCodeBg } from "./WhoamiCodeBg";
 import { useLang, content } from "@/lib/i18n";
 
 export const AboutMe = () => {
@@ -15,7 +16,13 @@ export const AboutMe = () => {
         />
 
         <HudPanel data-cable-item>
-          <div className="term-panel whoami-panel px-5 py-6 md:px-8 md:py-8">
+          <div className="term-panel whoami-panel relative overflow-hidden px-5 py-6 md:px-8 md:py-8">
+            {/* Running-code backdrop: fades in while the cable node is
+                inside this box, fades out when it leaves (see CSS). */}
+            <div className="whoami-codebg pointer-events-none absolute inset-0" aria-hidden="true">
+              <WhoamiCodeBg />
+            </div>
+            <div className="relative z-10">
             <p className="font-mono text-sm md:text-[15px] leading-relaxed text-muted-foreground">
               <span className="text-primary">$</span> {t.para1}
             </p>
@@ -42,6 +49,7 @@ export const AboutMe = () => {
                 <Download className="w-4 h-4" />
                 [ {t.btnCv} ]
               </a>
+            </div>
             </div>
           </div>
         </HudPanel>

@@ -295,6 +295,21 @@ html.cable-on [data-cable-item].cable-in {
   transform: scale(1.02);
 }
 
+/* Running-code backdrop inside whoami: fades in while the cable node
+   is inside the box, fades out when it leaves. */
+.whoami-codebg {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+[data-cable-item].cable-lit .whoami-codebg {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .whoami-codebg {
+    transition: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cable-flow {
     animation: none;
