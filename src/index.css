@@ -101,8 +101,7 @@
     .animate-blink,
     .animate-spin-slower,
     .animate-spin-rev,
-    .scan-ring::before,
-    .spot-wrap:hover::after {
+    .scan-ring::before {
       animation: none;
     }
   }
@@ -147,9 +146,9 @@
          transition-colors duration-200 hover:border-primary hover:text-primary hover:bg-primary/5 active:bg-primary/10;
 }
 
-/* Project card hover: thin glow border + slight lift, no 3D */
+/* Project card hover: slight lift + ignited border (glow comes from spotlight) */
 @utility term-card-hover {
-  @apply transition-all duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_0_24px_-6px_hsl(var(--primary)/0.45)];
+  @apply transition-all duration-200 hover:-translate-y-1 hover:border-primary/60;
 }
 
 @utility text-glow {
@@ -188,8 +187,7 @@
   position: relative;
   overflow: hidden;
 }
-.spot,
-.spot-wrap::after {
+.spot {
   border-radius: inherit;
   pointer-events: none;
 }
@@ -207,28 +205,6 @@
 }
 .spot-wrap:hover .spot {
   opacity: 1;
-}
-/* One scan beam sweep per hover-enter (transform-only) */
-.spot-wrap::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 45%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    hsl(var(--primary) / 0.09),
-    transparent
-  );
-  transform: translateX(-130%) skewX(-8deg);
-}
-.spot-wrap:hover::after {
-  animation: spot-sweep 0.7s ease;
-}
-@keyframes spot-sweep {
-  from { transform: translateX(-130%) skewX(-8deg); }
-  to { transform: translateX(340%) skewX(-8deg); }
 }
 
 /* ---------- Premium scroll-cable system ---------- */
