@@ -28,6 +28,19 @@ export const DustField = () => {
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     const N = 70;
     const specks = [];
+    // Cursor position (viewport coords) for hover twinkle. Tracked only
+    // on fine pointers; stays off-screen otherwise.
+    const mouse = { x: -9999, y: -9999 };
+    const onMouse = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: fine)").matches
+    ) {
+      window.addEventListener("mousemove", onMouse, { passive: true });
+    }
 
     const resize = () => {
       w = window.innerWidth;
@@ -71,13 +84,18 @@ export const DustField = () => {
         if (p.x > w + 4) p.x = -4;
         let y = (p.y - parallax * 0.12 * p.depth) % (h + 8);
         if (y < -4) y += h + 8;
-        // Twinkle near the cable node: specks inside the radius flare
-        // up and blink, then settle back to their base alpha.
+        // Twinkle near the cable node OR the cursor: specks inside the
+        // radius flare up and blink, then settle back to base alpha.
         let alpha = p.a;
         let size = p.s;
-        const dx = p.x - cableNode.x;
-        const dy = y - cableNode.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+        const dxn = p.x - cableNode.x;
+        const dyn = y - cableNode.y;
+        const dxm = p.x - mouse.x;
+        const dym = y - mouse.y;
+        const dist = Math.min(
+          Math.sqrt(dxn * dxn + dyn * dyn),
+          Math.sqrt(dxm * dxm + dym * dym)
+        );
         if (dist < TWINKLE_RADIUS) {
           const fall = 1 - dist / TWINKLE_RADIUS;
           const tw = 0.5 + 0.5 * Math.sin(now * 0.006 + p.ph);
@@ -110,6 +128,7 @@ export const DustField = () => {
     return () => {
       running = false;
       cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", onMouse);
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVis);
     };
