@@ -31,7 +31,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Halo, saya",
       tagline:
-        "Fresh graduate D3 Informatika yang membangun sistem back-end yang aman dan andal — dari e-voting hingga aplikasi AI.",
+        "Saya membangun sistem back-end yang aman dan andal — dari e-voting yang dipercaya ribuan pemilih hingga aplikasi AI.",
       ctaProjects: "Lihat Projects",
       ctaCv: "Download CV",
       ctaContact: "Hubungi Saya",
@@ -133,7 +133,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Hello, I'm",
       tagline:
-        "Fresh Informatics Engineering graduate building secure, reliable back-end systems — from e-voting to AI apps.",
+        "I build secure, reliable back-end systems — from e-voting trusted by thousands of voters to AI apps.",
       ctaProjects: "View Projects",
       ctaCv: "Download CV",
       ctaContact: "Contact Me",

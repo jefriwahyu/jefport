@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { prefersReducedMotion } from "@/lib/motion";
 
-const TARGETS = ["experience", "skills", "projects", "education", "contact"];
+const TARGETS = ["about", "experience", "skills", "projects", "education", "contact"];
 // Organic left/right weave across the viewport (fractions of width)
-const LANE_X = [0.34, 0.66, 0.32, 0.68, 0.5];
+const LANE_X = [0.5, 0.34, 0.66, 0.32, 0.68, 0.5];
 const BURST_COLORS = ["#00ff41", "#e6ffe6", "#00cc33", "#ffffff"];
 const BURST_COUNT = 7;
 

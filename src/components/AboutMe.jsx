@@ -14,8 +14,8 @@ export const AboutMe = () => {
           description={t.cmdDesc}
         />
 
-        <HudPanel>
-          <div className="term-panel px-5 py-6 md:px-8 md:py-8">
+        <HudPanel data-cable-item>
+          <div className="term-panel whoami-panel px-5 py-6 md:px-8 md:py-8">
             <p className="font-mono text-sm md:text-[15px] leading-relaxed text-muted-foreground">
               <span className="text-primary">$</span> {t.para1}
             </p>
