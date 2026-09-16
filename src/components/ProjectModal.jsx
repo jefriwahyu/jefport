@@ -101,18 +101,19 @@ export const ProjectModal = ({ project, detail, ui, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[95] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[95] overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
     >
       <div
-        className="absolute inset-0 bg-background/85 backdrop-blur-sm"
+        className="fixed inset-0 bg-background/85 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
-      <HudPanel staticBrackets className="relative w-full max-w-2xl">
-        <div className="term-panel modal-in relative overflow-hidden flex flex-col max-h-[88vh]">
+      <div className="relative min-h-full flex items-start md:items-center justify-center p-4 pt-24 pb-8">
+      <HudPanel staticBrackets className="relative w-full max-w-5xl">
+        <div className="term-panel modal-in relative overflow-hidden flex flex-col md:max-h-[calc(100vh-7rem)]">
           <span className="modal-scanline" aria-hidden="true" />
           {/* Title bar */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/60 shrink-0">
@@ -133,7 +134,7 @@ export const ProjectModal = ({ project, detail, ui, onClose }) => {
           </div>
 
           {/* Body */}
-          <div className="overflow-y-auto px-5 py-5 md:px-7">
+          <div className="modal-stagger md:overflow-y-auto px-5 py-5 md:px-7">
             <p className="font-mono text-sm font-bold text-primary">
               <span className="text-muted-foreground">./</span>
               {project.name}
@@ -243,6 +244,7 @@ export const ProjectModal = ({ project, detail, ui, onClose }) => {
           </div>
         </div>
       </HudPanel>
+      </div>
     </div>
   );
 };

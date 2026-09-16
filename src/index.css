@@ -327,13 +327,42 @@ html.cable-on [data-cable-item].cable-in {
 
 /* ---------- Project modal (Jarvis-style materialize) ---------- */
 .modal-in {
-  animation: modal-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: modal-materialize 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 0 60px -12px hsl(var(--primary) / 0.5);
 }
-@keyframes modal-in {
+@keyframes modal-materialize {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(0.94);
+    filter: blur(8px);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+/* Dossier lines assemble one by one after the frame materializes */
+.modal-stagger > * {
+  animation: modal-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.modal-stagger > *:nth-child(1) { animation-delay: 0.12s; }
+.modal-stagger > *:nth-child(2) { animation-delay: 0.17s; }
+.modal-stagger > *:nth-child(3) { animation-delay: 0.22s; }
+.modal-stagger > *:nth-child(4) { animation-delay: 0.27s; }
+.modal-stagger > *:nth-child(5) { animation-delay: 0.32s; }
+.modal-stagger > *:nth-child(6) { animation-delay: 0.37s; }
+.modal-stagger > *:nth-child(7) { animation-delay: 0.42s; }
+.modal-stagger > *:nth-child(8) { animation-delay: 0.47s; }
+.modal-stagger > *:nth-child(n+9) { animation-delay: 0.52s; }
+@keyframes modal-rise {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.98);
+    transform: translateX(-14px);
   }
   to {
     opacity: 1;
@@ -364,7 +393,8 @@ html.cable-on [data-cable-item].cable-in {
 }
 @media (prefers-reduced-motion: reduce) {
   .modal-in,
-  .modal-scanline {
+  .modal-scanline,
+  .modal-stagger > * {
     animation: none;
   }
 }
