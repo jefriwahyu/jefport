@@ -48,12 +48,14 @@ const DummySlide = ({ projectName, index, total }) => (
 
 /**
  * Real screenshot slide for projects that ship photos
- * (e.g. public/projects/proflow/).
+ * (e.g. public/projects/proflow/). The frame trims a few percent off
+ * every edge (scale crop) so uneven photo corners are cut away and all
+ * slides look uniform, whatever the source size is.
  */
 const RealSlide = ({ src, index, total, projectName }) => {
   const file = src.split("/").pop();
   return (
-    <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-background select-none flex flex-col">
+    <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-border bg-background select-none flex flex-col">
       <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border bg-secondary/80 shrink-0">
         <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
         <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
@@ -65,14 +67,17 @@ const RealSlide = ({ src, index, total, projectName }) => {
           [ {index + 1} / {total} ]
         </span>
       </div>
-      <div className="relative flex-1 min-h-0">
+      <div className="relative flex-1 min-h-0 overflow-hidden bg-secondary/30">
         <img
           src={src}
           alt={`${projectName} feature preview ${index + 1} of ${total}`}
           loading="lazy"
           draggable={false}
-          className="absolute inset-0 h-full w-full object-contain"
+          className="absolute inset-0 h-full w-full object-cover scale-[1.04]"
         />
+        {/* Inner frame: crisp edge + gentle top shade for depth */}
+        <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-black/50" aria-hidden="true" />
+        <div className="absolute inset-x-0 top-0 h-10 pointer-events-none bg-gradient-to-b from-black/25 to-transparent" aria-hidden="true" />
       </div>
     </div>
   );
