@@ -109,6 +109,9 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
+      // Lets the wheel / touch scroll natively inside the modal while
+      // Lenis is stopped (checked by Lenis before its own handling).
+      data-lenis-prevent
     >
       <div
         className="fixed inset-0 bg-background/85 backdrop-blur-sm"
