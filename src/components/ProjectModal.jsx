@@ -5,17 +5,16 @@ import { prefersReducedMotion } from "@/lib/motion";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 import { HudPanel } from "./HudPanel";
 
-const SLIDE_COUNT = 3;
 const AUTOPLAY_MS = 3000;
 
 // Fake UI bars so dummy slides read like real feature screenshots.
 const BARS = ["92%", "78%", "85%", "64%"];
 
 /**
- * Dummy feature preview: a stylized terminal screen. Pure CSS/SVG —
- * swap the inner content with a real <img> once assets are ready.
+ * Dummy feature preview: a stylized terminal screen. Pure CSS —
+ * shown only for projects that don't have real screenshots yet.
  */
-const DummySlide = ({ projectName, index }) => (
+const DummySlide = ({ projectName, index, total }) => (
   <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-background select-none">
     <div className="absolute inset-0 bg-terminal-grid opacity-70" aria-hidden="true" />
     <div className="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-3 py-2 border-b border-border bg-secondary/80">
@@ -38,7 +37,7 @@ const DummySlide = ({ projectName, index }) => (
           />
         </div>
       ))}
-      <p className="font-mono text-[11px] text-primary/80">[ {index + 1} / {SLIDE_COUNT} ]</p>
+      <p className="font-mono text-[11px] text-primary/80">[ {index + 1} / {total} ]</p>
     </div>
     <span className="absolute top-9 left-2 w-3 h-3 border-t-2 border-l-2 border-primary/40" aria-hidden="true" />
     <span className="absolute top-9 right-2 w-3 h-3 border-t-2 border-r-2 border-primary/40" aria-hidden="true" />
@@ -48,11 +47,44 @@ const DummySlide = ({ projectName, index }) => (
 );
 
 /**
+ * Real screenshot slide for projects that ship photos
+ * (e.g. public/projects/proflow/).
+ */
+const RealSlide = ({ src, index, total, projectName }) => {
+  const file = src.split("/").pop();
+  return (
+    <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-background select-none flex flex-col">
+      <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border bg-secondary/80 shrink-0">
+        <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
+        <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
+        <span className="w-2 h-2 rounded-full bg-primary/70" aria-hidden="true" />
+        <span className="ml-2 font-mono text-[11px] text-muted-foreground truncate">
+          {file}
+        </span>
+        <span className="ml-auto font-mono text-[11px] text-primary/80 shrink-0">
+          [ {index + 1} / {total} ]
+        </span>
+      </div>
+      <div className="relative flex-1 min-h-0">
+        <img
+          src={src}
+          alt={`${projectName} feature preview ${index + 1} of ${total}`}
+          loading="lazy"
+          draggable={false}
+          className="absolute inset-0 h-full w-full object-contain"
+        />
+      </div>
+    </div>
+  );
+};
+/**
  * Jarvis-style project detail modal: HUD brackets, scanline sweep,
  * typed title, feature list, and an auto-playing gallery that pauses
  * while the cursor is over it.
  */
 export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) => {
+  const slides = project.images ?? null;
+  const total = slides ? slides.length : 3;
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
   const [typed, setTyped] = useState("");
@@ -79,11 +111,11 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
   useEffect(() => {
     if (paused || reduceMotion) return;
     const id = setInterval(
-      () => setSlide((s) => (s + 1) % SLIDE_COUNT),
+      () => setSlide((s) => (s + 1) % total),
       AUTOPLAY_MS
     );
     return () => clearInterval(id);
-  }, [paused, reduceMotion]);
+  }, [paused, reduceMotion, total]);
 
   // ESC to close + lock body scroll AND pause Lenis so the wheel
   // scrolls the modal instead of the page behind it.
@@ -182,9 +214,11 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
 
             <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
               [ {ui.gallery} ]
-              <span className="ml-2 text-[11px] font-normal text-muted-foreground">
-                ({ui.dummy})
-              </span>
+              {!slides && (
+                <span className="ml-2 text-[11px] font-normal text-muted-foreground">
+                  ({ui.dummy})
+                </span>
+              )}
             </p>
             <div
               onMouseEnter={() => setPaused(true)}
@@ -196,42 +230,63 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
                   className="flex transition-transform duration-500 ease-out"
                   style={{ transform: `translateX(-${slide * 100}%)` }}
                 >
-                  {Array.from({ length: SLIDE_COUNT }, (_, i) => (
-                    <div key={i} className="min-w-full">
-                      <DummySlide projectName={project.name} index={i} />
-                    </div>
-                  ))}
+                  {slides
+                    ? slides.map((src, i) => (
+                        <div key={src} className="min-w-full">
+                          <RealSlide
+                            src={src}
+                            index={i}
+                            total={total}
+                            projectName={project.name}
+                          />
+                        </div>
+                      ))
+                    : Array.from({ length: total }, (_, i) => (
+                        <div key={i} className="min-w-full">
+                          <DummySlide
+                            projectName={project.name}
+                            index={i}
+                            total={total}
+                          />
+                        </div>
+                      ))}
                 </div>
               </div>
               {/* Arrows */}
               <button
-                onClick={() => setSlide((s) => (s - 1 + SLIDE_COUNT) % SLIDE_COUNT)}
+                onClick={() => setSlide((s) => (s - 1 + total) % total)}
                 aria-label="Sebelumnya"
                 className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-background/80 border border-border text-muted-foreground hover:text-primary hover:border-primary/60 rounded-sm transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setSlide((s) => (s + 1) % SLIDE_COUNT)}
+                onClick={() => setSlide((s) => (s + 1) % total)}
                 aria-label="Berikutnya"
                 className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-background/80 border border-border text-muted-foreground hover:text-primary hover:border-primary/60 rounded-sm transition-colors"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
-              {/* Dots */}
-              <div className="flex items-center justify-center gap-2 mt-3">
-                {Array.from({ length: SLIDE_COUNT }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setSlide(i)}
-                    aria-label={`Slide ${i + 1}`}
-                    className={cn(
-                      "h-1.5 rounded-none transition-colors",
-                      i === slide ? "w-6 bg-primary" : "w-3 bg-border hover:bg-primary/50"
-                    )}
-                  />
-                ))}
-              </div>
+              {/* Dots (or a counter when there are many slides) */}
+              {total > 8 ? (
+                <p className="font-mono text-xs text-muted-foreground text-center mt-3">
+                  [ {slide + 1} / {total} ]
+                </p>
+              ) : (
+                <div className="flex items-center justify-center gap-2 mt-3">
+                  {Array.from({ length: total }, (_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSlide(i)}
+                      aria-label={`Slide ${i + 1}`}
+                      className={cn(
+                        "h-1.5 rounded-none transition-colors",
+                        i === slide ? "w-6 bg-primary" : "w-3 bg-border hover:bg-primary/50"
+                      )}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
             {project.githubUrl && (
