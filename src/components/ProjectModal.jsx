@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { prefersReducedMotion } from "@/lib/motion";
+import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 import { HudPanel } from "./HudPanel";
 
 const SLIDE_COUNT = 3;
@@ -51,7 +52,7 @@ const DummySlide = ({ projectName, index }) => (
  * typed title, feature list, and an auto-playing gallery that pauses
  * while the cursor is over it.
  */
-export const ProjectModal = ({ project, detail, ui, onClose }) => {
+export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) => {
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
   const [typed, setTyped] = useState("");
@@ -84,24 +85,27 @@ export const ProjectModal = ({ project, detail, ui, onClose }) => {
     return () => clearInterval(id);
   }, [paused, reduceMotion]);
 
-  // ESC to close + lock body scroll + focus close button
+  // ESC to close + lock body scroll AND pause Lenis so the wheel
+  // scrolls the modal instead of the page behind it.
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", onKey);
+    lockScroll();
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
+      unlockScroll();
       document.body.style.overflow = prev;
     };
   }, [onClose]);
 
   return (
     <div
-      className="fixed inset-0 z-[95] overflow-y-auto"
+      className={`fixed inset-0 z-[95] overflow-y-auto modal-overlay${closing ? " modal-overlay-out" : ""}`}
       role="dialog"
       aria-modal="true"
       aria-label={project.title}
@@ -113,7 +117,7 @@ export const ProjectModal = ({ project, detail, ui, onClose }) => {
       />
       <div className="relative min-h-full flex items-start md:items-center justify-center p-4 pt-24 pb-8">
       <HudPanel staticBrackets className="relative w-full max-w-5xl">
-        <div className="term-panel modal-in relative overflow-hidden flex flex-col md:max-h-[calc(100vh-7rem)]">
+        <div className={`term-panel modal-in relative overflow-hidden flex flex-col md:max-h-[calc(100vh-7rem)]${closing ? " modal-out" : ""}`}>
           <span className="modal-scanline" aria-hidden="true" />
           {/* Title bar */}
           <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/60 shrink-0">

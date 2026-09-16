@@ -369,7 +369,7 @@ html.cable-on [data-cable-item].cable-in {
     transform: none;
   }
 }
-/* One-shot scanline sweep when the modal opens */
+/* One-shot scanline sweep when the modal opens (forwards: stays gone) */
 .modal-scanline {
   position: absolute;
   left: 0;
@@ -379,7 +379,7 @@ html.cable-on [data-cable-item].cable-in {
   background: hsl(var(--primary) / 0.9);
   box-shadow: 0 0 16px 2px hsl(var(--primary) / 0.7);
   pointer-events: none;
-  animation: modal-scan 0.9s ease-out 1;
+  animation: modal-scan 0.9s ease-out 1 forwards;
 }
 @keyframes modal-scan {
   from {
@@ -394,8 +394,42 @@ html.cable-on [data-cable-item].cable-in {
 @media (prefers-reduced-motion: reduce) {
   .modal-in,
   .modal-scanline,
+  .modal-overlay,
+  .modal-overlay-out,
+  .modal-out,
   .modal-stagger > * {
     animation: none;
+  }
+}
+
+/* Jarvis dematerialize: reverse materialize when the modal closes.
+   Defined after .modal-in so it wins while both classes are present. */
+.modal-overlay {
+  animation: modal-overlay-in 0.3s ease;
+}
+.modal-overlay-out {
+  animation: modal-overlay-out 0.28s ease forwards;
+}
+@keyframes modal-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modal-overlay-out {
+  to { opacity: 0; }
+}
+.modal-out {
+  animation: modal-dematerialize 0.28s ease-in forwards;
+}
+@keyframes modal-dematerialize {
+  from {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+    filter: blur(6px);
   }
 }
 

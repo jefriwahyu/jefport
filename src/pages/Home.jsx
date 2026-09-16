@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { prefersReducedMotion } from "@/lib/motion";
+import { onScrollLockChange } from "@/lib/scrollLock";
 import { LanguageProvider } from "@/lib/i18n";
 import { Navbar } from "../components/Navbar";
 import { HeroSection } from "../components/HeroSection";
@@ -51,6 +52,12 @@ export const Home = () => {
       lenis.scrollTo(target, { offset: -84, duration: 1.2 });
     };
     document.addEventListener("click", onClick);
+    // Pause Lenis while a modal holds the scroll lock so the wheel
+    // scrolls the modal instead of the page behind it.
+    const offLock = onScrollLockChange((locked) => {
+      if (locked) lenis.stop();
+      else lenis.start();
+    });
     let rafId;
     const raf = (time) => {
       lenis.raf(time);
@@ -58,6 +65,7 @@ export const Home = () => {
     };
     rafId = requestAnimationFrame(raf);
     return () => {
+      offLock();
       document.removeEventListener("click", onClick);
       cancelAnimationFrame(rafId);
       lenis.destroy();

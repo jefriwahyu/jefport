@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Github } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
@@ -37,6 +37,22 @@ export const ProjectsSection = () => {
   const { lang } = useLang();
   const t = content[lang].projects;
   const [openIdx, setOpenIdx] = useState(null);
+  // Delayed unmount so the Jarvis dematerialize animation can play out.
+  const [closing, setClosing] = useState(false);
+  const closingRef = useRef(false);
+  const closeTimer = useRef(null);
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+  const requestClose = useCallback(() => {
+    if (closingRef.current) return;
+    closingRef.current = true;
+    setClosing(true);
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => {
+      setOpenIdx(null);
+      setClosing(false);
+      closingRef.current = false;
+    }, 280);
+  }, []);
   return (
     <section id="projects" className="py-20 md:py-28 px-4 relative">
       <div className="container mx-auto max-w-4xl">
@@ -118,7 +134,8 @@ export const ProjectsSection = () => {
           project={projects[openIdx]}
           detail={t.items[openIdx]}
           ui={t.modal}
-          onClose={() => setOpenIdx(null)}
+          closing={closing}
+          onClose={requestClose}
         />
       )}
     </section>
