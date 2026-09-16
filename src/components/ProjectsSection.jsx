@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Github } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
+import { ProjectModal } from "./ProjectModal";
 import { handleSpotMove } from "@/lib/spotlight";
 import { useLang, content } from "@/lib/i18n";
 
@@ -34,6 +36,7 @@ const projects = [
 export const ProjectsSection = () => {
   const { lang } = useLang();
   const t = content[lang].projects;
+  const [openIdx, setOpenIdx] = useState(null);
   return (
     <section id="projects" className="py-20 md:py-28 px-4 relative">
       <div className="container mx-auto max-w-4xl">
@@ -71,6 +74,12 @@ export const ProjectsSection = () => {
                   <span className="text-primary/70">stack:</span> {project.tags.join(" · ")}
                 </p>
                 <div className="flex items-center gap-4 font-mono text-[13px] font-bold">
+                  <button
+                    onClick={() => setOpenIdx(i)}
+                    className="inline-flex items-center gap-1 text-primary hover:text-glow transition-all"
+                  >
+                    [ {t.modal.btn} ]
+                  </button>
                   {project.githubUrl ? (
                     <a
                       href={project.githubUrl}
@@ -104,6 +113,14 @@ export const ProjectsSection = () => {
           </a>
         </div>
       </div>
+      {openIdx !== null && (
+        <ProjectModal
+          project={projects[openIdx]}
+          detail={t.items[openIdx]}
+          ui={t.modal}
+          onClose={() => setOpenIdx(null)}
+        />
+      )}
     </section>
   );
 };

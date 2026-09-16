@@ -325,6 +325,50 @@ html.cable-on [data-cable-item].cable-in {
   }
 }
 
+/* ---------- Project modal (Jarvis-style materialize) ---------- */
+.modal-in {
+  animation: modal-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 60px -12px hsl(var(--primary) / 0.5);
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* One-shot scanline sweep when the modal opens */
+.modal-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: hsl(var(--primary) / 0.9);
+  box-shadow: 0 0 16px 2px hsl(var(--primary) / 0.7);
+  pointer-events: none;
+  animation: modal-scan 0.9s ease-out 1;
+}
+@keyframes modal-scan {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal-in,
+  .modal-scanline {
+    animation: none;
+  }
+}
+
 /* Slow rotating scan ring around avatar — the single looping animation */
 .scan-ring {
   position: relative;

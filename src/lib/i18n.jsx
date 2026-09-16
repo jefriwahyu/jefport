@@ -40,7 +40,7 @@ export const content = {
     about: {
       cmdDesc: "Profil singkat — latar belakang dan fokus saya.",
       para1:
-        "Fresh graduate D3 Teknik Informatika (IPK 3.86) dengan pengalaman hands-on di Back-End & Full-Stack — dari sistem e-voting yang dipercaya 3.458 pemilih hingga aplikasi AI — plus pengalaman SQA enterprise untuk aplikasi dana pensiun.",
+        "Fresh graduate D3 Teknik Informatika (IPK 3.86), berpengalaman di Back-End & Full-Stack. Pernah mengembangkan sistem e-voting untuk 3.458 pemilih dan aplikasi AI, serta menjadi tester SQA enterprise untuk aplikasi dana pensiun.",
       minatLabel: "Minat sekunder:",
       minatList: "Backend, Fullstack Developer, Web Developer, Software Engineer",
       highlights: [
@@ -84,22 +84,71 @@ export const content = {
             "ASP.NET Core MVC (.NET 10), EF Core, SQL Server, Razor Views, BCrypt, SSRS reporting (PDF/Excel), plus microservice Python dengan ML urgency classification.",
           note: "Tugas Akhir",
           badge: "Internal",
+          role: "Full-Stack Developer",
+          year: "2025 – 2026",
+          overview:
+            "Sistem e-procurement internal: alur pengajuan sampai approval dalam satu tempat, lengkap dengan reporting dan microservice ML untuk klasifikasi urgensi.",
+          features: [
+            "Auth BCrypt + hak akses berlapis",
+            "Alur pengajuan & approval",
+            "Reporting SSRS ke PDF/Excel",
+            "Microservice FastAPI klasifikasi urgensi",
+          ],
         },
         {
           description:
             "Platform e-voting Laravel & Filament — dashboard admin, logika satu-suara-per-mahasiswa. 3.458 pemilih, 1.124 suara sah.",
+          role: "Freelance Fullstack Developer",
+          year: "2024 – 2025",
+          overview:
+            "Platform e-voting untuk pemilihan raya mahasiswa: satu suara per mahasiswa, dashboard admin, dan halaman voting yang mudah dipakai.",
+          features: [
+            "Satu-suara-per-mahasiswa + batasan login",
+            "Auto-logout & keamanan sesi",
+            "Dashboard admin Filament",
+            "Deploy + konfigurasi domain",
+          ],
         },
         {
           description:
             "YOLOv8 + FastAPI — deteksi uang kertas Rupiah real-time via webcam, dashboard Vue.js 3, database MySQL.",
+          role: "AI / Back-End Developer",
+          year: "2024",
+          overview:
+            "Aplikasi tabungan dengan deteksi uang kertas Rupiah real-time via webcam memakai YOLOv8.",
+          features: [
+            "Deteksi Rupiah real-time (YOLOv8)",
+            "Backend FastAPI streaming",
+            "Dashboard Vue.js 3",
+            "Database MySQL",
+          ],
         },
         {
           description:
             "Backend aplikasi kontak Flutter — Express.js + MongoDB dan CodeIgniter 4 + MySQL.",
+          role: "Back-End Developer",
+          year: "2024",
+          overview:
+            "Aplikasi kontak Flutter dengan sinkronisasi lokal, favorit, dan mode gelap/terang — didukung dua backend.",
+          features: [
+            "Sync lokal + kontak favorit",
+            "Dark/light mode",
+            "Backend Express.js + MongoDB",
+            "Backend CodeIgniter 4 + MySQL",
+          ],
         },
       ],
       onRequest: "// hubungi untuk detail",
       githubPara: "Mau lihat eksperimen, mini-project & kontribusi?",
+      modal: {
+        btn: "details",
+        overview: "RINGKASAN",
+        features: "FITUR UTAMA",
+        gallery: "PREVIEW FITUR",
+        dummy: "dummy",
+        close: "tutup",
+        hint: "[ esc ] untuk menutup",
+      },
     },
     education: {
       cmdDesc: "Pendidikan formal dan sertifikasi.",
@@ -142,7 +191,7 @@ export const content = {
     about: {
       cmdDesc: "Short profile — my background and focus.",
       para1:
-        "Fresh D3 Informatics Engineering graduate (GPA 3.86) with hands-on Back-End & Full-Stack experience — from an e-voting system trusted by 3,458 voters to AI apps — plus enterprise SQA experience for a pension fund application.",
+        "Fresh D3 Informatics Engineering graduate (GPA 3.86), experienced in Back-End & Full-Stack. Built an e-voting system for 3,458 voters and AI apps, plus enterprise SQA testing for a pension fund application.",
       minatLabel: "Also into:",
       minatList: "Backend, Fullstack Developer, Web Developer, Software Engineer",
       highlights: [
@@ -186,22 +235,71 @@ export const content = {
             "ASP.NET Core MVC (.NET 10), EF Core, SQL Server, Razor Views, BCrypt, SSRS reporting (PDF/Excel), plus a Python microservice with ML urgency classification.",
           note: "Thesis",
           badge: "Internal",
+          role: "Full-Stack Developer",
+          year: "2025 – 2026",
+          overview:
+            "Internal e-procurement system: requisition-to-approval flow in one place, with reporting and an ML microservice for urgency classification.",
+          features: [
+            "BCrypt auth + layered access control",
+            "Requisition & approval flow",
+            "SSRS reporting to PDF/Excel",
+            "FastAPI urgency-classification microservice",
+          ],
         },
         {
           description:
             "Laravel & Filament e-voting platform — admin dashboard, one-vote-per-student logic. 3,458 voters, 1,124 valid votes.",
+          role: "Freelance Fullstack Developer",
+          year: "2024 – 2025",
+          overview:
+            "E-voting platform for student elections: one vote per student, admin dashboard, and easy-to-use voting pages.",
+          features: [
+            "One-vote-per-student + login restriction",
+            "Auto-logout & session security",
+            "Filament admin dashboard",
+            "Deploy + domain configuration",
+          ],
         },
         {
           description:
             "YOLOv8 + FastAPI — real-time Rupiah banknote detection via webcam, Vue.js 3 dashboard, MySQL database.",
+          role: "AI / Back-End Developer",
+          year: "2024",
+          overview:
+            "Savings app with real-time Rupiah banknote detection via webcam using YOLOv8.",
+          features: [
+            "Real-time Rupiah detection (YOLOv8)",
+            "Streaming FastAPI backend",
+            "Vue.js 3 dashboard",
+            "MySQL database",
+          ],
         },
         {
           description:
             "Flutter contact app backend — Express.js + MongoDB and CodeIgniter 4 + MySQL.",
+          role: "Back-End Developer",
+          year: "2024",
+          overview:
+            "Flutter contacts app with local sync, favorites, and dark/light mode — powered by two backends.",
+          features: [
+            "Local sync + favorite contacts",
+            "Dark/light mode",
+            "Express.js + MongoDB backend",
+            "CodeIgniter 4 + MySQL backend",
+          ],
         },
       ],
       onRequest: "// detail on request",
       githubPara: "Want to see experiments, mini-projects & contributions?",
+      modal: {
+        btn: "details",
+        overview: "OVERVIEW",
+        features: "KEY FEATURES",
+        gallery: "FEATURE PREVIEWS",
+        dummy: "dummy",
+        close: "close",
+        hint: "[ esc ] to close",
+      },
     },
     education: {
       cmdDesc: "Formal education and certifications.",
