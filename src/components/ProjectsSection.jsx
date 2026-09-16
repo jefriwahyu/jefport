@@ -34,6 +34,22 @@ const proflowImages = [
   "24.checker.jpg",
 ].map((f) => `${PROFLOW_DIR}/${f}`);
 
+const TABUNGAN_DIR = "/projects/tabunganku";
+// Already in display order (trailing _1, _2, ... in the filenames).
+const TABUNGAN_DIR_FILES = [
+  "loading screen_1.jpg",
+  "halaman tabungan aktif_2.jpg",
+  "buat tabungan_3.jpg",
+  "detail tabungan_4.jpg",
+  "deteksi uang_5.jpg",
+  "simpan tabungan_6.jpg",
+  "bongkar tabungan_7.jpg",
+  "hasil tabungan_8.jpg",
+  "riwayat bongkar_9.jpg",
+  "edit tabungan_10.jpg",
+  "riwayat detail bongkar_11.jpg",
+];
+
 const projects = [
   {
     name: "proflowapp/",
@@ -53,6 +69,7 @@ const projects = [
     title: "TabunganKu AI",
     tags: ["YOLOv8", "FastAPI", "Vue.js 3"],
     githubUrl: "https://github.com/jefriwahyu/TabunganKu",
+    images: TABUNGAN_DIR_FILES.map((f) => `${TABUNGAN_DIR}/${f}`),
   },
   {
     name: "kuykontak/",

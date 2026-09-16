@@ -54,6 +54,11 @@ const DummySlide = ({ projectName, index, total }) => (
  */
 const RealSlide = ({ src, index, total, projectName }) => {
   const file = src.split("/").pop();
+  // Clean display title: drop the extension and the trailing order
+  // number ("loading screen_1.jpg" -> "loading screen").
+  const title = file
+    .replace(/\.[a-z]+$/i, "")
+    .replace(/_\d+$/, "");
   const alt = `${projectName} feature preview ${index + 1} of ${total}`;
   return (
     <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-border bg-background select-none flex flex-col">
@@ -62,7 +67,7 @@ const RealSlide = ({ src, index, total, projectName }) => {
         <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
         <span className="w-2 h-2 rounded-full bg-primary/70" aria-hidden="true" />
         <span className="ml-2 font-mono text-[11px] text-muted-foreground truncate">
-          {file}
+          {title}
         </span>
         <span className="ml-auto font-mono text-[11px] text-primary/80 shrink-0">
           [ {index + 1} / {total} ]
