@@ -100,6 +100,7 @@
     .animate-blink,
     .animate-spin-slower,
     .animate-spin-rev,
+    .holo-sweep,
     .scan-ring::before {
       animation: none;
     }
@@ -355,4 +356,60 @@ html.cable-on [data-cable-item].cable-in {
   border-radius: 9999px;
   border: 1px solid hsl(var(--primary) / 0.18);
   pointer-events: none;
+}
+
+/* Hologram avatar: green mono tint + scanlines + travelling scan beam.
+   Hover gradually restores the true photo (Jarvis-style reveal). */
+.holo-photo {
+  filter: grayscale(1) sepia(1) hue-rotate(65deg) saturate(3.2) brightness(0.92) contrast(1.05);
+  transition: filter 0.8s ease, transform 0.5s ease;
+}
+.group:hover .holo-photo {
+  filter: grayscale(0) sepia(0) hue-rotate(0deg) saturate(1) brightness(1) contrast(1);
+}
+.holo-lines {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.16) 0px,
+    rgba(0, 255, 65, 0.16) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  transition: opacity 0.8s ease;
+}
+.group:hover .holo-lines {
+  opacity: 0;
+}
+.holo-sweep {
+  top: 0;
+  animation: holo-sweep 4.5s linear infinite;
+  transition: opacity 0.5s ease;
+}
+.group:hover .holo-sweep {
+  opacity: 0;
+  animation-play-state: paused;
+}
+@keyframes holo-sweep {
+  from { transform: translateY(-10px); }
+  to { transform: translateY(170px); }
+}
+
+/* Tap-to-reveal (touch): the same Jarvis reveal, driven by .holo-reveal
+   for ~1.6s after a tap since touch has no hover. */
+.group.holo-reveal .holo-photo {
+  filter: grayscale(0) sepia(0) hue-rotate(0deg) saturate(1) brightness(1) contrast(1);
+}
+.group.holo-reveal .holo-lines {
+  opacity: 0;
+}
+.group.holo-reveal .holo-sweep {
+  opacity: 0;
+  animation-play-state: paused;
+}
+.holo-shade {
+  transition: opacity 0.7s ease;
+}
+.group:hover .holo-shade,
+.group.holo-reveal .holo-shade {
+  opacity: 0;
 }

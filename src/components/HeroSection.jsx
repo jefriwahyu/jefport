@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import { prefersReducedMotion, shouldUseHeavyEffects } from "@/lib/motion";
 import { useLang, content } from "@/lib/i18n";
@@ -52,6 +52,16 @@ export const HeroSection = () => {
   const [show3D] = useState(() => shouldUseHeavyEffects());
   const { lang } = useLang();
   const t = content[lang].hero;
+  // Tap-to-reveal for touch (no hover on mobile): one tap shows the true
+  // photo for a moment, then it fades back to hologram.
+  const [holoTap, setHoloTap] = useState(false);
+  const tapTimer = useRef(null);
+  useEffect(() => () => clearTimeout(tapTimer.current), []);
+  const pokeHolo = () => {
+    setHoloTap(true);
+    clearTimeout(tapTimer.current);
+    tapTimer.current = setTimeout(() => setHoloTap(false), 1600);
+  };
 
   return (
     <section
@@ -84,7 +94,17 @@ export const HeroSection = () => {
               <span>scan: 001</span>
             </div>
 
-            <div className="relative group">
+            <div
+              className={`relative group cursor-pointer${holoTap ? " holo-reveal" : ""}`}
+              onTouchStart={pokeHolo}
+              onClick={pokeHolo}
+              role="button"
+              tabIndex={0}
+              aria-label="Ketuk untuk melihat foto asli"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") pokeHolo();
+              }}
+            >
               {/* Glow halo */}
               <div className="absolute -inset-6 rounded-full bg-primary/20 blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-300" aria-hidden="true" />
               {/* Counter-rotating dashed orbit */}
@@ -97,15 +117,19 @@ export const HeroSection = () => {
                 <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="1" strokeDasharray="6 8" />
                 <circle cx="50" cy="2" r="2.5" fill="currentColor" stroke="none" />
               </svg>
-              {/* Photo with scan ring + theme treatment */}
+              {/* Photo: green hologram by default, true photo on hover */}
               <div className="scan-ring relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-card border border-primary/40 overflow-hidden">
                 <img
                   src="/fotoprofil.png"
                   alt="Foto profil Jefri Wahyudiana Putra"
-                  className="w-full h-full object-cover saturate-[.85] contrast-[1.05] transition-transform duration-500 group-hover:scale-105"
+                  className={`holo-photo w-full h-full object-cover group-hover:scale-105${holoTap ? " scale-105" : ""}`}
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
+                <div className="holo-lines absolute inset-0 pointer-events-none" aria-hidden="true" />
+                <div className="absolute inset-0 overflow-hidden rounded-full pointer-events-none" aria-hidden="true">
+                  <span className="holo-sweep absolute left-0 right-0 h-[2px] bg-primary/80 shadow-[0_0_12px_2px_hsl(var(--primary)/0.8)]" />
+                </div>
+                <div className="holo-shade absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
                 <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30 pointer-events-none" aria-hidden="true" />
               </div>
               {/* Status chip */}
