@@ -31,7 +31,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Halo, saya",
       tagline:
-        "Saya membangun sistem back-end yang aman dan andal — dari e-voting yang dipercaya ribuan pemilih hingga aplikasi AI.",
+        "Saya membangun aplikasi end-to-end — dari arsitektur back-end yang aman hingga antarmuka yang rapi. Mulai dari sistem e-voting yang dipercaya ribuan pemilih hingga aplikasi berbasis AI.",
       ctaProjects: "Lihat Projects",
       ctaCv: "Download CV",
       ctaContact: "Hubungi Saya",
@@ -133,7 +133,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Hello, I'm",
       tagline:
-        "I build secure, reliable back-end systems — from e-voting trusted by thousands of voters to AI apps.",
+        "I build end-to-end applications — from secure back-end architecture to polished interfaces. From e-voting trusted by thousands of voters to AI-powered apps.",
       ctaProjects: "View Projects",
       ctaCv: "Download CV",
       ctaContact: "Contact Me",
