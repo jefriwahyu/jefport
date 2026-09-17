@@ -54,11 +54,15 @@ const DummySlide = ({ projectName, index, total }) => (
  */
 const RealSlide = ({ src, index, total, projectName }) => {
   const file = src.split("/").pop();
-  // Clean display title: drop the extension and the trailing order
-  // number ("loading screen_1.jpg" -> "loading screen").
+  // Clean display title: drop the extension, the trailing order
+  // number ("loading screen_1.jpg" -> "loading screen"), and the
+  // leading order number ("1. Home.jpg" -> "Home",
+  // "24.Upload Bukti.jpg" -> "Upload Bukti").
   const title = file
     .replace(/\.[a-z]+$/i, "")
-    .replace(/_\d+$/, "");
+    .replace(/_\d+$/, "")
+    .replace(/^\d+\.\s*/, "")
+    .trim();
   const alt = `${projectName} feature preview ${index + 1} of ${total}`;
   return (
     <div className="relative aspect-[16/10] overflow-hidden rounded-sm border border-border bg-background select-none flex flex-col">
