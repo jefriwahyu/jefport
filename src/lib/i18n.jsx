@@ -102,7 +102,7 @@ export const content = {
           role: "Freelance Fullstack Developer",
           year: "2024 – 2025",
           overview:
-            "Platform e-voting untuk pemilihan raya mahasiswa yang dipakai 3.458 pemilih dengan 1.124 suara sah. Setiap mahasiswa dijamin hanya bisa memberi satu suara lewat batasan login, keamanan sesi, dan auto-logout, sementara panitia memantau hasil vote secara realtime dari dashboard admin Filament. Halaman voting dibuat sesederhana mungkin agar mudah dipakai, lalu aplikasi di-deploy lengkap dengan konfigurasi domain.",
+            "Platform e-voting untuk pemilihan raya mahasiswa yang mendukung 3.458 pemilih dengan 1.124 suara sah. Setiap mahasiswa dijamin hanya bisa memberi satu suara lewat batasan login, keamanan sesi, dan auto-logout, sementara panitia memantau hasil vote secara realtime dari dashboard admin Filament. Halaman voting dibuat sesederhana mungkin agar mudah dipakai, lalu aplikasi di-deploy lengkap dengan konfigurasi domain.",
           features: [
             "Satu-suara-per-mahasiswa + batasan login",
             "Auto-logout & keamanan sesi",
@@ -255,7 +255,7 @@ export const content = {
           role: "Freelance Fullstack Developer",
           year: "2024 – 2025",
           overview:
-            "E-voting platform for student elections, used by 3,458 voters with 1,124 valid votes. Each student is guaranteed a single vote through login restrictions, session security, and auto-logout, while organizers watch realtime vote results from a Filament admin dashboard. The voting pages are kept as simple as possible, and the app was deployed with full domain configuration.",
+            "E-voting platform for student elections, supporting 3,458 voters with 1,124 valid votes. Each student is guaranteed a single vote through login restrictions, session security, and auto-logout, while organizers watch realtime vote results from a Filament admin dashboard. The voting pages are kept as simple as possible, and the app was deployed with full domain configuration.",
           features: [
             "One-vote-per-student + login restriction",
             "Auto-logout & session security",

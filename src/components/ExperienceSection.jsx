@@ -14,7 +14,7 @@ const experiences = [
     role: "Freelance Fullstack Developer",
     company: "MPM — Pemira E-Voting Website",
     location: "Bandung",
-    tags: ["Laravel", "Filament", "MySQL", "JavaScript", "Tailwind CSS", "PHP"],
+    tags: ["Laravel", "Filament", "MySQL", "JavaScript", "Tailwind CSS"],
   },
 ];
 
