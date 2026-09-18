@@ -105,12 +105,12 @@ const RealSlide = ({ src, index, total, projectName }) => {
  * loads up front so the modal stays light; the iframe is created
  * after the visitor presses play.
  */
-const DemoVideo = ({ youtubeId, label, projectName }) => {
+const DemoVideo = ({ youtubeId, title }) => {
   const [play, setPlay] = useState(false);
   return (
     <div>
       <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
-        [ {label} ]
+        Demo &apos;{title}&apos;
       </p>
       <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-black select-none flex flex-col">
         <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border bg-secondary/80 shrink-0">
@@ -125,7 +125,7 @@ const DemoVideo = ({ youtubeId, label, projectName }) => {
           {play ? (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
-              title={`${projectName} demo video`}
+              title={`${title} — demo video`}
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -139,7 +139,7 @@ const DemoVideo = ({ youtubeId, label, projectName }) => {
             >
               <img
                 src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
-                alt={`${projectName} demo thumbnail`}
+                alt={`${title} — demo thumbnail`}
                 loading="lazy"
                 draggable={false}
                 className="absolute inset-0 h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-90"
@@ -292,14 +292,10 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
               ))}
             </ul>
 
-            {project.youtubeId && (
-              <DemoVideo
-                youtubeId={project.youtubeId}
-                label={ui.demo}
-                projectName={project.title}
-              />
-            )}
-
+            {project.youtubeId ? (
+              <DemoVideo youtubeId={project.youtubeId} title={project.title} />
+            ) : (
+              <>
             <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
               [ {ui.gallery} ]
               {!slides && (
@@ -376,6 +372,8 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
                 </div>
               )}
             </div>
+              </>
+            )}
 
             {project.githubUrl && (
               <a

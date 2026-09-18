@@ -57,13 +57,14 @@ const projects = [
     tags: ["ASP.NET Core", "SQL Server", "Flask", "SSRS"],
     githubUrl: "https://github.com/jefriwahyu/ProflowApp",
     images: proflowImages,
+    youtubeId: "S90P4NebDRM",
   },
   {
     name: "pemira/",
     title: "Pemira E-Voting Website",
     tags: ["Laravel", "Filament", "MySQL"],
     githubUrl: "https://github.com/jefriwahyu/pemira_24",
-    youtubeId: "zQ3sud6L5To",
+    youtubeId: "sZqBTTbZxRw",
   },
   {
     name: "tabunganku-ai/",
@@ -71,12 +72,14 @@ const projects = [
     tags: ["YOLOv8", "FastAPI", "Vue.js 3"],
     githubUrl: "https://github.com/jefriwahyu/TabunganKu",
     images: TABUNGAN_DIR_FILES.map((f) => `${TABUNGAN_DIR}/${f}`),
+    youtubeId: "eULguJj2GtE",
   },
   {
     name: "kuykontak/",
     title: "KuyKontak",
     tags: ["Express.js", "CodeIgniter 4", "Flutter"],
     githubUrl: "https://github.com/jefriwahyu/kuykontak-app",
+    youtubeId: "KnMxC5sprNo",
   },
 ];
 
