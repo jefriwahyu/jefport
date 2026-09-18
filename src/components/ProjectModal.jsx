@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { X, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Github, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { prefersReducedMotion } from "@/lib/motion";
 import { lockScroll, unlockScroll } from "@/lib/scrollLock";
@@ -96,6 +96,63 @@ const RealSlide = ({ src, index, total, projectName }) => {
           className="absolute inset-0 h-full w-full object-contain"
         />
         <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-black/50" aria-hidden="true" />
+      </div>
+    </div>
+  );
+};
+/**
+ * YouTube demo embed with a click-to-load facade: only the thumbnail
+ * loads up front so the modal stays light; the iframe is created
+ * after the visitor presses play.
+ */
+const DemoVideo = ({ youtubeId, label, projectName }) => {
+  const [play, setPlay] = useState(false);
+  return (
+    <div>
+      <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
+        [ {label} ]
+      </p>
+      <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-black select-none flex flex-col">
+        <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border bg-secondary/80 shrink-0">
+          <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
+          <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
+          <span className="w-2 h-2 rounded-full bg-primary/70" aria-hidden="true" />
+          <span className="ml-2 font-mono text-[11px] text-muted-foreground truncate">
+            youtube.com/watch?v={youtubeId}
+          </span>
+        </div>
+        <div className="relative flex-1 min-h-0">
+          {play ? (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
+              title={`${projectName} demo video`}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          ) : (
+            <button
+              onClick={() => setPlay(true)}
+              aria-label="Putar video demo"
+              className="group absolute inset-0 h-full w-full text-left"
+            >
+              <img
+                src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
+                alt={`${projectName} demo thumbnail`}
+                loading="lazy"
+                draggable={false}
+                className="absolute inset-0 h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-90"
+              />
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span className="flex items-center gap-2 px-4 py-2.5 bg-background/85 border border-primary/60 text-primary font-mono text-sm font-bold rounded-sm transition-colors group-hover:bg-primary group-hover:text-background">
+                  <Play className="w-4 h-4" />
+                  [ play demo ]
+                </span>
+              </span>
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -234,6 +291,14 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
                 </li>
               ))}
             </ul>
+
+            {project.youtubeId && (
+              <DemoVideo
+                youtubeId={project.youtubeId}
+                label={ui.demo}
+                projectName={project.title}
+              />
+            )}
 
             <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
               [ {ui.gallery} ]

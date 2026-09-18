@@ -63,6 +63,7 @@ const projects = [
     title: "Pemira E-Voting Website",
     tags: ["Laravel", "Filament", "MySQL"],
     githubUrl: "https://github.com/jefriwahyu/pemira_24",
+    youtubeId: "zQ3sud6L5To",
   },
   {
     name: "tabunganku-ai/",
