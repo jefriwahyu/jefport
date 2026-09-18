@@ -85,13 +85,14 @@ export const content = {
           note: "Tugas Akhir",
           badge: "Internal",
           role: "Full-Stack Developer",
-          year: "2025 – 2026",
+          year: "2026",
           overview:
-            "Sistem e-procurement internal: alur pengajuan sampai approval dalam satu tempat, lengkap dengan reporting dan microservice ML untuk klasifikasi urgensi.",
+            "Sistem e-procurement internal yang dibangun sebagai Tugas Akhir: seluruh alur pengadaan — kelola barang, pengajuan, approval berlapis, sampai laporan — berjalan dalam satu aplikasi. Dilengkapi autentikasi BCrypt dengan hak akses berlapis, reporting SSRS ke PDF/Excel termasuk Purchase Order, monitoring aktivitas user, serta microservice Python yang memakai ML untuk mengklasifikasikan urgensi setiap pengajuan.",
           features: [
             "Auth BCrypt + hak akses berlapis",
             "Alur pengajuan & approval",
             "Reporting SSRS ke PDF/Excel",
+            "Monitoring aktivitas user",
             "Microservice FastAPI klasifikasi urgensi",
           ],
         },
@@ -101,10 +102,11 @@ export const content = {
           role: "Freelance Fullstack Developer",
           year: "2024 – 2025",
           overview:
-            "Platform e-voting untuk pemilihan raya mahasiswa: satu suara per mahasiswa, dashboard admin, dan halaman voting yang mudah dipakai.",
+            "Platform e-voting untuk pemilihan raya mahasiswa yang dipakai 3.458 pemilih dengan 1.124 suara sah. Setiap mahasiswa dijamin hanya bisa memberi satu suara lewat batasan login, keamanan sesi, dan auto-logout, sementara panitia memantau hasil vote secara realtime dari dashboard admin Filament. Halaman voting dibuat sesederhana mungkin agar mudah dipakai, lalu aplikasi di-deploy lengkap dengan konfigurasi domain.",
           features: [
             "Satu-suara-per-mahasiswa + batasan login",
             "Auto-logout & keamanan sesi",
+            "Hasil vote realtime",
             "Dashboard admin Filament",
             "Deploy + konfigurasi domain",
           ],
@@ -112,10 +114,10 @@ export const content = {
         {
           description:
             "YOLOv8 + FastAPI — deteksi uang kertas Rupiah real-time via webcam, dashboard Vue.js 3, database MySQL.",
-          role: "AI / Back-End Developer",
-          year: "2024",
+          role: "AI / Fullstack Developer",
+          year: "2026",
           overview:
-            "Aplikasi tabungan dengan deteksi uang kertas Rupiah real-time via webcam memakai YOLOv8.",
+            "Aplikasi tabungan yang menggabungkan pencatatan keuangan dengan computer vision: uang kertas Rupiah yang disetor dideteksi secara real-time via webcam memakai model YOLOv8, dengan videonya dialirkan lewat backend FastAPI. Pengguna bisa membuat dan membongkar tabungan, melihat riwayat transaksi, dan memantau semuanya dari dashboard Vue.js 3 yang datanya tersimpan di MySQL.",
           features: [
             "Deteksi Rupiah real-time (YOLOv8)",
             "Backend FastAPI streaming",
@@ -126,10 +128,10 @@ export const content = {
         {
           description:
             "Backend aplikasi kontak Flutter — Express.js + MongoDB dan CodeIgniter 4 + MySQL.",
-          role: "Back-End Developer",
-          year: "2024",
+          role: "Fullstack Developer",
+          year: "2025",
           overview:
-            "Aplikasi kontak Flutter dengan sinkronisasi lokal, favorit, dan mode gelap/terang — didukung dua backend.",
+            "Aplikasi manajemen kontak berbasis Flutter dengan sinkronisasi data lokal, kontak favorit, serta mode gelap dan terang. Sisi server saya bangun dua kali sebagai fullstack: backend Express.js dengan MongoDB dan backend CodeIgniter 4 dengan MySQL, sehingga aplikasi bisa berjalan di atas dua pilihan infrastruktur yang berbeda.",
           features: [
             "Sync lokal + kontak favorit",
             "Dark/light mode",
@@ -236,13 +238,14 @@ export const content = {
           note: "Thesis",
           badge: "Internal",
           role: "Full-Stack Developer",
-          year: "2025 – 2026",
+          year: "2026",
           overview:
-            "Internal e-procurement system: requisition-to-approval flow in one place, with reporting and an ML microservice for urgency classification.",
+            "Internal e-procurement system built as a thesis project: the whole procurement flow — inventory, requisitions, layered approvals, and reports — runs in one app. It ships BCrypt authentication with layered access control, SSRS reporting to PDF/Excel including Purchase Orders, user activity monitoring, and a Python microservice that uses ML to classify the urgency of every requisition.",
           features: [
             "BCrypt auth + layered access control",
             "Requisition & approval flow",
             "SSRS reporting to PDF/Excel",
+            "User activity monitoring",
             "FastAPI urgency-classification microservice",
           ],
         },
@@ -252,10 +255,11 @@ export const content = {
           role: "Freelance Fullstack Developer",
           year: "2024 – 2025",
           overview:
-            "E-voting platform for student elections: one vote per student, admin dashboard, and easy-to-use voting pages.",
+            "E-voting platform for student elections, used by 3,458 voters with 1,124 valid votes. Each student is guaranteed a single vote through login restrictions, session security, and auto-logout, while organizers watch realtime vote results from a Filament admin dashboard. The voting pages are kept as simple as possible, and the app was deployed with full domain configuration.",
           features: [
             "One-vote-per-student + login restriction",
             "Auto-logout & session security",
+            "Realtime vote results",
             "Filament admin dashboard",
             "Deploy + domain configuration",
           ],
@@ -263,10 +267,10 @@ export const content = {
         {
           description:
             "YOLOv8 + FastAPI — real-time Rupiah banknote detection via webcam, Vue.js 3 dashboard, MySQL database.",
-          role: "AI / Back-End Developer",
-          year: "2024",
+          role: "AI / Fullstack Developer",
+          year: "2026",
           overview:
-            "Savings app with real-time Rupiah banknote detection via webcam using YOLOv8.",
+            "Savings app combining money tracking with computer vision: deposited Rupiah banknotes are detected in realtime via webcam using a YOLOv8 model, streamed through a FastAPI backend. Users can create and break savings goals, browse transaction history, and monitor everything from a Vue.js 3 dashboard backed by MySQL.",
           features: [
             "Real-time Rupiah detection (YOLOv8)",
             "Streaming FastAPI backend",
@@ -277,10 +281,10 @@ export const content = {
         {
           description:
             "Flutter contact app backend — Express.js + MongoDB and CodeIgniter 4 + MySQL.",
-          role: "Back-End Developer",
-          year: "2024",
+          role: "Fullstack Developer",
+          year: "2025",
           overview:
-            "Flutter contacts app with local sync, favorites, and dark/light mode — powered by two backends.",
+            "Flutter-based contact manager with local data sync, favorite contacts, and dark/light mode. I built the server side twice as a fullstack developer: an Express.js backend with MongoDB and a CodeIgniter 4 backend with MySQL, so the app can run on two different infrastructure choices.",
           features: [
             "Local sync + favorite contacts",
             "Dark/light mode",

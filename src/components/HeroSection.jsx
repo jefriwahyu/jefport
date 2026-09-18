@@ -150,7 +150,7 @@ export const HeroSection = () => {
           {t.greeting}
         </p>
 
-        <HudPanel>
+        <HudPanel staticBrackets>
           <div id="hero-terminal" className="term-panel overflow-hidden">
             {/* Terminal title bar */}
             <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border bg-secondary/60">

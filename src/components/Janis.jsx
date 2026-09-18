@@ -54,7 +54,7 @@ export const Janis = () => {
 
       {/* Chat panel */}
       {open && (
-        <HudPanel className="fixed bottom-[76px] right-5 z-[90] w-[calc(100vw-2.5rem)] max-w-sm">
+        <HudPanel className="fixed bottom-[76px] right-5 z-[90] w-[calc(100vw-2.5rem)] max-w-sm" staticBrackets>
           <div className="term-panel overflow-hidden flex flex-col max-h-[60vh] h-[480px]">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/60">

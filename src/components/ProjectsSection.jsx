@@ -54,7 +54,7 @@ const projects = [
   {
     name: "proflowapp/",
     title: "ProFlowApp — Sistem E-Procurement Internal",
-    tags: ["ASP.NET Core", "SQL Server", "Flask", "SSRS"],
+    tags: ["ASP.NET Core", "C#", "SQL Server", "Tailwind CSS", "JavaScript", "Flask", "SSRS"],
     githubUrl: "https://github.com/jefriwahyu/ProflowApp",
     images: proflowImages,
     youtubeId: "S90P4NebDRM",
@@ -62,8 +62,8 @@ const projects = [
   {
     name: "pemira/",
     title: "Pemira E-Voting Website",
-    tags: ["Laravel", "Filament", "MySQL"],
-    githubUrl: "https://github.com/jefriwahyu/pemira_24",
+    tags: ["Laravel", "PHP", "Filament", "MySQL", "Tailwind CSS", "JavaScript"],
+    githubUrl: "https://github.com/jefriwahyudiana/pemira",
     youtubeId: "sZqBTTbZxRw",
   },
   {

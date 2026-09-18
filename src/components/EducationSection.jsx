@@ -16,7 +16,7 @@ export const EducationSection = () => {
           description={t.cmdDesc}
         />
 
-        <HudPanel className="mb-4" data-cable-item>
+        <HudPanel className="mb-4" data-cable-item staticBrackets>
           <div
             onMouseMove={handleSpotMove}
             className="term-panel spot-wrap group px-5 py-5 md:px-7 md:py-6"

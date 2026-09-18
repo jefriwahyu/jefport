@@ -15,7 +15,7 @@ export const AboutMe = () => {
           description={t.cmdDesc}
         />
 
-        <HudPanel data-cable-item>
+        <HudPanel data-cable-item staticBrackets>
           <div className="term-panel whoami-panel relative overflow-hidden px-5 py-6 md:px-8 md:py-8">
             {/* Running-code backdrop: fades in while the cable node is
                 inside this box, fades out when it leaves (see CSS). */}
