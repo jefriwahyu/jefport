@@ -101,12 +101,13 @@ const RealSlide = ({ src, index, total, projectName }) => {
   );
 };
 /**
- * YouTube demo embed with a click-to-load facade: only the thumbnail
- * loads up front so the modal stays light; the iframe is created
- * after the visitor presses play.
+ * Local demo video with a click-to-play facade: only the first frame
+ * (preload="metadata") loads up front so the modal stays light; full
+ * playback with native controls starts after the visitor presses play.
  */
-const DemoVideo = ({ youtubeId, title }) => {
+const DemoVideo = ({ src, title }) => {
   const [play, setPlay] = useState(false);
+  const file = src.split("/").pop();
   return (
     <div>
       <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
@@ -118,17 +119,17 @@ const DemoVideo = ({ youtubeId, title }) => {
           <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
           <span className="w-2 h-2 rounded-full bg-primary/70" aria-hidden="true" />
           <span className="ml-2 font-mono text-[11px] text-muted-foreground truncate">
-            youtube.com/watch?v={youtubeId}
+            demo/{file}
           </span>
         </div>
         <div className="relative flex-1 min-h-0">
           {play ? (
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
-              title={`${title} — demo video`}
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
+            <video
+              src={src}
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
               className="absolute inset-0 h-full w-full"
             />
           ) : (
@@ -137,12 +138,14 @@ const DemoVideo = ({ youtubeId, title }) => {
               aria-label="Putar video demo"
               className="group absolute inset-0 h-full w-full text-left"
             >
-              <img
-                src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
-                alt={`${title} — demo thumbnail`}
-                loading="lazy"
-                draggable={false}
-                className="absolute inset-0 h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-90"
+              <video
+                src={src}
+                preload="metadata"
+                muted
+                playsInline
+                aria-hidden="true"
+                tabIndex={-1}
+                className="absolute inset-0 h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-90 pointer-events-none"
               />
               <span className="absolute inset-0 flex items-center justify-center">
                 <span className="flex items-center gap-2 px-4 py-2.5 bg-background/85 border border-primary/60 text-primary font-mono text-sm font-bold rounded-sm transition-colors group-hover:bg-primary group-hover:text-background">
@@ -292,8 +295,8 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
               ))}
             </ul>
 
-            {project.youtubeId ? (
-              <DemoVideo youtubeId={project.youtubeId} title={project.title} />
+            {project.demoSrc ? (
+              <DemoVideo src={project.demoSrc} title={project.title} />
             ) : (
               <>
             <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">

@@ -57,14 +57,14 @@ const projects = [
     tags: ["ASP.NET Core", "SQL Server", "Tailwind CSS", "JavaScript", "Flask", "SSRS"],
     githubUrl: "https://github.com/jefriwahyu/ProflowApp",
     images: proflowImages,
-    youtubeId: "S90P4NebDRM",
+    demoSrc: "/projects/Demo/proflow.mp4",
   },
   {
     name: "pemira/",
     title: "Pemira E-Voting Website",
     tags: ["Laravel", "Filament", "MySQL", "Tailwind CSS", "JavaScript"],
     githubUrl: "https://github.com/jefriwahyudiana/pemira",
-    youtubeId: "O2wcw3CYfQ4",
+    demoSrc: "/projects/Demo/pemira.mp4",
   },
   {
     name: "tabunganku-ai/",
@@ -72,14 +72,14 @@ const projects = [
     tags: ["YOLOv8", "FastAPI", "Vue.js 3"],
     githubUrl: "https://github.com/jefriwahyu/TabunganKu",
     images: TABUNGAN_DIR_FILES.map((f) => `${TABUNGAN_DIR}/${f}`),
-    youtubeId: "eULguJj2GtE",
+    demoSrc: "/projects/Demo/tabunganku.mp4",
   },
   {
     name: "kuykontak/",
     title: "KuyKontak",
     tags: ["Express.js", "CodeIgniter 4", "Flutter"],
     githubUrl: "https://github.com/jefriwahyu/kuykontak-app",
-    youtubeId: "KnMxC5sprNo",
+    demoSrc: "/projects/Demo/kuykontak.mp4",
   },
 ];
 
