@@ -122,7 +122,7 @@ export const HeroSection = () => {
                 <img
                   src="/fotoku.png"
                   alt="Foto profil Jefri Wahyudiana Putra"
-                  className={`holo-photo w-full h-full object-cover group-hover:scale-105${holoTap ? " scale-105" : ""}`}
+                  className={`holo-photo w-full h-full object-cover object-[50%_25%] group-hover:scale-105${holoTap ? " scale-105" : ""}`}
                   loading="eager"
                 />
                 <div className="holo-lines absolute inset-0 pointer-events-none" aria-hidden="true" />
