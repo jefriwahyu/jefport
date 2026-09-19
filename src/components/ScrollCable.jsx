@@ -100,7 +100,24 @@ export const ScrollCable = () => {
 
       let d = `M ${startX} ${startY}`;
       let prev = { x: startX, y: startY };
-      const all = [...pts, { x: endX, y: endY }];
+      // Waypoints: when anchored to the form, skip the generic contact-lane
+      // point and arrive via a short vertical lead-in directly above the
+      // send-message box. The old routing bent sideways into the box over a
+      // tiny vertical gap with vertical tangents at both ends, which pinched
+      // into a sharp S-hook; a straight drop-in stays neat at any width.
+      let all = [...pts, { x: endX, y: endY }];
+      if (formEl && pts.length > 1) {
+        const body = pts.slice(0, -1);
+        const prevTail = body[body.length - 1];
+        const gap = endY - prevTail.y;
+        const waypoints = [...body];
+        if (gap > 120) {
+          const leadIn = Math.min(160, Math.max(80, gap * 0.3));
+          waypoints.push({ x: endX, y: endY - leadIn });
+        }
+        waypoints.push({ x: endX, y: endY });
+        all = waypoints;
+      }
       all.forEach((p) => {
         const dy = p.y - prev.y;
         d += ` C ${prev.x} ${prev.y + dy * 0.5}, ${p.x} ${p.y - dy * 0.5}, ${p.x} ${p.y}`;
