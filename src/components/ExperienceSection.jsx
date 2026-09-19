@@ -33,7 +33,7 @@ export const ExperienceSection = () => {
               {experiences.map((exp, i) => {
                 const item = t.items[i];
                 return (
-                <HudPanel key={exp.company} data-cable-item staticBrackets>
+                <HudPanel key={exp.company} data-cable-item hideOnHover>
               <article
                 onMouseMove={handleSpotMove}
                 className="term-panel term-card-hover spot-wrap group px-5 py-5 md:px-7 md:py-6"

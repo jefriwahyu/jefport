@@ -5,9 +5,13 @@ import { cn } from "@/lib/utils";
  * Purely decorative, no animation — the "interface" accent.
  * Pass `staticBrackets` to also disable the group-hover bracket swell,
  * leaving the card hover as the single unified hover effect.
+ * Pass `hideOnHover` to instead fade the brackets out while hovered
+ * (they return when the cursor leaves).
  */
-export const HudPanel = ({ children, className, bracketClassName, staticBrackets = false, ...rest }) => {
-  const corner = staticBrackets
+export const HudPanel = ({ children, className, bracketClassName, staticBrackets = false, hideOnHover = false, ...rest }) => {
+  const corner = hideOnHover
+    ? "absolute w-3.5 h-3.5 border-primary/40 pointer-events-none transition-opacity duration-300 group-hover:opacity-0"
+    : staticBrackets
     ? "absolute w-3.5 h-3.5 border-primary/40 pointer-events-none"
     : "absolute w-3.5 h-3.5 border-primary/40 group-hover:border-primary group-hover:w-5 group-hover:h-5 transition-all duration-300 pointer-events-none";
   return (

@@ -113,7 +113,7 @@ export const ProjectsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, i) => (
-            <HudPanel key={project.name} data-cable-item staticBrackets>
+            <HudPanel key={project.name} data-cable-item hideOnHover>
               <article
                 onMouseMove={handleSpotMove}
                 className="term-panel term-card-hover spot-wrap group h-full px-5 py-5 flex flex-col"
