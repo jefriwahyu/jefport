@@ -120,7 +120,7 @@ export const HeroSection = () => {
               {/* Photo: green hologram by default, true photo on hover */}
               <div className="scan-ring relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-card border border-primary/40 overflow-hidden">
                 <img
-                  src="/fotoprofil.png"
+                  src="/fotoku.png"
                   alt="Foto profil Jefri Wahyudiana Putra"
                   className={`holo-photo w-full h-full object-cover group-hover:scale-105${holoTap ? " scale-105" : ""}`}
                   loading="eager"
