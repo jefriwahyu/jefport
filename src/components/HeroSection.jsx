@@ -8,7 +8,6 @@ const HeroWire = lazy(() => import("./Hero3D"));
 
 const roles = [
   "Fullstack Developer building secure systems",
-  "Full-Stack Developer",
   "Software Engineer",
 ];
 
