@@ -184,7 +184,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Hello, I'm",
       tagline:
-        "I build end-to-end applications — from secure back-end architecture to polished interfaces. From e-voting trusted by thousands of voters to AI-powered apps.",
+        "I build end-to-end applications, from secure back-end architecture to polished interfaces: an e-voting system serving 3,458 registered voters, AI-powered apps, and hardened Linux server infrastructure.",
       ctaProjects: "View Projects",
       ctaCv: "Download CV",
       ctaContact: "Contact Me",
