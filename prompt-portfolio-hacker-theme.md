@@ -54,7 +54,7 @@ Buatkan saya website portfolio pribadi dengan konsep berikut:
 
 **Identitas**
 - Nama: Jefri Wahyudiana Putra (panggilan: Wahyudi)
-- Role target: Backend Developer / Full-Stack Developer / Software Engineer
+- Role target: Fullstack Developer / Software Engineer
 - Fresh graduate D3 Teknik Informatika, Universitas Logistik dan Bisnis Internasional (ULBI), lulus Agustus 2026
 - Minat sekunder (jangan jadi headline utama, cukup disebut di About/Skills): cybersecurity, condong ke red team/ethical hacking — cocok dengan tema visual hacker di situs ini
 

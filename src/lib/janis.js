@@ -1,7 +1,7 @@
 const PROFILE = {
   name: "Jefri Wahyudiana Putra",
   nickname: "jefri",
-  roles: "Backend Developer / Full-Stack Developer / Software Engineer",
+  roles: "Fullstack Developer / Software Engineer",
   location: "Bandung, Indonesia",
   email: "jefriwahyudiana@gmail.com",
   linkedin: "linkedin.com/in/jefriwp",
