@@ -42,10 +42,11 @@ export const content = {
       para1:
         "Fresh graduate D3 Teknik Informatika (IPK 3.86) dengan fokus back-end & full-stack. Membangun sistem e-voting untuk 3.458 pemilih terdaftar, aplikasi AI, serta infrastruktur server Linux yang di-hardening; sebelumnya tester SQA enterprise untuk aplikasi dana pensiun.",
       minatLabel: "Fokus:",
-      minatList: "Fullstack development, cybersecurity, frontend",
+      minatList: "Fullstack development, cybersecurity",
       highlights: [
         "REST API & desain database",
         "Back-end Laravel, ASP.NET Core & Express",
+        "Front-end Vue.js 3 & Tailwind CSS",
         "Integrasi AI: YOLOv8 vision & microservice",
         "Hardening Linux: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 dari 1.500+ test case, 60 defect dilaporkan",
@@ -226,10 +227,11 @@ export const content = {
       para1:
         "Fresh D3 Informatics Engineering graduate (GPA 3.86) focused on back-end & full-stack. Built an e-voting system for 3,458 registered voters, AI apps, and hardened Linux server infrastructure; previously an enterprise SQA tester for a pension fund application.",
       minatLabel: "Focus:",
-      minatList: "Fullstack development, cybersecurity, frontend",
+      minatList: "Fullstack development, cybersecurity",
       highlights: [
         "REST APIs & database design",
         "Laravel, ASP.NET Core & Express back-ends",
+        "Vue.js 3 & Tailwind CSS front-ends",
         "AI integration: YOLOv8 vision & microservices",
         "Linux hardening: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 of 1,500+ test cases, 60 defects reported",

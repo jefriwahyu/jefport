@@ -8,7 +8,7 @@ const HeroWire = lazy(() => import("./Hero3D"));
 
 const roles = [
   "Fullstack Developer building secure systems",
-  "Software Engineer",
+  "Cybersecurity",
 ];
 
 function useTypewriter(words, typeSpeed = 65, deleteSpeed = 32, pause = 1700) {
