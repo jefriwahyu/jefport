@@ -77,66 +77,75 @@ export const content = {
       cmdDesc: "Tech stack yang saya pakai sehari-hari.",
     },
     projects: {
-      cmdDesc: "Kumpulan project yang sudah di-deploy dan dipakai.",
+      cmdDesc: "Proyek yang saya bangun — dari sistem e-voting hingga infrastruktur server.",
       items: [
         {
           description:
-            "ASP.NET Core MVC (.NET 10), EF Core, SQL Server, Razor Views, BCrypt, SSRS reporting (PDF/Excel), plus microservice Python dengan ML urgency classification.",
-          note: "Tugas Akhir",
-          badge: "Internal",
-          role: "Full-Stack Developer",
-          year: "2026",
-          overview:
-            "Sistem e-procurement internal yang dibangun sebagai Tugas Akhir: seluruh alur pengadaan — kelola barang, pengajuan, approval berlapis, sampai laporan — berjalan dalam satu aplikasi. Dilengkapi autentikasi BCrypt dengan hak akses berlapis, reporting SSRS ke PDF/Excel termasuk Purchase Order, monitoring aktivitas user, serta microservice Python yang memakai ML untuk mengklasifikasikan urgensi setiap pengajuan.",
-          features: [
-            "Auth BCrypt + hak akses berlapis",
-            "Alur pengajuan & approval",
-            "Reporting SSRS ke PDF/Excel",
-            "Monitoring aktivitas user",
-            "Microservice FastAPI klasifikasi urgensi",
-          ],
-        },
-        {
-          description:
-            "Platform e-voting Laravel & Filament — dashboard admin, logika satu-suara-per-mahasiswa. 3.458 pemilih, 1.124 suara sah.",
+            "Platform e-voting Laravel & Filament untuk Pemira MPM ULBI — 3.458 pemilih terdaftar, 1.124 suara diproses tanpa error maupun duplikasi.",
+          badge: "Freelance",
           role: "Freelance Fullstack Developer",
-          year: "2024 – 2025",
+          year: "Sep 2024 – Jan 2025",
           overview:
-            "Platform e-voting untuk pemilihan raya mahasiswa yang mendukung 3.458 pemilih dengan 1.124 suara sah. Setiap mahasiswa dijamin hanya bisa memberi satu suara lewat batasan login, keamanan sesi, dan auto-logout, sementara panitia memantau hasil vote secara realtime dari dashboard admin Filament. Halaman voting dibuat sesederhana mungkin agar mudah dipakai, lalu aplikasi di-deploy lengkap dengan konfigurasi domain.",
+            "Platform e-voting untuk pemilihan mahasiswa MPM ULBI yang mendigitalkan proses pemungutan suara berbasis kertas. Setiap akun hanya bisa memberi satu suara, dengan hak pilih dibatasi per program studi dan jenis pemilihan. Keamanan mencakup bcrypt, proteksi CSRF pada form login dan vote, sesi di database dengan cookie HttpOnly dan SameSite=Lax, serta query lewat Eloquent/Query Builder tanpa raw SQL. Aplikasi di-deploy ke hosting lokal dengan konfigurasi domain.",
           features: [
-            "Satu-suara-per-mahasiswa + batasan login",
-            "Auto-logout & keamanan sesi",
-            "Hasil vote realtime",
-            "Dashboard admin Filament",
-            "Deploy + konfigurasi domain",
+            "Satu akun, satu suara",
+            "Hak pilih per program studi & jenis pemilihan",
+            "bcrypt + proteksi CSRF",
+            "Sesi database: HttpOnly, SameSite=Lax, 120 menit",
+            "Eloquent tanpa raw SQL, output Blade di-escape",
           ],
         },
         {
           description:
-            "YOLOv8 + FastAPI — deteksi uang kertas Rupiah real-time via webcam, dashboard Vue.js 3, database MySQL.",
+            "Final project akademik: e-procurement ASP.NET Core MVC dengan approval berlapis, laporan SSRS, dan microservice Flask klasifikasi urgensi (akurasi 95%).",
+          note: "Final Project",
+          role: "Full-Stack Developer",
+          year: "Mar 2026 – Agu 2026",
+          overview:
+            "ProFlowApp adalah final project akademik, bukan sistem yang dipakai perusahaan. Alur pengadaan berjalan dari pengajuan Karyawan, persetujuan Checker, sampai Manager, dengan Purchase Order yang dibuat otomatis saat disetujui. Microservice Python/Flask mengklasifikasikan urgensi pengajuan dengan akurasi 95% dan fallback, sementara laporan PDF/Excel dihasilkan lewat SSRS.",
+          features: [
+            "Approval berlapis Karyawan → Checker → Manager",
+            "Purchase Order otomatis saat disetujui",
+            "Microservice Flask klasifikasi urgensi (akurasi 95%) + fallback",
+            "Laporan PDF/Excel via SSRS",
+            "RBAC + audit trail (khusus Manager)",
+          ],
+          security: [
+            "BCrypt; account lockout setelah 5 kali gagal; rate limit login 5x/menit per IP",
+            "Cookie sesi HttpOnly + Secure + SameSite=Strict",
+            "RBAC per role; data pengajuan dibatasi per pengguna; transisi status divalidasi",
+            "Anti-CSRF global; validasi DataAnnotations; EF Core tanpa raw SQL; whitelist parameter SSRS",
+            "Redirect HTTPS + HSTS; nosniff, X-Frame-Options DENY, Referrer-Policy; header server dimatikan; custom error page",
+            "Audit trail: login, gagal login, lockout, CRUD, approval, ganti password (user, role, aksi, IP, waktu)",
+          ],
+        },
+        {
+          description:
+            "Aplikasi tabungan dengan deteksi uang kertas Rupiah via webcam (YOLOv8, mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, database MySQL.",
           role: "AI / Fullstack Developer",
-          year: "2026",
+          year: "Feb – Mar 2026",
           overview:
-            "Aplikasi tabungan yang menggabungkan pencatatan keuangan dengan computer vision: uang kertas Rupiah yang disetor dideteksi secara real-time via webcam memakai model YOLOv8, dengan videonya dialirkan lewat backend FastAPI. Pengguna bisa membuat dan membongkar tabungan, melihat riwayat transaksi, dan memantau semuanya dari dashboard Vue.js 3 yang datanya tersimpan di MySQL.",
+            "Aplikasi tabungan dengan deteksi uang kertas Rupiah memakai YOLOv8 (mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, dan database MySQL.",
           features: [
-            "Deteksi Rupiah real-time (YOLOv8)",
-            "Backend FastAPI streaming",
-            "Dashboard Vue.js 3",
-            "Database MySQL",
+            "Deteksi uang kertas Rupiah via webcam (YOLOv8)",
+            "mAP50 98,7%",
+            "Backend FastAPI",
+            "Frontend Vue.js 3 + Tailwind CSS, database MySQL",
           ],
         },
         {
           description:
-            "Backend aplikasi kontak Flutter — Express.js + MongoDB dan CodeIgniter 4 + MySQL.",
+            "REST API aplikasi kontak Flutter dengan dua backend: Express.js + MongoDB dan CodeIgniter 4 + MySQL; API Express lewat Cloudflare Tunnel.",
           role: "Fullstack Developer",
-          year: "2025",
+          year: "Jun – Jul 2025",
           overview:
-            "Aplikasi manajemen kontak berbasis Flutter dengan sinkronisasi data lokal, kontak favorit, serta mode gelap dan terang. Sisi server saya bangun dua kali sebagai fullstack: backend Express.js dengan MongoDB dan backend CodeIgniter 4 dengan MySQL, sehingga aplikasi bisa berjalan di atas dua pilihan infrastruktur yang berbeda.",
+            "Aplikasi kontak berbasis Flutter dengan CRUD, sinkronisasi data, dan kontak favorit. Sisi server dibangun dua kali: Express.js + MongoDB yang dipublikasikan lewat Cloudflare Tunnel, serta CodeIgniter 4 + MySQL yang berjalan di hosting konvensional.",
           features: [
-            "Sync lokal + kontak favorit",
-            "Dark/light mode",
+            "REST API untuk aplikasi kontak Flutter",
+            "CRUD, sinkronisasi data, dan favorit",
             "Backend Express.js + MongoDB",
             "Backend CodeIgniter 4 + MySQL",
+            "Express API via Cloudflare Tunnel, CodeIgniter di hosting konvensional",
           ],
         },
       ],
@@ -146,6 +155,7 @@ export const content = {
         btn: "details",
         overview: "RINGKASAN",
         features: "FITUR UTAMA",
+        security: "KEAMANAN",
         gallery: "PREVIEW FITUR",
         dummy: "dummy",
         close: "tutup",
@@ -230,66 +240,75 @@ export const content = {
       cmdDesc: "The tech stack I use daily.",
     },
     projects: {
-      cmdDesc: "A collection of deployed, in-use projects.",
+      cmdDesc: "Projects I've built — from e-voting systems to server infrastructure.",
       items: [
         {
           description:
-            "ASP.NET Core MVC (.NET 10), EF Core, SQL Server, Razor Views, BCrypt, SSRS reporting (PDF/Excel), plus a Python microservice with ML urgency classification.",
-          note: "Thesis",
-          badge: "Internal",
-          role: "Full-Stack Developer",
-          year: "2026",
-          overview:
-            "Internal e-procurement system built as a thesis project: the whole procurement flow — inventory, requisitions, layered approvals, and reports — runs in one app. It ships BCrypt authentication with layered access control, SSRS reporting to PDF/Excel including Purchase Orders, user activity monitoring, and a Python microservice that uses ML to classify the urgency of every requisition.",
-          features: [
-            "BCrypt auth + layered access control",
-            "Requisition & approval flow",
-            "SSRS reporting to PDF/Excel",
-            "User activity monitoring",
-            "FastAPI urgency-classification microservice",
-          ],
-        },
-        {
-          description:
-            "Laravel & Filament e-voting platform — admin dashboard, one-vote-per-student logic. 3,458 voters, 1,124 valid votes.",
+            "Laravel & Filament e-voting platform for the ULBI MPM election — 3,458 registered voters, 1,124 votes processed without errors or duplicates.",
+          badge: "Freelance",
           role: "Freelance Fullstack Developer",
-          year: "2024 – 2025",
+          year: "Sep 2024 – Jan 2025",
           overview:
-            "E-voting platform for student elections, supporting 3,458 voters with 1,124 valid votes. Each student is guaranteed a single vote through login restrictions, session security, and auto-logout, while organizers watch realtime vote results from a Filament admin dashboard. The voting pages are kept as simple as possible, and the app was deployed with full domain configuration.",
+            "E-voting platform for the ULBI MPM student election that digitized a paper-based voting process. Each account can vote only once, with eligibility limited by study program and election type. Security includes bcrypt, CSRF protection on login and vote forms, database-backed sessions with HttpOnly and SameSite=Lax cookies, and Eloquent/Query Builder queries without raw SQL. The app was deployed to local hosting with domain configuration.",
           features: [
-            "One-vote-per-student + login restriction",
-            "Auto-logout & session security",
-            "Realtime vote results",
-            "Filament admin dashboard",
-            "Deploy + domain configuration",
+            "One account, one vote",
+            "Eligibility by study program & election type",
+            "bcrypt + CSRF protection",
+            "Database sessions: HttpOnly, SameSite=Lax, 120 minutes",
+            "Eloquent without raw SQL, escaped Blade output",
           ],
         },
         {
           description:
-            "YOLOv8 + FastAPI — real-time Rupiah banknote detection via webcam, Vue.js 3 dashboard, MySQL database.",
+            "Academic final project: ASP.NET Core MVC e-procurement with layered approvals, SSRS reports, and a Flask urgency-classification microservice (95% accuracy).",
+          note: "Final Project",
+          role: "Full-Stack Developer",
+          year: "Mar 2026 – Aug 2026",
+          overview:
+            "ProFlowApp is an academic final project, not a system used by a company. The procurement flow runs from Employee requisition through Checker approval to Manager approval, with a Purchase Order created automatically on approval. A Python/Flask microservice classifies requisition urgency with 95% accuracy and a fallback, while PDF/Excel reports are generated through SSRS.",
+          features: [
+            "Layered approvals: Employee → Checker → Manager",
+            "Purchase Order created automatically on approval",
+            "Flask urgency-classification microservice (95% accuracy) + fallback",
+            "PDF/Excel reports via SSRS",
+            "RBAC + audit trail (Manager-only)",
+          ],
+          security: [
+            "BCrypt; account lockout after 5 failed attempts; login rate limit 5x/minute per IP",
+            "Session cookies: HttpOnly + Secure + SameSite=Strict",
+            "RBAC per role; requisition data scoped per user; status transitions validated",
+            "Global anti-CSRF; DataAnnotations validation; EF Core without raw SQL; SSRS parameter whitelist",
+            "HTTPS redirect + HSTS; nosniff, X-Frame-Options DENY, Referrer-Policy; server header disabled; custom error page",
+            "Audit trail: login, failed login, lockout, CRUD, approval, password change (user, role, action, IP, time)",
+          ],
+        },
+        {
+          description:
+            "Savings app with Rupiah banknote detection via webcam (YOLOv8, mAP50 98.7%), FastAPI backend, Vue.js 3 + Tailwind CSS frontend, MySQL database.",
           role: "AI / Fullstack Developer",
-          year: "2026",
+          year: "Feb – Mar 2026",
           overview:
-            "Savings app combining money tracking with computer vision: deposited Rupiah banknotes are detected in realtime via webcam using a YOLOv8 model, streamed through a FastAPI backend. Users can create and break savings goals, browse transaction history, and monitor everything from a Vue.js 3 dashboard backed by MySQL.",
+            "Savings app with Rupiah banknote detection using YOLOv8 (mAP50 98.7%), a FastAPI backend, a Vue.js 3 + Tailwind CSS frontend, and a MySQL database.",
           features: [
-            "Real-time Rupiah detection (YOLOv8)",
-            "Streaming FastAPI backend",
-            "Vue.js 3 dashboard",
-            "MySQL database",
+            "Rupiah banknote detection via webcam (YOLOv8)",
+            "mAP50 98.7%",
+            "FastAPI backend",
+            "Vue.js 3 + Tailwind CSS frontend, MySQL database",
           ],
         },
         {
           description:
-            "Flutter contact app backend — Express.js + MongoDB and CodeIgniter 4 + MySQL.",
+            "REST API for a Flutter contact app with two backends: Express.js + MongoDB and CodeIgniter 4 + MySQL; the Express API runs through Cloudflare Tunnel.",
           role: "Fullstack Developer",
-          year: "2025",
+          year: "Jun – Jul 2025",
           overview:
-            "Flutter-based contact manager with local data sync, favorite contacts, and dark/light mode. I built the server side twice as a fullstack developer: an Express.js backend with MongoDB and a CodeIgniter 4 backend with MySQL, so the app can run on two different infrastructure choices.",
+            "Flutter-based contact app with CRUD, data synchronization, and favorites. I built the server side twice: an Express.js + MongoDB backend published through Cloudflare Tunnel, and a CodeIgniter 4 + MySQL backend running on conventional hosting.",
           features: [
-            "Local sync + favorite contacts",
-            "Dark/light mode",
+            "REST API for a Flutter contact app",
+            "CRUD, data synchronization, and favorites",
             "Express.js + MongoDB backend",
             "CodeIgniter 4 + MySQL backend",
+            "Express API via Cloudflare Tunnel, CodeIgniter on conventional hosting",
           ],
         },
       ],
@@ -299,6 +318,7 @@ export const content = {
         btn: "details",
         overview: "OVERVIEW",
         features: "KEY FEATURES",
+        security: "SECURITY",
         gallery: "FEATURE PREVIEWS",
         dummy: "dummy",
         close: "close",

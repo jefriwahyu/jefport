@@ -52,24 +52,24 @@ const TABUNGAN_DIR_FILES = [
 
 const projects = [
   {
+    name: "pemira/",
+    title: "Pemira E-Voting Website",
+    tags: ["Laravel", "Filament", "Blade", "Relational DB"],
+    githubUrl: "https://github.com/jefriwahyudiana/pemira",
+    demoSrc: "/projects/Demo/pemira.mp4",
+  },
+  {
     name: "proflowapp/",
-    title: "ProFlowApp — Sistem E-Procurement Internal",
-    tags: ["ASP.NET Core", "SQL Server", "Tailwind CSS", "JavaScript", "Flask", "SSRS"],
+    title: "ProFlowApp — E-Procurement System",
+    tags: ["ASP.NET Core MVC", "EF Core", "SQL Server", "SSRS", "Flask"],
     githubUrl: "https://github.com/jefriwahyu/ProflowApp",
     images: proflowImages,
     demoSrc: "/projects/Demo/proflow.mp4",
   },
   {
-    name: "pemira/",
-    title: "Pemira E-Voting Website",
-    tags: ["Laravel", "Filament", "MySQL", "Tailwind CSS", "JavaScript"],
-    githubUrl: "https://github.com/jefriwahyudiana/pemira",
-    demoSrc: "/projects/Demo/pemira.mp4",
-  },
-  {
     name: "tabunganku-ai/",
     title: "TabunganKu AI",
-    tags: ["YOLOv8", "FastAPI", "Vue.js 3"],
+    tags: ["YOLOv8", "FastAPI", "Vue.js 3", "Tailwind CSS", "MySQL"],
     githubUrl: "https://github.com/jefriwahyu/TabunganKu",
     images: TABUNGAN_DIR_FILES.map((f) => `${TABUNGAN_DIR}/${f}`),
     demoSrc: "/projects/Demo/tabunganku.mp4",
@@ -77,7 +77,7 @@ const projects = [
   {
     name: "kuykontak/",
     title: "KuyKontak",
-    tags: ["Express.js", "CodeIgniter 4", "Flutter"],
+    tags: ["Express.js", "MongoDB", "CodeIgniter 4", "MySQL", "Flutter", "Cloudflare Tunnel"],
     githubUrl: "https://github.com/jefriwahyu/kuykontak-app",
     demoSrc: "/projects/Demo/kuykontak.mp4",
   },
