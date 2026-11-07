@@ -42,7 +42,7 @@ export const content = {
       para1:
         "Fresh graduate D3 Teknik Informatika (IPK 3.86) dengan fokus back-end & full-stack. Membangun sistem e-voting untuk 3.458 pemilih terdaftar, aplikasi AI, serta infrastruktur server Linux yang di-hardening; sebelumnya tester SQA enterprise untuk aplikasi dana pensiun.",
       minatLabel: "Fokus:",
-      minatList: "Fullstack development, application security, Linux server hardening",
+      minatList: "Fullstack development, cybersecurity, frontend",
       highlights: [
         "REST API & desain database",
         "Back-end Laravel, ASP.NET Core & Express",
@@ -226,7 +226,7 @@ export const content = {
       para1:
         "Fresh D3 Informatics Engineering graduate (GPA 3.86) focused on back-end & full-stack. Built an e-voting system for 3,458 registered voters, AI apps, and hardened Linux server infrastructure; previously an enterprise SQA tester for a pension fund application.",
       minatLabel: "Focus:",
-      minatList: "Fullstack development, application security, Linux server hardening",
+      minatList: "Fullstack development, cybersecurity, frontend",
       highlights: [
         "REST APIs & database design",
         "Laravel, ASP.NET Core & Express back-ends",
