@@ -21,7 +21,6 @@ const groups = [
     label: "Frontend & Mobile",
     skills: [
       { name: "Vue.js 3", level: 75 },
-      { name: "React", level: 67 },
       { name: "Flutter", level: 77 },
       { name: "Tailwind CSS", level: 84 },
       { name: "JavaScript", level: 80 },
@@ -47,6 +46,21 @@ const groups = [
       { name: "Postman", level: 78 },
       { name: "YOLOv8", level: 69 },
       { name: "Roboflow", level: 64 },
+    ],
+  },
+  {
+    id: "security",
+    label: "Security & Infrastructure",
+    skills: [
+      { name: "Proxmox VE", level: 75 },
+      { name: "VMware Workstation", level: 74 },
+      { name: "Debian 12", level: 80 },
+      { name: "Rocky Linux 9", level: 78 },
+      { name: "fail2ban", level: 78 },
+      { name: "UFW / firewalld", level: 80 },
+      { name: "Suricata (IDS)", level: 72 },
+      { name: "WireGuard", level: 72 },
+      { name: "Cloudflare Tunnel", level: 80 },
     ],
   },
 ];
