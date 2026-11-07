@@ -40,14 +40,14 @@ export const content = {
     about: {
       cmdDesc: "Profil singkat — latar belakang dan fokus saya.",
       para1:
-        "Fresh graduate D3 Teknik Informatika (IPK 3.86), berpengalaman di Back-End & Full-Stack. Pernah mengembangkan sistem e-voting untuk 3.458 pemilih dan aplikasi AI, serta menjadi tester SQA enterprise untuk aplikasi dana pensiun.",
+        "Fresh graduate D3 Teknik Informatika (IPK 3.86), berpengalaman di Back-End & Full-Stack. Pernah mengembangkan sistem e-voting untuk 3.458 pemilih terdaftar dan aplikasi AI, serta menjadi tester SQA enterprise untuk aplikasi dana pensiun.",
       minatLabel: "Minat sekunder:",
       minatList: "Backend, Fullstack Developer, Web Developer, Software Engineer",
       highlights: [
-        "RESTful API yang aman & desain database",
+        "REST API & desain database",
         "Back-end Laravel, ASP.NET Core & Express",
         "Integrasi AI: YOLOv8 vision & microservice",
-        "SQA: 214 test case, 60 defect dilaporkan",
+        "SQA: 214 dari 1.500+ test case, 60 defect dilaporkan",
       ],
       btnContact: "Hubungi Saya",
       btnCv: "Download CV",
@@ -59,16 +59,16 @@ export const content = {
           period: "Mar 2026 – Mei 2026",
           points: [
             "Vendor Integration Testing untuk aplikasi dana pensiun skala enterprise.",
-            "Eksekusi 214 test case manual dengan metodologi State Transition Testing.",
+            "Eksekusi 214 dari 1.500+ test case manual dengan metodologi State Transition Testing.",
             "Melaporkan 60 defect sistem dan berkolaborasi saat regression testing.",
           ],
         },
         {
           period: "Sep 2024 – Jan 2025",
           points: [
-            "Back-end Laravel: logika satu-suara-per-mahasiswa, batasan login, auto-logout.",
+            "Back-end Laravel: logika satu-suara-per-mahasiswa dan hak pilih per program studi & jenis pemilihan.",
             "Dashboard admin Filament + halaman login dan voting yang user-friendly.",
-            "Deploy + konfigurasi domain — 3.458 pemilih, 1.124 suara sah.",
+            "Deploy + konfigurasi domain — 3.458 pemilih terdaftar, 1.124 suara diproses tanpa error/duplikasi.",
           ],
         },
       ],
@@ -233,14 +233,14 @@ export const content = {
     about: {
       cmdDesc: "Short profile — my background and focus.",
       para1:
-        "Fresh D3 Informatics Engineering graduate (GPA 3.86), experienced in Back-End & Full-Stack. Built an e-voting system for 3,458 voters and AI apps, plus enterprise SQA testing for a pension fund application.",
+        "Fresh D3 Informatics Engineering graduate (GPA 3.86), experienced in Back-End & Full-Stack. Built an e-voting system for 3,458 registered voters and AI apps, plus enterprise SQA testing for a pension fund application.",
       minatLabel: "Also into:",
       minatList: "Backend, Fullstack Developer, Web Developer, Software Engineer",
       highlights: [
-        "Secure RESTful APIs & database design",
+        "REST APIs & database design",
         "Laravel, ASP.NET Core & Express back-ends",
         "AI integration: YOLOv8 vision & microservices",
-        "SQA: 214 test cases, 60 defects reported",
+        "SQA: 214 of 1,500+ test cases, 60 defects reported",
       ],
       btnContact: "Contact Me",
       btnCv: "Download CV",
@@ -252,16 +252,16 @@ export const content = {
           period: "Mar 2026 – May 2026",
           points: [
             "Vendor Integration Testing for an enterprise-scale pension fund application.",
-            "Executed 214 manual test cases with State Transition Testing methodology.",
+            "Executed 214 of 1,500+ manual test cases with State Transition Testing methodology.",
             "Reported 60 system defects and collaborated during regression testing.",
           ],
         },
         {
           period: "Sep 2024 – Jan 2025",
           points: [
-            "Laravel back-end: one-vote-per-student logic, login restriction, auto-logout.",
+            "Laravel back-end: one-vote-per-student logic and eligibility by study program & election type.",
             "Filament admin dashboard plus user-friendly login and voting pages.",
-            "Deployed with domain configuration — 3,458 voters, 1,124 valid votes.",
+            "Deployed with domain configuration — 3,458 registered voters, 1,124 votes processed without errors/duplicates.",
           ],
         },
       ],

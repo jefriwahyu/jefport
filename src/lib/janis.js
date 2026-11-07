@@ -1,7 +1,7 @@
 const PROFILE = {
   name: "Jefri Wahyudiana Putra",
   nickname: "jefri",
-  roles: "Fullstack Developer / Software Engineer",
+  roles: "Fullstack Developer building secure systems",
   location: "Bandung, Indonesia",
   email: "jefriwahyudiana@gmail.com",
   linkedin: "linkedin.com/in/jefriwp",
@@ -36,61 +36,61 @@ const RULES = [
   },
   {
     keys: ["role", "posisi", "kerja sebagai", "developer apa", "target", "position"],
-    reply: `Role target: ${PROFILE.roles}. Fokus utama back-end & full-stack, dengan minat sekunder di cybersecurity (red team / ethical hacking).`,
-    en: `Target roles: ${PROFILE.roles}. Main focus on back-end & full-stack, with a secondary interest in cybersecurity (red team / ethical hacking).`,
+    reply: `Role target: ${PROFILE.roles}. Fokus utama back-end & full-stack, dengan perhatian pada keamanan aplikasi dan infrastruktur server.`,
+    en: `Target roles: ${PROFILE.roles}. Main focus on back-end & full-stack, with attention to application and server infrastructure security.`,
   },
   {
     keys: ["proflow", "tugas akhir", "ta ", "e-procurement", "asp.net", "aspnet", ".net", "thesis"],
     reply:
-      "ProFlowApp (Tugas Akhir) — sistem e-procurement internal: ASP.NET Core MVC (.NET 10), EF Core, SQL Server, BCrypt, SSRS reporting (PDF/Excel), + microservice Python/FastAPI untuk klasifikasi urgensi ML. Repo: github.com/jefriwahyu/ProflowApp",
-    en: "ProFlowApp (thesis project) — internal e-procurement system: ASP.NET Core MVC (.NET 10), EF Core, SQL Server, BCrypt, SSRS reporting (PDF/Excel), + a Python/FastAPI microservice for ML urgency classification. Repo: github.com/jefriwahyu/ProflowApp",
+      "ProFlowApp (Final Project) — e-procurement ASP.NET Core MVC, EF Core, SQL Server, BCrypt, SSRS (PDF/Excel), + microservice Python/Flask klasifikasi urgensi (akurasi 95%). Repo: github.com/jefriwahyu/ProflowApp",
+    en: "ProFlowApp (Final Project) — e-procurement ASP.NET Core MVC, EF Core, SQL Server, BCrypt, SSRS (PDF/Excel), + a Python/Flask urgency-classification microservice (95% accuracy). Repo: github.com/jefriwahyu/ProflowApp",
   },
   {
     keys: ["pemira", "voting", "e-voting", "evoting", "pemilu", "election"],
     reply:
-      "Pemira E-Voting — platform e-voting Laravel + Filament (admin dashboard), logika satu-suara-per-mahasiswa. Melayani 3.458 pemilih, 1.124 suara sah.",
-    en: "Pemira E-Voting — Laravel + Filament e-voting platform (admin dashboard), one-vote-per-student logic. Served 3,458 voters, 1,124 valid votes.",
+      "Pemira E-Voting — platform e-voting Laravel + Filament (admin dashboard), satu akun satu suara, hak pilih per program studi & jenis pemilihan. 3.458 pemilih terdaftar, 1.124 suara diproses tanpa error/duplikasi.",
+    en: "Pemira E-Voting — Laravel + Filament e-voting platform (admin dashboard), one account one vote, eligibility by study program & election type. 3,458 registered voters, 1,124 votes processed without errors/duplicates.",
   },
   {
     keys: ["tabungan", "tabunganku", "yolo", "rupiah", "computer vision", " cv", " ai", "kamera", "webcam", "savings", "banknote", "camera"],
     reply:
-      "TabunganKu AI — aplikasi tabungan dengan YOLOv8 yang memindai uang kertas Rupiah via webcam, backend FastAPI real-time, dashboard Vue.js 3, database MySQL.",
-    en: "TabunganKu AI — savings app with YOLOv8 scanning Rupiah banknotes via webcam, real-time FastAPI backend, Vue.js 3 dashboard, MySQL database.",
+      "TabunganKu AI — aplikasi tabungan dengan YOLOv8 (mAP50 98,7%) untuk deteksi uang kertas Rupiah via webcam, backend FastAPI, dashboard Vue.js 3 + Tailwind CSS, database MySQL.",
+    en: "TabunganKu AI — savings app with YOLOv8 (mAP50 98.7%) for Rupiah banknote detection via webcam, FastAPI backend, Vue.js 3 + Tailwind CSS dashboard, MySQL database.",
   },
   {
     keys: ["kuykontak", "kontak", "flutter", "contact app"],
     reply:
-      "KuyKontak — aplikasi kontak Flutter (sync lokal, favorit, dark/light mode). Dual backend: Express.js + MongoDB dan CodeIgniter 4 + MySQL.",
-    en: "KuyKontak — Flutter contacts app (local sync, favorites, dark/light mode). Dual backend: Express.js + MongoDB and CodeIgniter 4 + MySQL.",
+      "KuyKontak — REST API aplikasi kontak Flutter (CRUD, sinkronisasi data, favorit). Dual backend: Express.js + MongoDB (via Cloudflare Tunnel) dan CodeIgniter 4 + MySQL.",
+    en: "KuyKontak — REST API for a Flutter contact app (CRUD, data sync, favorites). Dual backend: Express.js + MongoDB (via Cloudflare Tunnel) and CodeIgniter 4 + MySQL.",
   },
   {
     keys: ["project", "proyek", "portfolio", "portofolio", "karya", "dibuat", "aplikasi apa"],
     reply:
-      "4 project utama: ProFlowApp (e-procurement), Pemira E-Voting, TabunganKu AI (YOLOv8), KuyKontak (Flutter). Tanya nama project-nya untuk detail.",
-    en: "4 main projects: ProFlowApp (e-procurement), Pemira E-Voting, TabunganKu AI (YOLOv8), KuyKontak (Flutter). Ask by name for details.",
+      "5 project utama: Pemira E-Voting, ProFlowApp (e-procurement), Infrastruktur Server (Proxmox VE), TabunganKu AI (YOLOv8), KuyKontak (Flutter). Tanya nama project-nya untuk detail.",
+    en: "5 main projects: Pemira E-Voting, ProFlowApp (e-procurement), Server Infrastructure (Proxmox VE), TabunganKu AI (YOLOv8), KuyKontak (Flutter). Ask by name for details.",
   },
   {
     keys: ["pengalaman", "experience", "kerja", "magang", "primalogic", "qa ", "quality", "intern", "work"],
     reply:
-      "SQA Intern di PT Primalogic Global Teknologi (Mar–Mei 2026) — integration testing aplikasi dana pensiun enterprise: 214 test case manual, 60 defect dilaporkan. Plus freelance full-stack untuk Pemira E-Voting.",
-    en: "SQA Intern at PT Primalogic Global Teknologi (Mar–May 2026) — integration testing for an enterprise pension fund app: 214 manual test cases, 60 defects reported. Plus freelance full-stack work on Pemira E-Voting.",
+      "SQA Intern di PT Primalogic Global Teknologi (Mar–Mei 2026) — integration testing aplikasi dana pensiun enterprise: 214 dari 1.500+ test case manual, 60 defect dilaporkan. Plus freelance full-stack untuk Pemira E-Voting.",
+    en: "SQA Intern at PT Primalogic Global Teknologi (Mar–May 2026) — integration testing for an enterprise pension fund app: 214 of 1,500+ manual test cases, 60 defects reported. Plus freelance full-stack work on Pemira E-Voting.",
   },
   {
     keys: ["skill", "stack", "teknologi", "bisa apa", "bahasa", "framework", "tools", "technology", "technologies"],
     reply:
-      "Backend: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js. Frontend: Vue.js 3. Mobile: Flutter. Database: MySQL, PostgreSQL, MongoDB. AI/CV: YOLOv8, Roboflow.",
-    en: "Backend: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js. Frontend: Vue.js 3. Mobile: Flutter. Database: MySQL, PostgreSQL, MongoDB. AI/CV: YOLOv8, Roboflow.",
+      "Backend: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js. Frontend: Vue.js 3. Mobile: Flutter. Database: MySQL, PostgreSQL, MongoDB, SQL Server. AI/CV: YOLOv8, Roboflow. Security & infrastructure: Proxmox VE, Debian, Rocky Linux, fail2ban, UFW, firewalld, Suricata (IDS), WireGuard, Cloudflare Tunnel.",
+    en: "Backend: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js. Frontend: Vue.js 3. Mobile: Flutter. Database: MySQL, PostgreSQL, MongoDB, SQL Server. AI/CV: YOLOv8, Roboflow. Security & infrastructure: Proxmox VE, Debian, Rocky Linux, fail2ban, UFW, firewalld, Suricata (IDS), WireGuard, Cloudflare Tunnel.",
   },
   {
     keys: ["backend", "laravel", "fastapi", "express", "codeigniter", "php", "python"],
     reply:
-      "Back-end: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js — spesialisasi REST API yang aman (BCrypt, rate limiting, audit logging).",
-    en: "Back-end: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js — secure REST APIs (BCrypt, rate limiting, audit logging).",
+      "Back-end: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js. Implementasi keamanan menyesuaikan proyek — misalnya BCrypt, rate limit, dan audit trail di ProFlowApp.",
+    en: "Back-end: Laravel, FastAPI, .NET Core, CodeIgniter 4, Express.js. Security implementation follows each project — e.g. BCrypt, rate limiting, and audit trail in ProFlowApp.",
   },
   {
     keys: ["frontend", "vue", "react", "tailwind", "css", "javascript"],
-    reply: "Front-end: Vue.js 3 (+ React), Tailwind CSS. Dashboard reaktif dan responsif.",
-    en: "Front-end: Vue.js 3 (+ React), Tailwind CSS. Reactive, responsive dashboards.",
+    reply: "Front-end: Vue.js 3, Tailwind CSS.",
+    en: "Front-end: Vue.js 3, Tailwind CSS.",
   },
   {
     keys: ["database", "mysql", "postgres", "mongo", "sql server", "sqlserver"],
@@ -100,8 +100,14 @@ const RULES = [
   {
     keys: ["security", "cyber", "hacking", "red team", "ethical", "keamanan"],
     reply:
-      "Minat sekunder Jefri: cybersecurity, condong ke red team / ethical hacking — didukung sertifikat Google Cybersecurity Professional.",
-    en: "Jefri's secondary interest: cybersecurity, leaning red team / ethical hacking — backed by the Google Cybersecurity Professional certificate.",
+      "Fokus keamanan Jefri ada di keamanan aplikasi dan infrastruktur server: hardening Linux (Debian/Rocky), IDS Suricata, firewall, fail2ban, VPN WireGuard, serta praktik keamanan web di proyek (bcrypt, CSRF, RBAC, audit trail). Didukung sertifikat Google Cybersecurity Professional.",
+    en: "Jefri's security focus spans application and server infrastructure security: Linux hardening (Debian/Rocky), Suricata IDS, firewalls, fail2ban, WireGuard VPN, plus web security practices in projects (bcrypt, CSRF, RBAC, audit trail). Backed by the Google Cybersecurity Professional certificate.",
+  },
+  {
+    keys: ["infra", "infrastruktur", "proxmox", "hardening", "server", "container", "jaringan"],
+    reply:
+      "Infrastruktur Server (University course project) — 5 container di Proxmox VE di belakang Cloudflare: load balancer + frontend (Debian 12), dua backend (Debian 12), PostgreSQL master–slave (Rocky Linux 9). Hardening: unattended-upgrades, SSH key-only, fail2ban, UFW/firewalld, Suricata IDS, WireGuard VPN.",
+    en: "Server Infrastructure (University course project) — 5 containers on Proxmox VE behind Cloudflare: load balancer + frontend (Debian 12), two backends (Debian 12), PostgreSQL master–slave (Rocky Linux 9). Hardening: unattended-upgrades, key-only SSH, fail2ban, UFW/firewalld, Suricata IDS, WireGuard VPN.",
   },
   {
     keys: ["pendidikan", "education", "kuliah", "kampus", "ulbi", "lulus", "gpa", "ipk", "d3", "informatika", "graduate", "degree"],
