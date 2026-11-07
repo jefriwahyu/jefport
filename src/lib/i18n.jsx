@@ -40,13 +40,14 @@ export const content = {
     about: {
       cmdDesc: "Profil singkat — latar belakang dan fokus saya.",
       para1:
-        "Fresh graduate D3 Teknik Informatika (IPK 3.86), berpengalaman di Back-End & Full-Stack. Pernah mengembangkan sistem e-voting untuk 3.458 pemilih terdaftar dan aplikasi AI, serta menjadi tester SQA enterprise untuk aplikasi dana pensiun.",
-      minatLabel: "Minat sekunder:",
-      minatList: "Backend, Fullstack Developer, Web Developer, Software Engineer",
+        "Fresh graduate D3 Teknik Informatika (IPK 3.86) dengan fokus back-end & full-stack. Membangun sistem e-voting untuk 3.458 pemilih terdaftar, aplikasi AI, serta infrastruktur server Linux yang di-hardening; sebelumnya tester SQA enterprise untuk aplikasi dana pensiun.",
+      minatLabel: "Fokus:",
+      minatList: "Fullstack development, application security, Linux server hardening",
       highlights: [
         "REST API & desain database",
         "Back-end Laravel, ASP.NET Core & Express",
         "Integrasi AI: YOLOv8 vision & microservice",
+        "Hardening Linux: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 dari 1.500+ test case, 60 defect dilaporkan",
       ],
       btnContact: "Hubungi Saya",
@@ -98,7 +99,6 @@ export const content = {
         {
           description:
             "Final project akademik: e-procurement ASP.NET Core MVC dengan approval berlapis, laporan SSRS, dan microservice Flask klasifikasi urgensi (akurasi 95%).",
-          note: "Final Project",
           role: "Full-Stack Developer",
           year: "Mar 2026 – Agu 2026",
           overview:
@@ -148,39 +148,30 @@ export const content = {
             "Express API via Cloudflare Tunnel, CodeIgniter di hosting konvensional",
           ],
         },
+        {
+          description:
+            "Course project: 5 container di Proxmox VE (Debian 12 & Rocky Linux 9) di belakang Cloudflare, dengan PostgreSQL master–slave yang direplikasi dan server yang di-hardening.",
+          role: "Course Project",
+          year: "Nov – Des 2025",
+          overview:
+            "Gabungan mata kuliah Sistem Terdistribusi dan Keamanan Jaringan: 5 container di Proxmox VE di belakang Cloudflare. Container 1 menjalankan load balancer + frontend, container 2 & 3 menjalankan backend (Debian 12), dan container 4 & 5 menjalankan PostgreSQL master–slave dengan replikasi di Rocky Linux 9. Setiap node di-hardening dan didokumentasikan langkah demi langkah.",
+          features: [
+            "5 container di Proxmox VE: load balancer + frontend, 2 backend, 2 database",
+            "Debian 12 untuk frontend & backend, Rocky Linux 9 untuk database",
+            "PostgreSQL master–slave dengan replikasi",
+            "Akses publik via Cloudflare",
+            "Dokumentasi: dua laporan teknis dengan bukti verifikasi",
+          ],
+          security: [
+            "Debian 12: update otomatis (unattended-upgrades), SSH key-only ed25519 di port kustom",
+            "Debian 12: fail2ban + UFW default-deny, Suricata IDS (ET Open), WireGuard VPN",
+            "Rocky Linux 9: sudo dengan timeout + logging, SSH key-only, root login dimatikan",
+            "Rocky Linux 9: fail2ban termasuk jail PostgreSQL, firewalld default DROP, Suricata IDS",
+          ],
+        },
       ],
       onRequest: "// hubungi untuk detail",
       githubPara: "Mau lihat eksperimen, mini-project & kontribusi?",
-      infra: {
-        label: "University course project",
-        title: "Infrastructure & Server Security",
-        summary:
-          "Gabungan mata kuliah Sistem Terdistribusi dan Keamanan Jaringan: 5 container di Proxmox VE, di belakang Cloudflare, dengan PostgreSQL master–slave yang direplikasi.",
-        architecture: [
-          "Container 1: load balancer + frontend — Debian 12",
-          "Container 2 & 3: backend — Debian 12",
-          "Container 4 & 5: PostgreSQL master–slave dengan replikasi — Rocky Linux 9",
-        ],
-        hardeningTitle: "Hardening",
-        debianLabel: "Debian 12",
-        debian: [
-          "Update otomatis (unattended-upgrades)",
-          "SSH key-only ed25519, custom port",
-          "fail2ban + UFW default-deny",
-          "Suricata IDS (rule ET Open)",
-          "WireGuard VPN",
-        ],
-        rockyLabel: "Rocky Linux 9",
-        rocky: [
-          "sudo dengan timeout + logging",
-          "SSH key-only, root login dimatikan",
-          "fail2ban termasuk jail PostgreSQL",
-          "firewalld default DROP",
-          "Suricata IDS",
-        ],
-        docs:
-          "Dokumentasi: dua laporan teknis langkah demi langkah dengan bukti verifikasi.",
-      },
       modal: {
         btn: "details",
         overview: "RINGKASAN",
@@ -233,13 +224,14 @@ export const content = {
     about: {
       cmdDesc: "Short profile — my background and focus.",
       para1:
-        "Fresh D3 Informatics Engineering graduate (GPA 3.86), experienced in Back-End & Full-Stack. Built an e-voting system for 3,458 registered voters and AI apps, plus enterprise SQA testing for a pension fund application.",
-      minatLabel: "Also into:",
-      minatList: "Backend, Fullstack Developer, Web Developer, Software Engineer",
+        "Fresh D3 Informatics Engineering graduate (GPA 3.86) focused on back-end & full-stack. Built an e-voting system for 3,458 registered voters, AI apps, and hardened Linux server infrastructure; previously an enterprise SQA tester for a pension fund application.",
+      minatLabel: "Focus:",
+      minatList: "Fullstack development, application security, Linux server hardening",
       highlights: [
         "REST APIs & database design",
         "Laravel, ASP.NET Core & Express back-ends",
         "AI integration: YOLOv8 vision & microservices",
+        "Linux hardening: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 of 1,500+ test cases, 60 defects reported",
       ],
       btnContact: "Contact Me",
@@ -291,7 +283,6 @@ export const content = {
         {
           description:
             "Academic final project: ASP.NET Core MVC e-procurement with layered approvals, SSRS reports, and a Flask urgency-classification microservice (95% accuracy).",
-          note: "Final Project",
           role: "Full-Stack Developer",
           year: "Mar 2026 – Aug 2026",
           overview:
@@ -341,39 +332,30 @@ export const content = {
             "Express API via Cloudflare Tunnel, CodeIgniter on conventional hosting",
           ],
         },
+        {
+          description:
+            "Course project: 5 containers on Proxmox VE (Debian 12 & Rocky Linux 9) behind Cloudflare, with replicated PostgreSQL master–slave and hardened servers.",
+          role: "Course Project",
+          year: "Nov – Dec 2025",
+          overview:
+            "Combined Distributed Systems and Network Security course project: 5 containers on Proxmox VE behind Cloudflare. Container 1 runs the load balancer + frontend, containers 2 & 3 run the backends (Debian 12), and containers 4 & 5 run replicated PostgreSQL master–slave on Rocky Linux 9. Every node was hardened and documented step by step.",
+          features: [
+            "5 containers on Proxmox VE: load balancer + frontend, 2 backends, 2 databases",
+            "Debian 12 for frontend & backends, Rocky Linux 9 for databases",
+            "PostgreSQL master–slave replication",
+            "Public access via Cloudflare",
+            "Documentation: two technical reports with verification evidence",
+          ],
+          security: [
+            "Debian 12: automatic updates (unattended-upgrades), SSH key-only ed25519 on a custom port",
+            "Debian 12: fail2ban + UFW default-deny, Suricata IDS (ET Open), WireGuard VPN",
+            "Rocky Linux 9: sudo with timeout + logging, SSH key-only, root login disabled",
+            "Rocky Linux 9: fail2ban including a PostgreSQL jail, firewalld default DROP, Suricata IDS",
+          ],
+        },
       ],
       onRequest: "// detail on request",
       githubPara: "Want to see experiments, mini-projects & contributions?",
-      infra: {
-        label: "University course project",
-        title: "Infrastructure & Server Security",
-        summary:
-          "Combined Distributed Systems and Network Security course project: 5 containers on Proxmox VE, behind Cloudflare, with replicated PostgreSQL master–slave.",
-        architecture: [
-          "Container 1: load balancer + frontend — Debian 12",
-          "Containers 2 & 3: backend — Debian 12",
-          "Containers 4 & 5: PostgreSQL master–slave replication — Rocky Linux 9",
-        ],
-        hardeningTitle: "Hardening",
-        debianLabel: "Debian 12",
-        debian: [
-          "Automatic updates (unattended-upgrades)",
-          "SSH key-only ed25519, custom port",
-          "fail2ban + UFW default-deny",
-          "Suricata IDS (ET Open rules)",
-          "WireGuard VPN",
-        ],
-        rockyLabel: "Rocky Linux 9",
-        rocky: [
-          "sudo with timeout + logging",
-          "SSH key-only, root login disabled",
-          "fail2ban including a PostgreSQL jail",
-          "firewalld default DROP",
-          "Suricata IDS",
-        ],
-        docs:
-          "Documentation: two step-by-step technical reports with verification evidence.",
-      },
       modal: {
         btn: "details",
         overview: "OVERVIEW",

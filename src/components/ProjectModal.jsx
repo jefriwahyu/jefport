@@ -7,45 +7,6 @@ import { HudPanel } from "./HudPanel";
 
 const AUTOPLAY_MS = 3000;
 
-// Fake UI bars so dummy slides read like real feature screenshots.
-const BARS = ["92%", "78%", "85%", "64%"];
-
-/**
- * Dummy feature preview: a stylized terminal screen. Pure CSS —
- * shown only for projects that don't have real screenshots yet.
- */
-const DummySlide = ({ projectName, index, total }) => (
-  <div className="relative aspect-video overflow-hidden rounded-sm border border-border bg-background select-none">
-    <div className="absolute inset-0 bg-terminal-grid opacity-70" aria-hidden="true" />
-    <div className="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-3 py-2 border-b border-border bg-secondary/80">
-      <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
-      <span className="w-2 h-2 rounded-full bg-border" aria-hidden="true" />
-      <span className="w-2 h-2 rounded-full bg-primary/70" aria-hidden="true" />
-      <span className="ml-2 font-mono text-[11px] text-muted-foreground truncate">
-        {projectName}preview-{index + 1}.png
-      </span>
-    </div>
-    <div className="absolute inset-0 flex flex-col justify-center gap-2 px-6 pt-8">
-      <p className="font-mono text-xs text-muted-foreground">
-        <span className="text-primary">$</span> render feature_{index + 1}
-      </p>
-      {BARS.map((w, i) => (
-        <div key={i} className="h-1.5 bg-secondary overflow-hidden">
-          <div
-            className="h-full bg-primary/50"
-            style={{ width: i === index % BARS.length ? "100%" : w }}
-          />
-        </div>
-      ))}
-      <p className="font-mono text-[11px] text-primary/80">[ {index + 1} / {total} ]</p>
-    </div>
-    <span className="absolute top-9 left-2 w-3 h-3 border-t-2 border-l-2 border-primary/40" aria-hidden="true" />
-    <span className="absolute top-9 right-2 w-3 h-3 border-t-2 border-r-2 border-primary/40" aria-hidden="true" />
-    <span className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-primary/40" aria-hidden="true" />
-    <span className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-primary/40" aria-hidden="true" />
-  </div>
-);
-
 /**
  * Real screenshot slide for projects that ship photos
  * (e.g. public/projects/proflow/). The full photo is always visible
@@ -167,7 +128,7 @@ const DemoVideo = ({ src, title }) => {
  */
 export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) => {
   const slides = project.images ?? null;
-  const total = slides ? slides.length : 3;
+  const total = slides?.length ?? 0;
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
   const [typed, setTyped] = useState("");
@@ -192,7 +153,7 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
 
   // Auto-play gallery; pauses on hover
   useEffect(() => {
-    if (paused || reduceMotion) return;
+    if (paused || reduceMotion || total <= 1) return;
     const id = setInterval(
       () => setSlide((s) => (s + 1) % total),
       AUTOPLAY_MS
@@ -312,30 +273,26 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
               </details>
             )}
 
-            {project.demoSrc ? (
+            {project.demoSrc && (
               <DemoVideo src={project.demoSrc} title={project.title} />
-            ) : (
+            )}
+
+            {!project.demoSrc && slides?.length > 0 && (
               <>
-            <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
-              [ {ui.gallery} ]
-              {!slides && (
-                <span className="ml-2 text-[11px] font-normal text-muted-foreground">
-                  ({ui.dummy})
-                </span>
-              )}
-            </p>
-            <div
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-              className="relative"
-            >
-              <div className="overflow-hidden rounded-sm">
+                <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
+                  [ {ui.gallery} ]
+                </p>
                 <div
-                  className="flex transition-transform duration-500 ease-out"
-                  style={{ transform: `translateX(-${slide * 100}%)` }}
+                  onMouseEnter={() => setPaused(true)}
+                  onMouseLeave={() => setPaused(false)}
+                  className="relative"
                 >
-                  {slides
-                    ? slides.map((src, i) => (
+                  <div className="overflow-hidden rounded-sm">
+                    <div
+                      className="flex transition-transform duration-500 ease-out"
+                      style={{ transform: `translateX(-${slide * 100}%)` }}
+                    >
+                      {slides.map((src, i) => (
                         <div key={src} className="min-w-full">
                           <RealSlide
                             src={src}
@@ -344,54 +301,48 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
                             projectName={project.name}
                           />
                         </div>
-                      ))
-                    : Array.from({ length: total }, (_, i) => (
-                        <div key={i} className="min-w-full">
-                          <DummySlide
-                            projectName={project.name}
-                            index={i}
-                            total={total}
-                          />
-                        </div>
                       ))}
+                    </div>
+                  </div>
+                  {total > 1 && (
+                    <>
+                      <button
+                        onClick={() => setSlide((s) => (s - 1 + total) % total)}
+                        aria-label="Sebelumnya"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-background/80 border border-border text-muted-foreground hover:text-primary hover:border-primary/60 rounded-sm transition-colors"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setSlide((s) => (s + 1) % total)}
+                        aria-label="Berikutnya"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-background/80 border border-border text-muted-foreground hover:text-primary hover:border-primary/60 rounded-sm transition-colors"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </>
+                  )}
+                  {total > 1 &&
+                    (total > 8 ? (
+                      <p className="font-mono text-xs text-muted-foreground text-center mt-3">
+                        [ {slide + 1} / {total} ]
+                      </p>
+                    ) : (
+                      <div className="flex items-center justify-center gap-2 mt-3">
+                        {Array.from({ length: total }, (_, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setSlide(i)}
+                            aria-label={`Slide ${i + 1}`}
+                            className={cn(
+                              "h-1.5 rounded-none transition-colors",
+                              i === slide ? "w-6 bg-primary" : "w-3 bg-border hover:bg-primary/50"
+                            )}
+                          />
+                        ))}
+                      </div>
+                    ))}
                 </div>
-              </div>
-              {/* Arrows */}
-              <button
-                onClick={() => setSlide((s) => (s - 1 + total) % total)}
-                aria-label="Sebelumnya"
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-background/80 border border-border text-muted-foreground hover:text-primary hover:border-primary/60 rounded-sm transition-colors"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setSlide((s) => (s + 1) % total)}
-                aria-label="Berikutnya"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-background/80 border border-border text-muted-foreground hover:text-primary hover:border-primary/60 rounded-sm transition-colors"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-              {/* Dots (or a counter when there are many slides) */}
-              {total > 8 ? (
-                <p className="font-mono text-xs text-muted-foreground text-center mt-3">
-                  [ {slide + 1} / {total} ]
-                </p>
-              ) : (
-                <div className="flex items-center justify-center gap-2 mt-3">
-                  {Array.from({ length: total }, (_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setSlide(i)}
-                      aria-label={`Slide ${i + 1}`}
-                      className={cn(
-                        "h-1.5 rounded-none transition-colors",
-                        i === slide ? "w-6 bg-primary" : "w-3 bg-border hover:bg-primary/50"
-                      )}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
               </>
             )}
 

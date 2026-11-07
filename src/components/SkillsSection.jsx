@@ -48,21 +48,6 @@ const groups = [
       { name: "Roboflow", level: 64 },
     ],
   },
-  {
-    id: "security",
-    label: "Security & Infrastructure",
-    skills: [
-      { name: "Proxmox VE", level: 75 },
-      { name: "VMware Workstation", level: 74 },
-      { name: "Debian 12", level: 80 },
-      { name: "Rocky Linux 9", level: 78 },
-      { name: "fail2ban", level: 78 },
-      { name: "UFW / firewalld", level: 80 },
-      { name: "Suricata (IDS)", level: 72 },
-      { name: "WireGuard", level: 72 },
-      { name: "Cloudflare Tunnel", level: 80 },
-    ],
-  },
 ];
 
 const tabs = [{ id: "all", label: "all" }, ...groups.map((g) => ({ id: g.id, label: g.id }))];
