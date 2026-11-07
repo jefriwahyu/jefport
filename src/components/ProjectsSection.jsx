@@ -198,7 +198,7 @@ export const ProjectsSection = () => {
                     >
                       [ {t.modal.btn} ]
                     </button>
-                    {project.githubUrl ? (
+                    {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
@@ -208,10 +208,6 @@ export const ProjectsSection = () => {
                         <Github className="w-3.5 h-3.5" />
                         [ repo ]
                       </a>
-                    ) : (
-                      <span className="text-muted-foreground/60 font-normal">
-                        {t.onRequest}
-                      </span>
                     )}
                   </div>
                 </article>

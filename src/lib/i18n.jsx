@@ -172,7 +172,6 @@ export const content = {
           ],
         },
       ],
-      onRequest: "// hubungi untuk detail",
       githubPara: "Mau lihat eksperimen, mini-project & kontribusi?",
       modal: {
         btn: "details",
@@ -358,7 +357,6 @@ export const content = {
           ],
         },
       ],
-      onRequest: "// detail on request",
       githubPara: "Want to see experiments, mini-projects & contributions?",
       modal: {
         btn: "details",
