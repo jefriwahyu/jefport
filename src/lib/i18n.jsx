@@ -154,6 +154,7 @@ export const content = {
             "Course project: 5 container di Proxmox VE (Debian 12 & Rocky Linux 9) di belakang Cloudflare, dengan PostgreSQL master–slave yang direplikasi dan server yang di-hardening.",
           role: "Course Project",
           year: "Nov – Des 2025",
+          mediaLabel: "TOPOLOGI INFRASTRUKTUR",
           overview:
             "Gabungan mata kuliah Sistem Terdistribusi dan Keamanan Jaringan: 5 container di Proxmox VE di belakang Cloudflare. Container 1 menjalankan load balancer + frontend, container 2 & 3 menjalankan backend (Debian 12), dan container 4 & 5 menjalankan PostgreSQL master–slave dengan replikasi di Rocky Linux 9. Setiap node di-hardening dan didokumentasikan langkah demi langkah.",
           features: [
@@ -339,6 +340,7 @@ export const content = {
             "Course project: 5 containers on Proxmox VE (Debian 12 & Rocky Linux 9) behind Cloudflare, with replicated PostgreSQL master–slave and hardened servers.",
           role: "Course Project",
           year: "Nov – Dec 2025",
+          mediaLabel: "INFRASTRUCTURE TOPOLOGY",
           overview:
             "Combined Distributed Systems and Network Security course project: 5 containers on Proxmox VE behind Cloudflare. Container 1 runs the load balancer + frontend, containers 2 & 3 run the backends (Debian 12), and containers 4 & 5 run replicated PostgreSQL master–slave on Rocky Linux 9. Every node was hardened and documented step by step.",
           features: [

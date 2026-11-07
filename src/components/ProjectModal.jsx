@@ -280,7 +280,7 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
             {!project.demoSrc && slides?.length > 0 && (
               <>
                 <p className="font-mono text-xs font-bold text-primary mt-6 mb-2">
-                  [ {ui.gallery} ]
+                  [ {detail.mediaLabel || ui.gallery} ]
                 </p>
                 <div
                   onMouseEnter={() => setPaused(true)}
