@@ -167,6 +167,72 @@ export const ProjectsSection = () => {
           ))}
         </div>
 
+        <HudPanel data-cable-item hideOnHover className="mt-4">
+          <article
+            onMouseMove={handleSpotMove}
+            className="term-panel term-card-hover spot-wrap group h-full px-5 py-5 flex flex-col"
+          >
+            <span className="spot" aria-hidden="true" />
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <p className="font-mono text-sm font-bold text-primary group-hover:text-glow transition-all">
+                <span className="text-muted-foreground">05 :: </span>
+                infra/
+              </p>
+              <span className="font-mono text-[11px] px-2 py-0.5 border border-primary/50 text-primary rounded-sm">
+                {t.infra.label}
+              </span>
+            </div>
+            <h3 className="font-bold text-[15px] leading-snug mb-2">
+              {t.infra.title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              {t.infra.summary}
+            </p>
+            <ul className="space-y-1.5 mb-5">
+              {t.infra.architecture.map((a) => (
+                <li key={a} className="flex items-start gap-2.5 font-mono text-[13px] text-foreground/90">
+                  <span className="text-primary font-bold shrink-0">[+]</span>
+                  {a}
+                </li>
+              ))}
+            </ul>
+            <p className="font-mono text-xs font-bold text-primary mb-3">
+              [ {t.infra.hardeningTitle} ]
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <p className="font-mono text-xs font-bold text-foreground mb-2">
+                  {t.infra.debianLabel}
+                </p>
+                <ul className="space-y-1.5">
+                  {t.infra.debian.map((h) => (
+                    <li key={h} className="flex items-start gap-2.5 font-mono text-[13px] text-foreground/90">
+                      <span className="text-primary font-bold shrink-0">[+]</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="font-mono text-xs font-bold text-foreground mb-2">
+                  {t.infra.rockyLabel}
+                </p>
+                <ul className="space-y-1.5">
+                  {t.infra.rocky.map((h) => (
+                    <li key={h} className="flex items-start gap-2.5 font-mono text-[13px] text-foreground/90">
+                      <span className="text-primary font-bold shrink-0">[+]</span>
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="font-mono text-[13px] text-muted-foreground">
+              {t.infra.docs}
+            </p>
+          </article>
+        </HudPanel>
+
         <div className="text-center mt-10">
           <a
             href="https://github.com/jefriwahyu"

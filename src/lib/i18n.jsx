@@ -151,6 +151,36 @@ export const content = {
       ],
       onRequest: "// hubungi untuk detail",
       githubPara: "Mau lihat eksperimen, mini-project & kontribusi?",
+      infra: {
+        label: "University course project",
+        title: "Infrastructure & Server Security",
+        summary:
+          "Gabungan mata kuliah Sistem Terdistribusi dan Keamanan Jaringan: 5 container di Proxmox VE, di belakang Cloudflare, dengan PostgreSQL master–slave yang direplikasi.",
+        architecture: [
+          "Container 1: load balancer + frontend — Debian 12",
+          "Container 2 & 3: backend — Debian 12",
+          "Container 4 & 5: PostgreSQL master–slave dengan replikasi — Rocky Linux 9",
+        ],
+        hardeningTitle: "Hardening",
+        debianLabel: "Debian 12",
+        debian: [
+          "Update otomatis (unattended-upgrades)",
+          "SSH key-only ed25519, custom port",
+          "fail2ban + UFW default-deny",
+          "Suricata IDS (rule ET Open)",
+          "WireGuard VPN",
+        ],
+        rockyLabel: "Rocky Linux 9",
+        rocky: [
+          "sudo dengan timeout + logging",
+          "SSH key-only, root login dimatikan",
+          "fail2ban termasuk jail PostgreSQL",
+          "firewalld default DROP",
+          "Suricata IDS",
+        ],
+        docs:
+          "Dokumentasi: dua laporan teknis langkah demi langkah dengan bukti verifikasi.",
+      },
       modal: {
         btn: "details",
         overview: "RINGKASAN",
@@ -314,6 +344,36 @@ export const content = {
       ],
       onRequest: "// detail on request",
       githubPara: "Want to see experiments, mini-projects & contributions?",
+      infra: {
+        label: "University course project",
+        title: "Infrastructure & Server Security",
+        summary:
+          "Combined Distributed Systems and Network Security course project: 5 containers on Proxmox VE, behind Cloudflare, with replicated PostgreSQL master–slave.",
+        architecture: [
+          "Container 1: load balancer + frontend — Debian 12",
+          "Containers 2 & 3: backend — Debian 12",
+          "Containers 4 & 5: PostgreSQL master–slave replication — Rocky Linux 9",
+        ],
+        hardeningTitle: "Hardening",
+        debianLabel: "Debian 12",
+        debian: [
+          "Automatic updates (unattended-upgrades)",
+          "SSH key-only ed25519, custom port",
+          "fail2ban + UFW default-deny",
+          "Suricata IDS (ET Open rules)",
+          "WireGuard VPN",
+        ],
+        rockyLabel: "Rocky Linux 9",
+        rocky: [
+          "sudo with timeout + logging",
+          "SSH key-only, root login disabled",
+          "fail2ban including a PostgreSQL jail",
+          "firewalld default DROP",
+          "Suricata IDS",
+        ],
+        docs:
+          "Documentation: two step-by-step technical reports with verification evidence.",
+      },
       modal: {
         btn: "details",
         overview: "OVERVIEW",
