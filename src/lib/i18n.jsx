@@ -60,16 +60,24 @@ export const content = {
           period: "Mar 2026 – Mei 2026",
           points: [
             "Vendor Integration Testing untuk aplikasi dana pensiun skala enterprise.",
-            "Eksekusi 214 dari 1.500+ test case manual dengan metodologi State Transition Testing.",
-            "Melaporkan 60 defect sistem dan berkolaborasi saat regression testing.",
+            "Eksekusi 214 dari 1.500+ test case manual menggunakan metodologi State Transition Testing.",
+            "Melaporkan 60 defect sistem dan berkolaborasi dengan developer saat regression testing.",
+          ],
+        },
+        {
+          period: "Nov 2025 – Des 2025",
+          points: [
+            "Menganalisis proses bisnis layanan kesehatan dan merancang flowchart sistem untuk mengoptimalkan alur kerja operasional.",
+            "Menggunakan query SQL untuk mengekstrak insight berbasis data sebagai dasar rekomendasi perbaikan sistem.",
+            "Menerapkan metodologi SDLC dalam merancang peningkatan sistem dan menyusun strategi implementasi.",
           ],
         },
         {
           period: "Sep 2024 – Jan 2025",
           points: [
-            "Back-end Laravel: logika satu-suara-per-mahasiswa dan hak pilih per program studi & jenis pemilihan.",
-            "Dashboard admin Filament + halaman login dan voting yang user-friendly.",
-            "Deploy + konfigurasi domain — 3.458 pemilih terdaftar, 1.124 suara diproses tanpa error/duplikasi.",
+            "Back-end Laravel dengan keamanan satu suara per mahasiswa, pembatasan sesi login, dan hak pilih per program studi.",
+            "Dashboard admin Filament serta antarmuka voting yang memangkas waktu hitung suara >90% dan biaya operasional ~30%.",
+            "Deploy dan konfigurasi domain untuk 3.458 pemilih terdaftar, memproses 1.124 suara tanpa error atau duplikasi.",
           ],
         },
       ],
@@ -258,17 +266,25 @@ export const content = {
         {
           period: "Mar 2026 – May 2026",
           points: [
-            "Vendor Integration Testing for an enterprise-scale pension fund application.",
-            "Executed 214 of 1,500+ manual test cases with State Transition Testing methodology.",
-            "Reported 60 system defects and collaborated during regression testing.",
+            "Conducted Vendor Integration Testing for an enterprise-scale pension fund application.",
+            "Executed 214 of 1,500+ manual test cases using State Transition Testing methodology.",
+            "Reported 60 system defects and collaborated with developers during regression testing.",
+          ],
+        },
+        {
+          period: "Nov 2025 – Dec 2025",
+          points: [
+            "Analyzed healthcare business processes and designed system flowcharts to visualize and optimize operational workflows.",
+            "Utilized SQL querying to extract data-driven insights supporting system improvement recommendations.",
+            "Applied SDLC methodologies to design system enhancements and formulate implementation strategies.",
           ],
         },
         {
           period: "Sep 2024 – Jan 2025",
           points: [
-            "Laravel back-end: one-vote-per-student logic and eligibility by study program & election type.",
-            "Filament admin dashboard plus user-friendly login and voting pages.",
-            "Deployed with domain configuration — 3,458 registered voters, 1,124 votes processed without errors/duplicates.",
+            "Laravel back-end enforcing one-vote-per-student integrity, session-based login restrictions, and program-specific voting rights.",
+            "Built a Filament admin dashboard and voting interface that cut vote-counting time by >90% and reduced operational costs by ~30%.",
+            "Deployed and configured the domain for 3,458 eligible voters, reliably processing 1,124 valid votes without errors or duplication.",
           ],
         },
       ],

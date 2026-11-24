@@ -11,10 +11,16 @@ const experiences = [
     tags: ["SQA", "State Transition Testing", "Regression"],
   },
   {
+    role: "Project-Based Virtual Intern: System Analyst",
+    company: "KlinikGo x Rakamin Academy",
+    location: "Remote",
+    tags: ["System Analysis", "SQL", "SDLC", "Flowcharts"],
+  },
+  {
     role: "Freelance Fullstack Developer",
-    company: "MPM — Pemira E-Voting Website",
+    company: "MPM ULBI (Pemira E-Voting)",
     location: "Bandung",
-    tags: ["Laravel", "Filament", "Blade"],
+    tags: ["Laravel", "JavaScript", "Tailwind", "MySQL"],
   },
 ];
 
