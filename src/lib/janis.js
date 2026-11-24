@@ -143,8 +143,8 @@ const RULES = [
   },
   {
     keys: ["cv", "resume", "download"],
-    reply: "CV bisa diunduh lewat tombol [ Download CV ] di hero / about halaman ini.",
-    en: "You can download the CV via the [ Download CV ] button in the hero / about section.",
+    reply: "CV bisa diunduh lewat tombol [ Download CV ] di section about halaman ini.",
+    en: "You can download the CV via the [ Download CV ] button in the about section.",
   },
   {
     keys: ["lokasi", "domisili", "tinggal", "bandung", "location", "dimana", "where"],

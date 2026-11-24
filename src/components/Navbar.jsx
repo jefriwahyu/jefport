@@ -90,10 +90,6 @@ export const Navbar = () => {
               <span className="mx-1 opacity-40">|</span>
               <span className={lang === "en" ? "text-primary" : ""}>EN</span>
             </button>
-            <span className="hidden sm:inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
-              online
-            </span>
             <button
               onClick={() => setIsMenuOpen((v) => !v)}
               className="md:hidden p-2 text-foreground border border-border rounded-sm"

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, lazy, Suspense } from "react";
-import { ArrowRight, Download, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { prefersReducedMotion, shouldUseHeavyEffects } from "@/lib/motion";
 import { useLang, content } from "@/lib/i18n";
 import { HudPanel } from "./HudPanel";
@@ -7,8 +7,9 @@ import { HudPanel } from "./HudPanel";
 const HeroWire = lazy(() => import("./Hero3D"));
 
 const roles = [
-  "Fullstack Developer",
-  "Cybersecurity",
+  "Full-Stack Developer",
+  "Backend Developer",
+  "Cybersecurity Enthusiast",
 ];
 
 function useTypewriter(words, typeSpeed = 65, deleteSpeed = 32, pause = 1700) {
@@ -183,10 +184,6 @@ export const HeroSection = () => {
                 <a href="#projects" className="term-btn">
                   [ {t.ctaProjects} ]
                   <ArrowRight className="w-4 h-4" />
-                </a>
-                <a href="/resume/CV_Jefri_Wahyudiana_Putra.pdf" className="term-btn-ghost">
-                  <Download className="w-4 h-4" />
-                  [ {t.ctaCv} ]
                 </a>
                 <a href="#contact" className="term-btn-ghost">
                   <Mail className="w-4 h-4" />

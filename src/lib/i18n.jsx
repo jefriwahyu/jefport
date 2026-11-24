@@ -1,16 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
 
-const LangContext = createContext({ lang: "id", toggle: () => {} });
+const LangContext = createContext({ lang: "en", toggle: () => {} });
 
 export const useLang = () => useContext(LangContext);
 
 export const LanguageProvider = ({ children }) => {
   const [lang, setLang] = useState(() => {
     try {
-      return localStorage.getItem("jefport-lang") || "id";
+      const saved = localStorage.getItem("jefport-lang");
+      return saved === "id" ? "id" : "en";
     } catch {
-      return "id";
+      return "en";
     }
   });
   const toggle = () =>
@@ -31,9 +32,8 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Halo, saya",
       tagline:
-        "Saya membangun aplikasi end-to-end — dari arsitektur back-end yang aman hingga antarmuka yang rapi: sistem e-voting untuk 3.458 pemilih terdaftar, aplikasi berbasis AI, dan infrastruktur server Linux yang di-hardening.",
+        "Membangun aplikasi end-to-end secara aman — mulai dari penulisan kode hingga infrastruktur, dengan komitmen meminimalkan celah kerentanan sejak awal.",
       ctaProjects: "Lihat Projects",
-      ctaCv: "Download CV",
       ctaContact: "Hubungi Saya",
       scrollHint: "scroll untuk menjelajah",
     },
@@ -232,9 +232,8 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia — Hello, I'm",
       tagline:
-        "I build end-to-end applications, from secure back-end architecture to polished interfaces: an e-voting system serving 3,458 registered voters, AI-powered apps, and hardened Linux server infrastructure.",
+        "Engineering secure end-to-end applications — from code to infrastructure, built to minimize vulnerabilities from the ground up.",
       ctaProjects: "View Projects",
-      ctaCv: "Download CV",
       ctaContact: "Contact Me",
       scrollHint: "scroll to explore",
     },
