@@ -1,4 +1,4 @@
-import { Download, ArrowRight } from "lucide-react";
+import { Download } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
 import { WhoamiCodeBg } from "./WhoamiCodeBg";
@@ -41,10 +41,6 @@ export const AboutMe = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <a href="#contact" className="term-btn">
-                [ {t.btnContact} ]
-                <ArrowRight className="w-4 h-4" />
-              </a>
               <a href="/resume/CV_Jefri_Wahyudiana_Putra.pdf" className="term-btn-ghost">
                 <Download className="w-4 h-4" />
                 [ {t.btnCv} ]

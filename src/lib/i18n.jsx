@@ -38,20 +38,19 @@ export const content = {
       scrollHint: "scroll untuk menjelajah",
     },
     about: {
-      cmdDesc: "Profil singkat — latar belakang dan fokus saya.",
+      cmdDesc: "Latar belakang dan fokus saya.",
       para1:
-        "Fresh graduate D3 Teknik Informatika (IPK 3.86) dengan fokus back-end & full-stack. Membangun sistem e-voting untuk 3.458 pemilih terdaftar, aplikasi AI, serta infrastruktur server Linux yang di-hardening; sebelumnya tester SQA enterprise untuk aplikasi dana pensiun.",
+        "Full-Stack Developer lulusan D3 Teknik Informatika (IPK 3.86) yang fokus membangun aplikasi web yang andal dan aman. Berpengalaman mengembangkan sistem e-voting untuk 3.458 pemilih, aplikasi berbasis AI, infrastruktur server Linux yang di-hardening, serta pengujian SQA pada sistem dana pensiun skala enterprise.",
       minatLabel: "Fokus:",
-      minatList: "Fullstack development, cybersecurity, frontend",
+      minatList: "Full-Stack Development, Cybersecurity",
       highlights: [
         "REST API & desain database",
-        "Back-end Laravel, ASP.NET Core & Express",
-        "Front-end Vue.js 3 & Tailwind CSS",
-        "Integrasi AI: YOLOv8 vision & microservice",
+        "Back-end: ASP.NET Core, Laravel, Go & Express",
+        "Front-end: React, Vue.js 3 & Tailwind CSS",
+        "Integrasi AI: LLM API, YOLOv8 & microservice",
         "Hardening Linux: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 dari 1.500+ test case, 60 defect dilaporkan",
       ],
-      btnContact: "Hubungi Saya",
       btnCv: "Download CV",
     },
     experience: {
@@ -238,20 +237,19 @@ export const content = {
       scrollHint: "scroll to explore",
     },
     about: {
-      cmdDesc: "Short profile — my background and focus.",
+      cmdDesc: "Background and core focus.",
       para1:
-        "Fresh D3 Informatics Engineering graduate (GPA 3.86) focused on back-end & full-stack. Built an e-voting system for 3,458 registered voters, AI apps, and hardened Linux server infrastructure; previously an enterprise SQA tester for a pension fund application.",
+        "Full-Stack Developer with a D3 in Informatics Engineering (GPA 3.86), focused on building reliable and secure web applications. Experienced in developing an e-voting system for 3,458 voters, AI-powered apps, hardened Linux server infrastructure, and enterprise SQA testing for a pension fund system.",
       minatLabel: "Focus:",
-      minatList: "Fullstack development, cybersecurity, frontend",
+      minatList: "Full-Stack Development, Cybersecurity",
       highlights: [
         "REST APIs & database design",
-        "Laravel, ASP.NET Core & Express back-ends",
-        "Vue.js 3 & Tailwind CSS front-ends",
-        "AI integration: YOLOv8 vision & microservices",
+        "Back-end: ASP.NET Core, Laravel, Go & Express",
+        "Front-end: React, Vue.js 3 & Tailwind CSS",
+        "AI Integration: LLM API, YOLOv8 & microservices",
         "Linux hardening: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 of 1,500+ test cases, 60 defects reported",
       ],
-      btnContact: "Contact Me",
       btnCv: "Download CV",
     },
     experience: {
