@@ -171,7 +171,7 @@ export const content = {
         {
           description:
             "Aplikasi tabungan dengan deteksi uang kertas Rupiah via webcam (YOLOv8, mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, database MySQL.",
-          badge: "Personal",
+          badge: "Academic",
           role: "AI / Fullstack Developer",
           year: "Feb – Mar 2026",
           overview:
@@ -186,7 +186,7 @@ export const content = {
         {
           description:
             "REST API aplikasi kontak Flutter dengan dua backend: Express.js + MongoDB dan CodeIgniter 4 + MySQL; API Express lewat Cloudflare Tunnel.",
-          badge: "Personal",
+          badge: "Academic",
           role: "Fullstack Developer",
           year: "Jun – Jul 2025",
           overview:
@@ -383,7 +383,7 @@ export const content = {
         {
           description:
             "Savings app with Rupiah banknote detection via webcam (YOLOv8, mAP50 98.7%), FastAPI backend, Vue.js 3 + Tailwind CSS frontend, MySQL database.",
-          badge: "Personal",
+          badge: "Academic",
           role: "AI / Fullstack Developer",
           year: "Feb – Mar 2026",
           overview:
@@ -398,7 +398,7 @@ export const content = {
         {
           description:
             "REST API for a Flutter contact app with two backends: Express.js + MongoDB and CodeIgniter 4 + MySQL; the Express API runs through Cloudflare Tunnel.",
-          badge: "Personal",
+          badge: "Academic",
           role: "Fullstack Developer",
           year: "Jun – Jul 2025",
           overview:
