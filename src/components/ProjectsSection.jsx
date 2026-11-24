@@ -61,6 +61,14 @@ const projects = [
     demoSrc: "/projects/Demo/pemira.mp4",
   },
   {
+    name: "tuwangapp/",
+    title: "Taktuntuwang — AI Personal Finance Tracker",
+    category: "web",
+    tags: ["React 19", "Go / Gin", "Supabase", "Groq API", "Chart.js", "Vercel"],
+    githubUrl: "https://github.com/jefriwahyu/tuwangapp",
+    demoSrc: "/projects/Demo/tuwangapp.mp4",
+  },
+  {
     name: "proflowapp/",
     title: "ProFlowApp — E-Procurement System",
     category: "web",

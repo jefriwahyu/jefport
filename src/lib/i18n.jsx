@@ -99,6 +99,22 @@ export const content = {
         },
         {
           description:
+            "Personal project: pelacak keuangan pribadi berbasis AI yang mengubah chat bahasa Indonesia/Inggris menjadi catatan transaksi terstruktur — hingga 5 transaksi per pesan, lengkap dengan laporan dan koreksi lewat chat.",
+          role: "Solo Personal Project — Full-Stack Developer",
+          year: "2026",
+          overview:
+            "Taktuntuwang adalah pelacak keuangan pribadi berbasis percakapan AI untuk pengguna Indonesia. Pengguna cukup chat dengan bahasa sehari-hari — misalnya \"Beli kopi susu 18rb\" atau \"Gaji bulanan masuk 6 jt\" — dan LLM mengubahnya menjadi catatan transaksi terstruktur: jenis, nominal Rupiah, satu dari 12 kategori tetap, dan deskripsi singkat, hingga 5 transaksi per pesan. Ringkasan periode, koreksi/hapus lewat chat, serta panel insight (grafik tren + riwayat) tersedia di samping chat. Frontend React 19 + Vite + Chart.js + Supabase Auth; backend Go 1.25 + Gin + Supabase PostgreSQL/PostgREST; AI Groq API (openai/gpt-oss-20b) dengan JSON-mode structured output; deploy Vercel.",
+          features: [
+            "Chat bahasa Indonesia/Inggris → catatan transaksi otomatis (hingga 5 transaksi per pesan)",
+            "LLM mengekstrak jenis, nominal Rupiah, 1 dari 12 kategori tetap, dan deskripsi singkat",
+            "Laporan percakapan: hari ini, kemarin, minggu, bulan, tahun, atau rentang kustom",
+            "Koreksi & hapus transaksi lewat chat dengan kartu konfirmasi",
+            "Panel insight: ringkasan pengeluaran, grafik tren, dan riwayat transaksi",
+            "Auth Supabase + JWT diverifikasi terhadap Supabase JWKS; timezone Asia/Jakarta",
+          ],
+        },
+        {
+          description:
             "Final project akademik: e-procurement ASP.NET Core MVC dengan approval berlapis, laporan SSRS, dan microservice Flask klasifikasi urgensi (akurasi 95%).",
           role: "Full-Stack Developer",
           year: "Mar 2026 – Agu 2026",
@@ -280,6 +296,22 @@ export const content = {
             "bcrypt + CSRF protection",
             "Database sessions: HttpOnly, SameSite=Lax, 120 minutes",
             "Eloquent without raw SQL, escaped Blade output",
+          ],
+        },
+        {
+          description:
+            "Personal project: an AI-powered personal finance tracker that turns everyday Indonesian/English chat into structured transaction records — up to 5 transactions per message, with reports and corrections in chat.",
+          role: "Solo Personal Project — Full-Stack Developer",
+          year: "2026",
+          overview:
+            "Taktuntuwang is an AI-powered conversational personal finance tracker for Indonesian users. Instead of filling in forms, users chat in everyday Indonesian or English — e.g. \"Beli kopi susu 18rb\" or \"Gaji bulanan masuk 6 jt\" — and the LLM turns each message into structured transaction records: type, Rupiah amount, one of 12 fixed categories, and a short description, up to 5 transactions per message. Period summaries, chat-based corrections/deletes, and an insight panel (trend charts + history) sit alongside the chat. Frontend: React 19 + Vite + Chart.js + Supabase Auth; backend: Go 1.25 + Gin + Supabase PostgreSQL/PostgREST; AI: Groq API (openai/gpt-oss-20b) with JSON-mode structured output; deployed on Vercel.",
+          features: [
+            "Indonesian/English chat → automatic transaction records (up to 5 transactions per message)",
+            "LLM extracts type, Rupiah amount, 1 of 12 fixed categories, and a short description",
+            "Conversational reports: today, yesterday, week, month, year, or a custom range",
+            "Chat-based corrections & deletes with confirmation cards",
+            "Insight panel: spending summary, trend charts, and transaction history",
+            "Supabase Auth + JWT verified against Supabase JWKS; Asia/Jakarta timezone",
           ],
         },
         {

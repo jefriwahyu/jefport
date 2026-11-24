@@ -1,7 +1,7 @@
 const PROFILE = {
   name: "Jefri Wahyudiana Putra",
   nickname: "jefri",
-  roles: "Fullstack Developer building secure systems",
+  roles: "Fullstack Developer",
   location: "Bandung, Indonesia",
   email: "jefriwahyudiana@gmail.com",
   linkedin: "linkedin.com/in/jefriwp",
@@ -36,8 +36,8 @@ const RULES = [
   },
   {
     keys: ["role", "posisi", "kerja sebagai", "developer apa", "target", "position"],
-    reply: `Role target: ${PROFILE.roles}. Fokus utama back-end & full-stack, dengan perhatian pada keamanan aplikasi dan infrastruktur server.`,
-    en: `Target roles: ${PROFILE.roles}. Main focus on back-end & full-stack, with attention to application and server infrastructure security.`,
+    reply: `Role target: ${PROFILE.roles}. Fokus utama fullstack & frontend, dengan perhatian pada cybersecurity.`,
+    en: `Target roles: ${PROFILE.roles}. Main focus on fullstack & frontend, with attention to cybersecurity.`,
   },
   {
     keys: ["proflow", "tugas akhir", "ta ", "e-procurement", "asp.net", "aspnet", ".net", "thesis"],
@@ -50,6 +50,12 @@ const RULES = [
     reply:
       "Pemira E-Voting — platform e-voting Laravel + Filament (admin dashboard), satu akun satu suara, hak pilih per program studi & jenis pemilihan. 3.458 pemilih terdaftar, 1.124 suara diproses tanpa error/duplikasi.",
     en: "Pemira E-Voting — Laravel + Filament e-voting platform (admin dashboard), one account one vote, eligibility by study program & election type. 3,458 registered voters, 1,124 votes processed without errors/duplicates.",
+  },
+  {
+    keys: ["tuwang", "taktuntuwang", "tuwangapp", "personal finance", "keuangan pribadi", "finance tracker", "catat keuangan", "groq"],
+    reply:
+      "Taktuntuwang (TuwangApp) — personal project: pelacak keuangan pribadi berbasis chat AI (Indonesia/Inggris). LLM mengekstrak transaksi (hingga 5 per pesan) ke 12 kategori, plus laporan periode, koreksi lewat chat, dan panel insight. Stack: React 19 + Vite + Chart.js + Supabase Auth; Go 1.25 + Gin + Supabase PostgreSQL/PostgREST; Groq API (openai/gpt-oss-20b). Deploy Vercel. Repo: github.com/jefriwahyu/tuwangapp",
+    en: "Taktuntuwang (TuwangApp) — personal project: an AI-powered conversational personal finance tracker (Indonesian/English). The LLM extracts transactions (up to 5 per message) into 12 categories, plus period reports, chat-based corrections, and an insight panel. Stack: React 19 + Vite + Chart.js + Supabase Auth; Go 1.25 + Gin + Supabase PostgreSQL/PostgREST; Groq API (openai/gpt-oss-20b). Deployed on Vercel. Repo: github.com/jefriwahyu/tuwangapp",
   },
   {
     keys: ["tabungan", "tabunganku", "yolo", "rupiah", "computer vision", " cv", " ai", "kamera", "webcam", "savings", "banknote", "camera"],
@@ -66,8 +72,8 @@ const RULES = [
   {
     keys: ["project", "proyek", "portfolio", "portofolio", "karya", "dibuat", "aplikasi apa"],
     reply:
-      "5 project utama: Pemira E-Voting, ProFlowApp (e-procurement), Infrastruktur Server (Proxmox VE), TabunganKu AI (YOLOv8), KuyKontak (Flutter). Tanya nama project-nya untuk detail.",
-    en: "5 main projects: Pemira E-Voting, ProFlowApp (e-procurement), Server Infrastructure (Proxmox VE), TabunganKu AI (YOLOv8), KuyKontak (Flutter). Ask by name for details.",
+      "6 project utama: Pemira E-Voting, Taktuntuwang (TuwangApp), ProFlowApp (e-procurement), TabunganKu AI (YOLOv8), KuyKontak (Flutter), Infrastruktur Server (Proxmox VE). Tanya nama project-nya untuk detail.",
+    en: "6 main projects: Pemira E-Voting, Taktuntuwang (TuwangApp), ProFlowApp (e-procurement), TabunganKu AI (YOLOv8), KuyKontak (Flutter), Server Infrastructure (Proxmox VE). Ask by name for details.",
   },
   {
     keys: ["pengalaman", "experience", "kerja", "magang", "primalogic", "qa ", "quality", "intern", "work"],

@@ -7,7 +7,7 @@ import { HudPanel } from "./HudPanel";
 const HeroWire = lazy(() => import("./Hero3D"));
 
 const roles = [
-  "Fullstack Developer building secure systems",
+  "Fullstack Developer",
   "Cybersecurity",
 ];
 
