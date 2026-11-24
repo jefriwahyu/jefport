@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Github } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
 import { Pagination } from "./Pagination";
@@ -57,26 +57,34 @@ const projects = [
     name: "pemira/",
     title: "Pemira E-Voting Website",
     category: "web",
-    tags: ["Laravel", "Filament", "Blade", "Relational DB"],
+    tags: ["Laravel", "Filament", "Blade", "MySQL"],
     githubUrl: "https://github.com/jefriwahyudiana/pemira",
     demoSrc: "/projects/Demo/pemira.mp4",
   },
   {
     name: "tuwangapp/",
-    title: "Taktuntuwang — AI Personal Finance Tracker",
+    title: "Taktuntuwang: AI Personal Finance Tracker",
     category: "web",
     tags: ["React 19", "Go / Gin", "Supabase", "Groq API", "Chart.js", "Vercel"],
     githubUrl: "https://github.com/jefriwahyu/tuwangapp",
+    liveUrl: "https://tuwangapp.vercel.app",
     demoSrc: "/projects/Demo/tuwangapp.mp4",
   },
   {
     name: "proflowapp/",
-    title: "ProFlowApp — E-Procurement System",
+    title: "ProFlowApp: E-Procurement System",
     category: "web",
     tags: ["ASP.NET Core MVC", "EF Core", "SQL Server", "SSRS", "Flask"],
     githubUrl: "https://github.com/jefriwahyu/ProflowApp",
     images: proflowImages,
     demoSrc: "/projects/Demo/proflow.mp4",
+  },
+  {
+    name: "infra/",
+    title: "Infrastructure & Server Security",
+    category: "infra",
+    tags: ["Proxmox VE", "Debian 12", "Rocky Linux 9", "PostgreSQL", "Suricata", "WireGuard"],
+    images: ["/projects/infra/Topologi Infrastruktur.jpg"],
   },
   {
     name: "tabunganku-ai/",
@@ -94,13 +102,6 @@ const projects = [
     tags: ["Express.js", "MongoDB", "CodeIgniter 4", "MySQL", "Flutter", "Cloudflare Tunnel"],
     githubUrl: "https://github.com/jefriwahyu/kuykontak-app",
     demoSrc: "/projects/Demo/kuykontak.mp4",
-  },
-  {
-    name: "infra/",
-    title: "Infrastructure & Server Security",
-    category: "infra",
-    tags: ["Proxmox VE", "Debian 12", "Rocky Linux 9", "PostgreSQL", "Suricata", "WireGuard"],
-    images: ["/projects/infra/Topologi Infrastruktur.jpg"],
   },
 ];
 
@@ -216,6 +217,17 @@ export const ProjectsSection = () => {
                       >
                         <Github className="w-3.5 h-3.5" />
                         [ repo ]
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        [ live ]
                       </a>
                     )}
                   </div>

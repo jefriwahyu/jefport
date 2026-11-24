@@ -86,11 +86,11 @@ export const content = {
       cmdDesc: "Tech stack yang saya pakai sehari-hari.",
     },
     projects: {
-      cmdDesc: "Proyek yang saya bangun — dari sistem e-voting hingga infrastruktur server.",
+      cmdDesc: "Proyek yang saya bangun, dari sistem e-voting hingga infrastruktur server.",
       items: [
         {
           description:
-            "Platform e-voting Laravel & Filament untuk Pemira MPM ULBI — 3.458 pemilih terdaftar, 1.124 suara diproses tanpa error maupun duplikasi.",
+            "Platform e-voting Laravel & Filament untuk Pemira MPM ULBI dengan 3.458 pemilih terdaftar dan 1.124 suara diproses tanpa error maupun duplikasi.",
           badge: "Freelance",
           role: "Freelance Fullstack Developer",
           year: "Sep 2024 – Jan 2025",
@@ -106,7 +106,8 @@ export const content = {
         },
         {
           description:
-            "Personal project: pelacak keuangan pribadi berbasis AI yang mengubah chat bahasa Indonesia/Inggris menjadi catatan transaksi terstruktur — hingga 5 transaksi per pesan, lengkap dengan laporan dan koreksi lewat chat.",
+            "Pelacak keuangan pribadi berbasis AI yang mengubah chat bahasa Indonesia/Inggris menjadi catatan transaksi terstruktur hingga 5 transaksi per pesan, lengkap dengan laporan dan koreksi lewat chat.",
+          badge: "Personal",
           role: "Solo Personal Project — Full-Stack Developer",
           year: "2026",
           overview:
@@ -122,7 +123,8 @@ export const content = {
         },
         {
           description:
-            "Final project akademik: e-procurement ASP.NET Core MVC dengan approval berlapis, laporan SSRS, dan microservice Flask klasifikasi urgensi (akurasi 95%).",
+            "Sistem e-procurement ASP.NET Core MVC dengan approval berlapis, laporan SSRS, dan microservice Flask untuk klasifikasi urgensi (akurasi 95%).",
+          badge: "Academic",
           role: "Full-Stack Developer",
           year: "Mar 2026 – Agu 2026",
           overview:
@@ -145,36 +147,8 @@ export const content = {
         },
         {
           description:
-            "Aplikasi tabungan dengan deteksi uang kertas Rupiah via webcam (YOLOv8, mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, database MySQL.",
-          role: "AI / Fullstack Developer",
-          year: "Feb – Mar 2026",
-          overview:
-            "Aplikasi tabungan dengan deteksi uang kertas Rupiah memakai YOLOv8 (mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, dan database MySQL.",
-          features: [
-            "Deteksi uang kertas Rupiah via webcam (YOLOv8)",
-            "mAP50 98,7%",
-            "Backend FastAPI",
-            "Frontend Vue.js 3 + Tailwind CSS, database MySQL",
-          ],
-        },
-        {
-          description:
-            "REST API aplikasi kontak Flutter dengan dua backend: Express.js + MongoDB dan CodeIgniter 4 + MySQL; API Express lewat Cloudflare Tunnel.",
-          role: "Fullstack Developer",
-          year: "Jun – Jul 2025",
-          overview:
-            "Aplikasi kontak berbasis Flutter dengan CRUD, sinkronisasi data, dan kontak favorit. Sisi server dibangun dua kali: Express.js + MongoDB yang dipublikasikan lewat Cloudflare Tunnel, serta CodeIgniter 4 + MySQL yang berjalan di hosting konvensional.",
-          features: [
-            "REST API untuk aplikasi kontak Flutter",
-            "CRUD, sinkronisasi data, dan favorit",
-            "Backend Express.js + MongoDB",
-            "Backend CodeIgniter 4 + MySQL",
-            "Express API via Cloudflare Tunnel, CodeIgniter di hosting konvensional",
-          ],
-        },
-        {
-          description:
-            "Course project: 5 container di Proxmox VE (Debian 12 & Rocky Linux 9) di belakang Cloudflare, dengan PostgreSQL master–slave yang direplikasi dan server yang di-hardening.",
+            "Arsitektur 5 node di Proxmox VE (3 container & 2 VM dengan Debian 12 dan Rocky Linux 9) di belakang Cloudflare, dilengkapi replikasi PostgreSQL master-slave dan server yang di-hardening.",
+          badge: "Academic",
           role: "Course Project",
           year: "Nov – Des 2025",
           mediaLabel: "TOPOLOGI INFRASTRUKTUR",
@@ -192,6 +166,37 @@ export const content = {
             "Debian 12: fail2ban + UFW default-deny, Suricata IDS (ET Open), WireGuard VPN",
             "Rocky Linux 9: sudo dengan timeout + logging, SSH key-only, root login dimatikan",
             "Rocky Linux 9: fail2ban termasuk jail PostgreSQL, firewalld default DROP, Suricata IDS",
+          ],
+        },
+        {
+          description:
+            "Aplikasi tabungan dengan deteksi uang kertas Rupiah via webcam (YOLOv8, mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, database MySQL.",
+          badge: "Personal",
+          role: "AI / Fullstack Developer",
+          year: "Feb – Mar 2026",
+          overview:
+            "Aplikasi tabungan dengan deteksi uang kertas Rupiah memakai YOLOv8 (mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, dan database MySQL.",
+          features: [
+            "Deteksi uang kertas Rupiah via webcam (YOLOv8)",
+            "mAP50 98,7%",
+            "Backend FastAPI",
+            "Frontend Vue.js 3 + Tailwind CSS, database MySQL",
+          ],
+        },
+        {
+          description:
+            "REST API aplikasi kontak Flutter dengan dua backend: Express.js + MongoDB dan CodeIgniter 4 + MySQL; API Express lewat Cloudflare Tunnel.",
+          badge: "Personal",
+          role: "Fullstack Developer",
+          year: "Jun – Jul 2025",
+          overview:
+            "Aplikasi kontak berbasis Flutter dengan CRUD, sinkronisasi data, dan kontak favorit. Sisi server dibangun dua kali: Express.js + MongoDB yang dipublikasikan lewat Cloudflare Tunnel, serta CodeIgniter 4 + MySQL yang berjalan di hosting konvensional.",
+          features: [
+            "REST API untuk aplikasi kontak Flutter",
+            "CRUD, sinkronisasi data, dan favorit",
+            "Backend Express.js + MongoDB",
+            "Backend CodeIgniter 4 + MySQL",
+            "Express API via Cloudflare Tunnel, CodeIgniter di hosting konvensional",
           ],
         },
       ],
@@ -293,11 +298,11 @@ export const content = {
       cmdDesc: "The tech stack I use daily.",
     },
     projects: {
-      cmdDesc: "Projects I've built — from e-voting systems to server infrastructure.",
+      cmdDesc: "Projects I have built, from e-voting systems to server infrastructure.",
       items: [
         {
           description:
-            "Laravel & Filament e-voting platform for the ULBI MPM election — 3,458 registered voters, 1,124 votes processed without errors or duplicates.",
+            "Laravel & Filament e-voting platform for MPM ULBI with 3,458 registered voters and 1,124 valid votes processed without errors or duplication.",
           badge: "Freelance",
           role: "Freelance Fullstack Developer",
           year: "Sep 2024 – Jan 2025",
@@ -313,7 +318,8 @@ export const content = {
         },
         {
           description:
-            "Personal project: an AI-powered personal finance tracker that turns everyday Indonesian/English chat into structured transaction records — up to 5 transactions per message, with reports and corrections in chat.",
+            "AI-powered personal finance tracker that turns Indonesian/English chat messages into structured records of up to 5 transactions per message, complete with reports and in-chat corrections.",
+          badge: "Personal",
           role: "Solo Personal Project — Full-Stack Developer",
           year: "2026",
           overview:
@@ -329,7 +335,8 @@ export const content = {
         },
         {
           description:
-            "Academic final project: ASP.NET Core MVC e-procurement with layered approvals, SSRS reports, and a Flask urgency-classification microservice (95% accuracy).",
+            "ASP.NET Core MVC e-procurement system featuring multi-level approvals, SSRS reporting, and a Flask microservice for urgency classification (95% accuracy).",
+          badge: "Academic",
           role: "Full-Stack Developer",
           year: "Mar 2026 – Aug 2026",
           overview:
@@ -352,36 +359,8 @@ export const content = {
         },
         {
           description:
-            "Savings app with Rupiah banknote detection via webcam (YOLOv8, mAP50 98.7%), FastAPI backend, Vue.js 3 + Tailwind CSS frontend, MySQL database.",
-          role: "AI / Fullstack Developer",
-          year: "Feb – Mar 2026",
-          overview:
-            "Savings app with Rupiah banknote detection using YOLOv8 (mAP50 98.7%), a FastAPI backend, a Vue.js 3 + Tailwind CSS frontend, and a MySQL database.",
-          features: [
-            "Rupiah banknote detection via webcam (YOLOv8)",
-            "mAP50 98.7%",
-            "FastAPI backend",
-            "Vue.js 3 + Tailwind CSS frontend, MySQL database",
-          ],
-        },
-        {
-          description:
-            "REST API for a Flutter contact app with two backends: Express.js + MongoDB and CodeIgniter 4 + MySQL; the Express API runs through Cloudflare Tunnel.",
-          role: "Fullstack Developer",
-          year: "Jun – Jul 2025",
-          overview:
-            "Flutter-based contact app with CRUD, data synchronization, and favorites. I built the server side twice: an Express.js + MongoDB backend published through Cloudflare Tunnel, and a CodeIgniter 4 + MySQL backend running on conventional hosting.",
-          features: [
-            "REST API for a Flutter contact app",
-            "CRUD, data synchronization, and favorites",
-            "Express.js + MongoDB backend",
-            "CodeIgniter 4 + MySQL backend",
-            "Express API via Cloudflare Tunnel, CodeIgniter on conventional hosting",
-          ],
-        },
-        {
-          description:
-            "Course project: 5 containers on Proxmox VE (Debian 12 & Rocky Linux 9) behind Cloudflare, with replicated PostgreSQL master–slave and hardened servers.",
+            "5-node architecture on Proxmox VE (3 containers & 2 VMs running Debian 12 and Rocky Linux 9) behind Cloudflare, featuring PostgreSQL master-slave replication and hardened servers.",
+          badge: "Academic",
           role: "Course Project",
           year: "Nov – Dec 2025",
           mediaLabel: "INFRASTRUCTURE TOPOLOGY",
@@ -399,6 +378,37 @@ export const content = {
             "Debian 12: fail2ban + UFW default-deny, Suricata IDS (ET Open), WireGuard VPN",
             "Rocky Linux 9: sudo with timeout + logging, SSH key-only, root login disabled",
             "Rocky Linux 9: fail2ban including a PostgreSQL jail, firewalld default DROP, Suricata IDS",
+          ],
+        },
+        {
+          description:
+            "Savings app with Rupiah banknote detection via webcam (YOLOv8, mAP50 98.7%), FastAPI backend, Vue.js 3 + Tailwind CSS frontend, MySQL database.",
+          badge: "Personal",
+          role: "AI / Fullstack Developer",
+          year: "Feb – Mar 2026",
+          overview:
+            "Savings app with Rupiah banknote detection using YOLOv8 (mAP50 98.7%), a FastAPI backend, a Vue.js 3 + Tailwind CSS frontend, and a MySQL database.",
+          features: [
+            "Rupiah banknote detection via webcam (YOLOv8)",
+            "mAP50 98.7%",
+            "FastAPI backend",
+            "Vue.js 3 + Tailwind CSS frontend, MySQL database",
+          ],
+        },
+        {
+          description:
+            "REST API for a Flutter contact app with two backends: Express.js + MongoDB and CodeIgniter 4 + MySQL; the Express API runs through Cloudflare Tunnel.",
+          badge: "Personal",
+          role: "Fullstack Developer",
+          year: "Jun – Jul 2025",
+          overview:
+            "Flutter-based contact app with CRUD, data synchronization, and favorites. I built the server side twice: an Express.js + MongoDB backend published through Cloudflare Tunnel, and a CodeIgniter 4 + MySQL backend running on conventional hosting.",
+          features: [
+            "REST API for a Flutter contact app",
+            "CRUD, data synchronization, and favorites",
+            "Express.js + MongoDB backend",
+            "CodeIgniter 4 + MySQL backend",
+            "Express API via Cloudflare Tunnel, CodeIgniter on conventional hosting",
           ],
         },
       ],
