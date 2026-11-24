@@ -30,9 +30,9 @@ export const LanguageProvider = ({ children }) => {
 export const content = {
   id: {
     hero: {
-      greeting: "Bandung, Indonesia — Halo, saya",
+      greeting: "Bandung, Indonesia. Halo, saya",
       tagline:
-        "Membangun aplikasi end-to-end secara aman — mulai dari penulisan kode hingga infrastruktur, dengan komitmen meminimalkan celah kerentanan sejak awal.",
+        "Saya membangun aplikasi end-to-end yang aman, dari penulisan kode sampai infrastruktur, dan berusaha meminimalkan celah kerentanan sejak awal.",
       ctaProjects: "Lihat Projects",
       ctaContact: "Hubungi Saya",
       scrollHint: "scroll untuk menjelajah",
@@ -230,9 +230,9 @@ export const content = {
   },
   en: {
     hero: {
-      greeting: "Bandung, Indonesia — Hello, I'm",
+      greeting: "Bandung, Indonesia. Hello, I'm",
       tagline:
-        "Engineering secure end-to-end applications — from code to infrastructure, built to minimize vulnerabilities from the ground up.",
+        "I build secure end-to-end applications, from code to infrastructure, and work to minimize vulnerabilities from the ground up.",
       ctaProjects: "View Projects",
       ctaContact: "Contact Me",
       scrollHint: "scroll to explore",
