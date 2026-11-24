@@ -1,62 +1,64 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "./SectionHeading";
-import { Counter } from "./Counter";
+import { Pagination } from "./Pagination";
 import { useLang, content } from "@/lib/i18n";
 
+/* Skill names are language-independent (identical for ID and EN). */
 const groups = [
   {
     id: "backend",
-    label: "Backend",
     skills: [
-      { name: "Laravel / PHP", level: 82 },
-      { name: "FastAPI / Python", level: 68 },
-      { name: "CodeIgniter 4", level: 82 },
-      { name: "ASP.NET Core / C#", level: 80 },
-      { name: "Express.js / Node", level: 78 },
+      "ASP.NET Core / C#",
+      "Laravel / PHP",
+      "Go (Gin)",
+      "Express.js / Node",
+      "FastAPI / Python",
+      "CodeIgniter 4",
     ],
   },
   {
     id: "frontend",
-    label: "Frontend & Mobile",
-    skills: [
-      { name: "Vue.js 3", level: 75 },
-      { name: "Flutter", level: 77 },
-      { name: "Tailwind CSS", level: 84 },
-      { name: "JavaScript", level: 80 },
-      { name: "HTML / CSS", level: 85 },
-    ],
+    skills: ["React", "Vue.js 3", "Tailwind CSS", "JavaScript", "HTML / CSS", "Flutter"],
   },
   {
     id: "database",
-    label: "Database",
-    skills: [
-      { name: "MySQL", level: 80 },
-      { name: "SQL Server", level: 76 },
-      { name: "PostgreSQL", level: 74 },
-      { name: "MongoDB", level: 65 },
-    ],
+    skills: ["PostgreSQL", "MySQL", "SQL Server", "Supabase", "MongoDB"],
+  },
+  {
+    id: "security",
+    skills: ["Linux (Debian / Rocky)", "Proxmox VE", "Suricata IDS", "Fail2ban", "WireGuard"],
   },
   {
     id: "tools",
-    label: "Tools & AI",
-    skills: [
-      { name: "Git / GitHub", level: 82 },
-      { name: "VS Code", level: 85 },
-      { name: "Postman", level: 78 },
-      { name: "YOLOv8", level: 69 },
-      { name: "Roboflow", level: 64 },
-    ],
+    skills: ["Git / GitHub", "Postman", "Vercel", "YOLOv8", "LLM API"],
   },
 ];
 
 const tabs = [{ id: "all", label: "all" }, ...groups.map((g) => ({ id: g.id, label: g.id }))];
 
+/* ./all shows 4 cards per page so the 2x2 grid stays symmetrical;
+   a single category tab shows its one card without pagination. */
+const PAGE_SIZE = 4;
+
 export const SkillsSection = () => {
   const [active, setActive] = useState("all");
+  const [page, setPage] = useState(0);
   const { lang } = useLang();
   const t = content[lang].skills;
-  const visible = groups.filter((g) => active === "all" || g.id === active);
+
+  const filtered = groups.filter((g) => active === "all" || g.id === active);
+  const paged = active === "all";
+  const totalPages = paged ? Math.max(1, Math.ceil(filtered.length / PAGE_SIZE)) : 1;
+  const safePage = Math.min(page, totalPages - 1);
+  const visible = paged
+    ? filtered.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE)
+    : filtered;
+
+  const changeTab = (id) => {
+    setActive(id);
+    setPage(0);
+  };
 
   return (
     <section id="skills" className="py-20 md:py-28 px-4 relative">
@@ -70,7 +72,7 @@ export const SkillsSection = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActive(tab.id)}
+              onClick={() => changeTab(tab.id)}
               className={cn(
                 "px-4 py-1.5 rounded-sm border transition-colors",
                 active === tab.id
@@ -83,34 +85,30 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" key={active}>
+        {/* Remount the grid on every tab/page change so the cards replay the
+            same entrance animation (cable-in) as before. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" key={`${active}-${safePage}`}>
           {visible.map((group) => (
             <div key={group.id} data-cable-item className="term-panel px-5 py-5">
               <p className="font-mono text-sm font-bold text-primary mb-4">
                 <span className="text-muted-foreground">~/</span>
                 {group.id}/
               </p>
-              <ul className="space-y-3.5">
+              <ul className="flex flex-wrap gap-2 font-mono text-xs">
                 {group.skills.map((skill) => (
-                  <li key={skill.name}>
-                    <div className="flex items-baseline justify-between font-mono text-[13px] mb-1.5">
-                      <span className="text-foreground">{skill.name}</span>
-                      <span className="text-primary font-bold">
-                        <Counter end={skill.level} suffix="%" duration={1200} />
-                      </span>
-                    </div>
-                    <div className="h-1 bg-secondary rounded-none overflow-hidden">
-                      <div
-                        className="h-full bg-primary/70"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
+                  <li
+                    key={skill}
+                    className="px-2.5 py-1 border border-border text-muted-foreground rounded-sm"
+                  >
+                    {skill}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
+
+        {paged && <Pagination page={safePage} totalPages={totalPages} onChange={setPage} />}
       </div>
     </section>
   );

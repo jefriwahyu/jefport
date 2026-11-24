@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Github } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
+import { Pagination } from "./Pagination";
 import { ProjectModal } from "./ProjectModal";
 import { handleSpotMove } from "@/lib/spotlight";
 import { cn } from "@/lib/utils";
@@ -225,39 +226,7 @@ export const ProjectsSection = () => {
         </div>
 
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-8 font-mono text-[13px]">
-            <button
-              onClick={() => setPage(Math.max(0, safePage - 1))}
-              disabled={safePage === 0}
-              aria-label="Halaman sebelumnya"
-              className="px-3 py-1.5 rounded-sm border border-border text-muted-foreground transition-colors hover:text-primary hover:border-primary/60 disabled:opacity-40 disabled:pointer-events-none"
-            >
-              [ &lt; ]
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i}
-                onClick={() => setPage(i)}
-                aria-label={`Halaman ${i + 1}`}
-                className={cn(
-                  "px-3 py-1.5 rounded-sm border transition-colors",
-                  safePage === i
-                    ? "bg-primary text-primary-foreground border-primary font-bold"
-                    : "border-border text-muted-foreground hover:text-primary hover:border-primary/60"
-                )}
-              >
-                {i + 1}
-              </button>
-            ))}
-            <button
-              onClick={() => setPage(Math.min(totalPages - 1, safePage + 1))}
-              disabled={safePage === totalPages - 1}
-              aria-label="Halaman berikutnya"
-              className="px-3 py-1.5 rounded-sm border border-border text-muted-foreground transition-colors hover:text-primary hover:border-primary/60 disabled:opacity-40 disabled:pointer-events-none"
-            >
-              [ &gt; ]
-            </button>
-          </div>
+          <Pagination page={safePage} totalPages={totalPages} onChange={setPage} />
         )}
 
         <div className="text-center mt-10">
