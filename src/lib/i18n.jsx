@@ -32,7 +32,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia. Halo, saya",
       tagline:
-        "Saya membangun aplikasi end-to-end yang aman, dari penulisan kode sampai infrastruktur, dan berusaha meminimalkan celah kerentanan sejak awal.",
+        "Membangun aplikasi end-to-end secara aman, mulai dari penulisan kode hingga infrastruktur, untuk meminimalkan celah kerentanan sejak awal.",
       ctaProjects: "Lihat Projects",
       ctaContact: "Hubungi Saya",
       scrollHint: "scroll untuk menjelajah",
@@ -232,7 +232,7 @@ export const content = {
     hero: {
       greeting: "Bandung, Indonesia. Hello, I'm",
       tagline:
-        "I build secure end-to-end applications, from code to infrastructure, and work to minimize vulnerabilities from the ground up.",
+        "Building secure end-to-end applications from code to infrastructure, with a focus on minimizing vulnerabilities from the ground up.",
       ctaProjects: "View Projects",
       ctaContact: "Contact Me",
       scrollHint: "scroll to explore",
