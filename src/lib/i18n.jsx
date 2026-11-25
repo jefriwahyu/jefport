@@ -224,11 +224,11 @@ export const content = {
     education: {
       cmdDesc: "Pendidikan formal dan sertifikasi.",
       eduLabel: "PENDIDIKAN",
-      period: "Sep 2023 – Agu 2026",
-      degree: "D3 Teknik Informatika — Lulus Agustus 2026",
-      gpaLabel: "Diploma Teknik Informatika",
+      period: "2023 - 2026",
+      degree: "D3 Teknik Informatika (Lulus Agustus 2026)",
+      gpaLabel: "IPK",
       focus:
-        "Fokus pada sistem back-end, database dan AI terapan — dengan project freelance dan mandiri yang dikirim berdampingan dengan kuliah.",
+        "Lulusan berpredikat pujian dengan fokus mendalam pada arsitektur back-end aman, rekayasa sistem terdistribusi, dan kecerdasan buatan terapan. Aktif merancang dan mendeploy aplikasi web full-stack, pipeline computer vision, serta laboratorium virtualisasi server secara mandiri sepanjang masa studi.",
       certs: [
         { title: "Google Cybersecurity Professional Certificate", date: "Nov 2025" },
         { title: "Google AI Essentials", date: "Okt 2025" },
@@ -445,11 +445,11 @@ export const content = {
     education: {
       cmdDesc: "Formal education and certifications.",
       eduLabel: "EDUCATION",
-      period: "Sep 2023 – Aug 2026",
-      degree: "D3 Informatics Engineering — Graduated August 2026",
-      gpaLabel: "Diploma in Informatics Engineering",
+      period: "2023 - 2026",
+      degree: "Associate Degree in Informatics Engineering (Graduated August 2026)",
+      gpaLabel: "GPA",
       focus:
-        "Focused on back-end systems, databases and applied AI — with freelance and independent projects shipped alongside coursework.",
+        "Graduated with honors, focusing on secure back-end architecture, distributed systems engineering, and applied computer vision. Actively architected and deployed full-stack web applications, AI pipelines, and virtualized server environments alongside academic coursework.",
       certs: [
         { title: "Google Cybersecurity Professional Certificate", date: "Nov 2025" },
         { title: "Google AI Essentials", date: "Oct 2025" },

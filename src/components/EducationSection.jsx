@@ -22,7 +22,7 @@ export const EducationSection = () => {
             className="term-panel spot-wrap group px-5 py-5 md:px-7 md:py-6"
           >
             <span className="spot" aria-hidden="true" />
-            <p className="font-mono text-xs text-primary font-bold mb-2">[ {t.eduLabel} :: 2023 — 2026 ]</p>
+            <p className="font-mono text-xs text-primary font-bold mb-2">[ {t.eduLabel} :: {t.period} ]</p>
             <h3 className="font-mono text-base md:text-lg font-bold">
               Universitas Logistik dan Bisnis Internasional
             </h3>
@@ -30,9 +30,8 @@ export const EducationSection = () => {
               {t.degree}
             </p>
             <p className="font-mono text-sm mt-3">
-              <span className="text-muted-foreground">GPA:</span>{" "}
+              <span className="text-muted-foreground">{t.gpaLabel}:</span>{" "}
               <span className="text-primary font-bold text-glow">3.86 / 4.00</span>
-              <span className="text-muted-foreground"> — {t.gpaLabel}</span>
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed mt-4">
               {t.focus}
