@@ -29,64 +29,72 @@ export default function Hero3D() {
     );
     camera.position.z = 8;
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-    const keyLight = new THREE.PointLight(0x00ff41, 80, 40);
-    keyLight.position.set(4, 3, 4);
-    scene.add(keyLight);
-    const rimLight = new THREE.PointLight(0x00cc33, 50, 40);
-    rimLight.position.set(-5, -2, 3);
-    scene.add(rimLight);
-
     const group = new THREE.Group();
     scene.add(group);
 
+    // Geodesic network sphere: wire edges + nodes at the vertices, no solid
+    // shell and no planetary rings — reads as a distributed network, not a
+    // planet.
+    const shell = new THREE.Group();
+    group.add(shell);
+
+    const geodesic = new THREE.IcosahedronGeometry(1.9, 2);
     const wire = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.9, 1),
+      geodesic,
       new THREE.MeshBasicMaterial({
         color: 0x00ff41,
         wireframe: true,
         transparent: true,
-        opacity: 0.4,
+        opacity: 0.22,
       })
     );
-    group.add(wire);
+    shell.add(wire);
 
-    const core = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.85, 3),
-      new THREE.MeshStandardMaterial({
-        color: 0x031503,
-        emissive: 0x00cc33,
-        emissiveIntensity: 0.9,
-        roughness: 0.35,
-        metalness: 0.5,
-      })
+    // Unique vertices of the geodesic wireframe become the network nodes.
+    const src = geodesic.getAttribute("position");
+    const nodePositions = [];
+    const seenNodes = new Set();
+    for (let i = 0; i < src.count; i++) {
+      const x = src.getX(i);
+      const y = src.getY(i);
+      const z = src.getZ(i);
+      const key = `${x.toFixed(2)},${y.toFixed(2)},${z.toFixed(2)}`;
+      if (seenNodes.has(key)) continue;
+      seenNodes.add(key);
+      nodePositions.push(x, y, z);
+    }
+    const nodeGeo = new THREE.BufferGeometry();
+    nodeGeo.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(nodePositions, 3)
     );
-    group.add(core);
-
-    const ringMain = new THREE.Mesh(
-      new THREE.TorusGeometry(2.9, 0.018, 8, 140),
-      new THREE.MeshBasicMaterial({
-        color: 0x00ff41,
+    const nodes = new THREE.Points(
+      nodeGeo,
+      new THREE.PointsMaterial({
+        color: 0x66ff99,
+        size: 2,
+        sizeAttenuation: false,
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.45,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
       })
     );
-    ringMain.rotation.x = Math.PI / 2.4;
-    group.add(ringMain);
+    shell.add(nodes);
 
-    const ringDim = new THREE.Mesh(
-      new THREE.TorusGeometry(3.4, 0.012, 8, 140),
+    // Faint inner wireframe replaces the solid glowing core.
+    const inner = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.95, 1),
       new THREE.MeshBasicMaterial({
         color: 0x009929,
+        wireframe: true,
         transparent: true,
-        opacity: 0.35,
+        opacity: 0.15,
       })
     );
-    ringDim.rotation.x = Math.PI / 1.8;
-    ringDim.rotation.y = 0.4;
-    group.add(ringDim);
+    group.add(inner);
 
-    // Particle field (kept light on purpose)
+    // Particle field: 1–3px ambient dust, deliberately low contrast.
     const COUNT = 600;
     const positions = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
@@ -112,10 +120,10 @@ export default function Hero3D() {
     const particles = new THREE.Points(
       particleGeo,
       new THREE.PointsMaterial({
-        size: 0.05,
+        size: 0.028,
         vertexColors: true,
         transparent: true,
-        opacity: 0.9,
+        opacity: 0.3,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
       })
@@ -172,16 +180,14 @@ export default function Hero3D() {
       currentX += (targetX - currentX) * 0.045;
       currentY += (targetY - currentY) * 0.045;
 
-      group.rotation.y = t * 0.12 + currentX * 0.55;
-      group.rotation.x = currentY * 0.35 + Math.sin(t * 0.2) * 0.08;
-      wire.rotation.z = t * 0.05;
-      ringMain.rotation.z = t * 0.07;
-      ringDim.rotation.z = -t * 0.05;
-      core.position.y = Math.sin(t * 0.8) * 0.09;
-      core.rotation.y = -t * 0.2;
+      group.rotation.y = t * 0.08 + currentX * 0.4;
+      group.rotation.x = currentY * 0.25 + Math.sin(t * 0.15) * 0.06;
+      shell.rotation.z = t * 0.025;
+      inner.rotation.y = -t * 0.05;
 
-      particles.rotation.y = t * 0.02 + currentX * 0.08;
-      particles.rotation.x = currentY * 0.05;
+      particles.rotation.y = t * 0.008 + currentX * 0.04;
+      particles.rotation.x = currentY * 0.02;
+      particles.position.y = Math.sin(t * 0.12) * 0.15;
 
       if (hero) {
         const rect = hero.getBoundingClientRect();

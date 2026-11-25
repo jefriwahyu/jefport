@@ -148,10 +148,6 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <p className="text-center font-mono text-xs text-muted-foreground mb-4">
-          {t.greeting}
-        </p>
-
         <HudPanel staticBrackets>
           <div id="hero-terminal" className="term-panel overflow-hidden">
             {/* Terminal title bar */}
@@ -176,6 +172,10 @@ export const HeroSection = () => {
               <p className="text-lg md:text-2xl font-bold text-primary text-glow mt-1 min-h-[2rem] md:min-h-[2.5rem]">
                 {typed}
                 <span className="inline-block w-[10px] h-[1.2em] ml-1 -mb-1 bg-primary animate-blink" aria-hidden="true" />
+              </p>
+
+              <p className="text-xs md:text-sm text-muted-foreground mt-3">
+                <span className="text-primary">&gt;</span> {t.greeting}
               </p>
 
               <p className="text-sm md:text-[15px] text-muted-foreground leading-relaxed mt-4 font-sans">
