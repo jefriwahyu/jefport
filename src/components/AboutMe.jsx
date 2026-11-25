@@ -1,8 +1,11 @@
-import { Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { HudPanel } from "./HudPanel";
 import { WhoamiCodeBg } from "./WhoamiCodeBg";
 import { useLang, content } from "@/lib/i18n";
+
+const CV_DRIVE_URL =
+  "https://drive.google.com/file/d/1nrlBt_djsVzDTifCd4tHYhh75jqOQ52k/view?usp=drive_link";
 
 export const AboutMe = () => {
   const { lang } = useLang();
@@ -41,9 +44,14 @@ export const AboutMe = () => {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <a href="/resume/CV_Jefri_Wahyudiana_Putra.pdf" className="term-btn-ghost">
-                <Download className="w-4 h-4" />
+              <a
+                href={CV_DRIVE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="term-btn-ghost"
+              >
                 [ {t.btnCv} ]
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
             </div>

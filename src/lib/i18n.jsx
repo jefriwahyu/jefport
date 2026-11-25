@@ -51,7 +51,7 @@ export const content = {
         "Hardening Linux: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 dari 1.500+ test case, 60 defect dilaporkan",
       ],
-      btnCv: "Download CV",
+      btnCv: "Lihat CV",
     },
     experience: {
       cmdDesc: "Pengalaman kerja dan magang.",
@@ -272,7 +272,7 @@ export const content = {
         "Linux hardening: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 of 1,500+ test cases, 60 defects reported",
       ],
-      btnCv: "Download CV",
+      btnCv: "View CV",
     },
     experience: {
       cmdDesc: "Work experience and internships.",
