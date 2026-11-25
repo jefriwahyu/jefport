@@ -83,7 +83,7 @@ const projects = [
     name: "infra/",
     title: "Infrastructure & Server Security",
     category: "infra",
-    tags: ["Proxmox VE", "Debian 12", "Rocky Linux 9", "PostgreSQL", "Suricata", "WireGuard"],
+    tags: ["Proxmox VE", "Debian 12", "Rocky Linux 9", "PostgreSQL", "Suricata", "Tailscale"],
     images: ["/projects/infra/Topologi Infrastruktur.jpg"],
   },
   {
