@@ -273,6 +273,23 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
               </details>
             )}
 
+            {detail.architecture?.length > 0 && (
+              <details className="mt-6 group">
+                <summary className="font-mono text-xs font-bold text-primary cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
+                  <span className="inline-block mr-2 transition-transform group-open:rotate-90">▸</span>
+                  [ {ui.architecture} ]
+                </summary>
+                <ul className="space-y-1.5 mt-3">
+                  {detail.architecture.map((a) => (
+                    <li key={a} className="flex items-start gap-2.5 font-mono text-[13px] text-foreground/90">
+                      <span className="text-primary font-bold shrink-0">[+]</span>
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+
             {detail.security?.length > 0 && (
               <details className="mt-6 group">
                 <summary className="font-mono text-xs font-bold text-primary cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden">
