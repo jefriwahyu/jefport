@@ -85,6 +85,7 @@ const projects = [
     category: "infra",
     tags: ["Proxmox VE", "Debian 12", "Rocky Linux 9", "PostgreSQL", "Suricata", "Tailscale"],
     images: ["/projects/infra/Topologi Infrastruktur.jpg"],
+    imageFit: "cover",
   },
   {
     name: "tabunganku-ai/",

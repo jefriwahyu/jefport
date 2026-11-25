@@ -13,7 +13,7 @@ const AUTOPLAY_MS = 3000;
  * (object-contain); a blurred copy fills the frame behind it so every
  * slide looks uniform whatever the source size is.
  */
-const RealSlide = ({ src, index, total, projectName }) => {
+const RealSlide = ({ src, index, total, projectName, fit = "contain" }) => {
   const file = src.split("/").pop();
   // Clean display title: drop the extension, the trailing order
   // number ("loading screen_1.jpg" -> "loading screen"), and the
@@ -54,7 +54,7 @@ const RealSlide = ({ src, index, total, projectName }) => {
           alt={alt}
           loading="lazy"
           draggable={false}
-          className="absolute inset-0 h-full w-full object-contain"
+          className={`absolute inset-0 h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
         />
         <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-black/50" aria-hidden="true" />
       </div>
@@ -299,6 +299,7 @@ export const ProjectModal = ({ project, detail, ui, onClose, closing = false }) 
                             index={i}
                             total={total}
                             projectName={project.name}
+                            fit={project.imageFit}
                           />
                         </div>
                       ))}
