@@ -174,12 +174,17 @@ export const content = {
           role: "AI / Fullstack Developer",
           year: "Feb – Mar 2026",
           overview:
-            "Aplikasi tabungan dengan deteksi uang kertas Rupiah memakai YOLOv8 (mAP50 98,7%), backend FastAPI, frontend Vue.js 3 + Tailwind CSS, dan database MySQL.",
+            "Aplikasi pencatatan tabungan pintar yang mengintegrasikan Computer Vision untuk mendeteksi dan mengklasifikasikan nominal uang kertas Rupiah secara otomatis melalui webcam. Menggunakan model custom YOLOv8 dengan tingkat akurasi mAP50 mencapai 98,7%, backend FastAPI asinkron untuk pemrosesan inferensi berkecepatan tinggi, antarmuka reaktif Vue.js 3 dengan Tailwind CSS, serta MySQL untuk persistensi transaksi keuangan pengguna.",
           features: [
-            "Deteksi uang kertas Rupiah via webcam (YOLOv8)",
-            "mAP50 98,7%",
-            "Backend FastAPI",
-            "Frontend Vue.js 3 + Tailwind CSS, database MySQL",
+            "Deteksi & Akumulasi Otomatis: Pemindaian pecahan uang Rupiah via webcam yang langsung mengidentifikasi nominal dan menginput nominal ke saldo tabungan tanpa ketik manual",
+            "Manajemen Tabungan: Pencatatan riwayat transaksi (setoran/penarikan), target tabungan, dan visualisasi agregasi saldo berkala",
+            "Antarmuka Interaktif & Responsif: Dashboard Vue.js 3 (Composition API) dan Tailwind CSS yang ringan dengan feedback visual deteksi real-time",
+            "API Asinkron Berkecepatan Tinggi: Backend FastAPI yang mengoptimalkan payload gambar/frame webcam untuk inferensi instan dengan latency minimal",
+          ],
+          model: [
+            "Dataset Custom: Model dilatih pada dataset uang kertas Rupiah beragam kondisi fisik, pencahayaan, dan sudut kemiringan",
+            "Metrik Performa: Mencapai akurasi mAP50 98,7% pada data uji, memastikan deteksi stabil dan minim false-positive pada nominal serupa",
+            "Optimasi Inferensi: Integrasi model YOLOv8 pada Python runtime untuk pemrosesan frame cepat langsung ke response JSON",
           ],
         },
         {
@@ -204,6 +209,7 @@ export const content = {
         btn: "details",
         overview: "RINGKASAN",
         features: "FITUR UTAMA",
+        model: "MODEL & COMPUTER VISION",
         security: "KEAMANAN",
         gallery: "PREVIEW FITUR",
         dummy: "dummy",
@@ -385,12 +391,17 @@ export const content = {
           role: "AI / Fullstack Developer",
           year: "Feb – Mar 2026",
           overview:
-            "Savings app with Rupiah banknote detection using YOLOv8 (mAP50 98.7%), a FastAPI backend, a Vue.js 3 + Tailwind CSS frontend, and a MySQL database.",
+            "A smart personal savings web application integrating Computer Vision to automatically detect and classify Indonesian Rupiah banknotes in real time via webcam. Powered by a custom-trained YOLOv8 model achieving 98.7% mAP50 accuracy, asynchronous FastAPI backend for low-latency inference, reactive Vue.js 3 frontend styled with Tailwind CSS, and MySQL for secure financial transaction persistence.",
           features: [
-            "Rupiah banknote detection via webcam (YOLOv8)",
-            "mAP50 98.7%",
-            "FastAPI backend",
-            "Vue.js 3 + Tailwind CSS frontend, MySQL database",
+            "Automated Banknote Detection: Real-time Rupiah banknote scanning via webcam that identifies denominations and auto-populates deposit records",
+            "Savings Management: Transaction history logging (deposits/withdrawals), custom financial targets, and periodic balance aggregation",
+            "Responsive & Reactive UI: Lightweight Vue.js 3 (Composition API) dashboard with Tailwind CSS featuring real-time detection bounding box feedback",
+            "High-Throughput Async API: FastAPI backend optimized for rapid image frame payloads, delivering low-latency inference cycles",
+          ],
+          model: [
+            "Custom Dataset Training: Trained on Indonesian Rupiah banknotes across diverse lighting conditions, angles, and physical wear",
+            "Performance Metric: Achieved 98.7% mAP50 on test validation, ensuring robust detection and minimal false-positives across similar bills",
+            "Inference Optimization: Streamlined YOLOv8 pipeline within Python runtime converting live camera captures to instant structured JSON outputs",
           ],
         },
         {
@@ -415,6 +426,7 @@ export const content = {
         btn: "details",
         overview: "OVERVIEW",
         features: "KEY FEATURES",
+        model: "MODEL & COMPUTER VISION",
         security: "SECURITY",
         gallery: "FEATURE PREVIEWS",
         dummy: "dummy",

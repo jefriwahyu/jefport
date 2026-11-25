@@ -91,7 +91,7 @@ const projects = [
     name: "tabunganku-ai/",
     title: "TabunganKu AI",
     category: "web",
-    tags: ["YOLOv8", "FastAPI", "Vue.js 3", "Tailwind CSS", "MySQL"],
+    tags: ["YOLOv8", "FastAPI", "Vue.js 3", "Tailwind", "MySQL"],
     githubUrl: "https://github.com/jefriwahyu/TabunganKu",
     images: TABUNGAN_DIR_FILES.map((f) => `${TABUNGAN_DIR}/${f}`),
     demoSrc: "/projects/Demo/tabunganku.mp4",
