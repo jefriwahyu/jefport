@@ -95,13 +95,13 @@ export const content = {
           role: "Freelance Fullstack Developer",
           year: "Sep 2024 – Jan 2025",
           overview:
-            "Platform e-voting untuk pemilihan mahasiswa MPM ULBI yang mendigitalkan proses pemungutan suara berbasis kertas. Setiap akun hanya bisa memberi satu suara, dengan hak pilih dibatasi per program studi dan jenis pemilihan. Keamanan mencakup bcrypt, proteksi CSRF pada form login dan vote, sesi di database dengan cookie HttpOnly dan SameSite=Lax, serta query lewat Eloquent/Query Builder tanpa raw SQL. Aplikasi di-deploy ke hosting lokal dengan konfigurasi domain.",
+            "Platform e-voting untuk pemilihan mahasiswa MPM ULBI yang mendigitalkan proses pemungutan suara berbasis kertas. Sistem ini melayani 3.458 pemilih terdaftar dan memproses 1.124 suara sah tanpa error maupun duplikasi, sekaligus memangkas waktu penghitungan suara lebih dari 90% dan menekan biaya operasional sekitar 30%. Di-deploy ke hosting lokal dengan konfigurasi domain kustom.",
           features: [
-            "Satu akun, satu suara",
-            "Hak pilih per program studi & jenis pemilihan",
-            "bcrypt + proteksi CSRF",
-            "Sesi database: HttpOnly, SameSite=Lax, 120 menit",
-            "Eloquent tanpa raw SQL, output Blade di-escape",
+            "Integritas satu akun satu suara dengan pembatasan hak pilih per program studi dan jenis pemilihan",
+            "Dashboard admin berbasis Filament untuk manajemen data pemilih, kandidat, dan rekapitulasi suara",
+            "Keamanan autentikasi dan form menggunakan hashing bcrypt serta proteksi CSRF",
+            "Manajemen sesi berbasis database dengan cookie HttpOnly, SameSite=Lax, dan timeout 120 menit",
+            "Pencegahan SQL Injection dan XSS melalui Eloquent ORM (tanpa raw SQL) serta auto-escaping Blade",
           ],
         },
         {
@@ -307,13 +307,13 @@ export const content = {
           role: "Freelance Fullstack Developer",
           year: "Sep 2024 – Jan 2025",
           overview:
-            "E-voting platform for the ULBI MPM student election that digitized a paper-based voting process. Each account can vote only once, with eligibility limited by study program and election type. Security includes bcrypt, CSRF protection on login and vote forms, database-backed sessions with HttpOnly and SameSite=Lax cookies, and Eloquent/Query Builder queries without raw SQL. The app was deployed to local hosting with domain configuration.",
+            "An e-voting platform for MPM ULBI student elections that digitized the traditional paper-based voting process. The system served 3,458 registered voters and processed 1,124 valid votes without errors or duplication, while cutting vote-counting time by over 90% and reducing operational costs by around 30%. Deployed to local hosting with custom domain configuration.",
           features: [
-            "One account, one vote",
-            "Eligibility by study program & election type",
-            "bcrypt + CSRF protection",
-            "Database sessions: HttpOnly, SameSite=Lax, 120 minutes",
-            "Eloquent without raw SQL, escaped Blade output",
+            "One-account-one-vote integrity with voting rights restricted by study program and election type",
+            "Filament-based admin dashboard for managing voters, candidates, and vote recaps",
+            "Authentication and form security using bcrypt hashing and CSRF protection",
+            "Database-backed session management with HttpOnly, SameSite=Lax cookies, and a 120-minute timeout",
+            "SQL Injection and XSS prevention via Eloquent ORM (no raw SQL) and Blade auto-escaping",
           ],
         },
         {
