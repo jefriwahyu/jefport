@@ -173,8 +173,8 @@ const RULES = [
     intent: "cv",
     keys: ["cv", "resume", "download"],
     reply:
-      "CV bisa dilihat lewat tombol [ Lihat CV ] di section about halaman ini (membuka Google Drive di tab baru).",
-    en: "You can view the CV via the [ View CV ] button in the about section (opens Google Drive in a new tab).",
+      "CV bisa dilihat lewat tombol [ Lihat CV ] di hero section halaman ini (membuka Google Drive di tab baru).",
+    en: "You can view the CV via the [ View CV ] button in the hero section (opens Google Drive in a new tab).",
   },
   {
     intent: "location",

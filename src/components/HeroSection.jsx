@@ -6,6 +6,9 @@ import { HudPanel } from "./HudPanel";
 
 const HeroWire = lazy(() => import("./Hero3D"));
 
+const CV_DRIVE_URL =
+  "https://drive.google.com/file/d/1nrlBt_djsVzDTifCd4tHYhh75jqOQ52k/view?usp=drive_link";
+
 const roles = [
   "Full-Stack Developer",
   "Cybersecurity Enthusiast",
@@ -182,6 +185,15 @@ export const HeroSection = () => {
               <div className="flex flex-col sm:flex-row gap-3 mt-7">
                 <a href="#projects" className="term-btn">
                   [ {t.ctaProjects} ]
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <a
+                  href={CV_DRIVE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="term-btn-ghost"
+                >
+                  [ {t.ctaCv} ]
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a href="#contact" className="term-btn-ghost">

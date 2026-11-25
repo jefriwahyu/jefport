@@ -34,6 +34,7 @@ export const content = {
       tagline:
         "Membangun aplikasi end-to-end secara aman, mulai dari penulisan kode hingga infrastruktur, untuk meminimalkan celah kerentanan sejak awal.",
       ctaProjects: "Lihat Projects",
+      ctaCv: "Lihat CV",
       ctaContact: "Hubungi Saya",
       scrollHint: "scroll untuk menjelajah",
     },
@@ -51,7 +52,6 @@ export const content = {
         "Hardening Linux: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 dari 1.500+ test case, 60 defect dilaporkan",
       ],
-      btnCv: "Lihat CV",
     },
     experience: {
       cmdDesc: "Pengalaman kerja dan magang.",
@@ -255,6 +255,7 @@ export const content = {
       tagline:
         "Building secure end-to-end applications from code to infrastructure, with a focus on minimizing vulnerabilities from the ground up.",
       ctaProjects: "View Projects",
+      ctaCv: "View CV",
       ctaContact: "Contact Me",
       scrollHint: "scroll to explore",
     },
@@ -272,7 +273,6 @@ export const content = {
         "Linux hardening: Proxmox VE, Debian/Rocky, Suricata IDS, WireGuard",
         "SQA: 214 of 1,500+ test cases, 60 defects reported",
       ],
-      btnCv: "View CV",
     },
     experience: {
       cmdDesc: "Work experience and internships.",
