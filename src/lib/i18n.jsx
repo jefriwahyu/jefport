@@ -128,13 +128,13 @@ export const content = {
           role: "Full-Stack Developer",
           year: "Mar 2026 – Agu 2026",
           overview:
-            "ProFlowApp adalah final project akademik, bukan sistem yang dipakai perusahaan. Alur pengadaan berjalan dari pengajuan Karyawan, persetujuan Checker, sampai Manager, dengan Purchase Order yang dibuat otomatis saat disetujui. Microservice Python/Flask mengklasifikasikan urgensi pengajuan dengan akurasi 95% dan fallback, sementara laporan PDF/Excel dihasilkan lewat SSRS.",
+            "Sistem e-procurement berbasis web yang dibangun sebagai proyek Tugas Akhir untuk mensimulasikan alur pengadaan barang skala perusahaan secara terstruktur dan transparan. Dikembangkan menggunakan ASP.NET Core MVC, Entity Framework Core, dan SQL Server sebagai sistem utama, serta terintegrasi dengan microservice Python (Flask) untuk klasifikasi prioritas pengajuan dan SSRS untuk pelaporan otomatis.",
           features: [
-            "Approval berlapis Karyawan → Checker → Manager",
-            "Purchase Order otomatis saat disetujui",
-            "Microservice Flask klasifikasi urgensi (akurasi 95%) + fallback",
-            "Laporan PDF/Excel via SSRS",
-            "RBAC + audit trail (khusus Manager)",
+            "Alur persetujuan (approval) berlapis mulai dari pengajuan Karyawan, verifikasi Checker, hingga persetujuan Manager",
+            "Pembuatan dokumen Purchase Order (PO) secara otomatis segera setelah pengajuan disetujui",
+            "Microservice Flask untuk klasifikasi tingkat urgensi pengajuan (akurasi 95%) lengkap dengan mekanisme fallback",
+            "Generasi laporan pengadaan dalam format PDF dan Excel menggunakan SQL Server Reporting Services (SSRS)",
+            "Dashboard pemantauan aktivitas dan riwayat persetujuan khusus untuk Manager",
           ],
           security: [
             "BCrypt; account lockout setelah 5 kali gagal; rate limit login 5x/menit per IP",
@@ -340,13 +340,13 @@ export const content = {
           role: "Full-Stack Developer",
           year: "Mar 2026 – Aug 2026",
           overview:
-            "ProFlowApp is an academic final project, not a system used by a company. The procurement flow runs from Employee requisition through Checker approval to Manager approval, with a Purchase Order created automatically on approval. A Python/Flask microservice classifies requisition urgency with 95% accuracy and a fallback, while PDF/Excel reports are generated through SSRS.",
+            "A web-based e-procurement system built as a final academic project to simulate structured and transparent enterprise procurement workflows. Developed with ASP.NET Core MVC, Entity Framework Core, and SQL Server as the core system, integrated with a Python (Flask) microservice for request urgency classification and SSRS for automated reporting.",
           features: [
-            "Layered approvals: Employee → Checker → Manager",
-            "Purchase Order created automatically on approval",
-            "Flask urgency-classification microservice (95% accuracy) + fallback",
-            "PDF/Excel reports via SSRS",
-            "RBAC + audit trail (Manager-only)",
+            "Multi-level approval workflow from Employee submission and Checker verification to Manager approval",
+            "Automated Purchase Order (PO) generation immediately upon request approval",
+            "Flask microservice for request urgency classification (95% accuracy) complete with a fallback mechanism",
+            "Procurement report generation in PDF and Excel formats via SQL Server Reporting Services (SSRS)",
+            "Dedicated activity monitoring and approval history dashboard for Managers",
           ],
           security: [
             "BCrypt; account lockout after 5 failed attempts; login rate limit 5x/minute per IP",

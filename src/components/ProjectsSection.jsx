@@ -74,7 +74,7 @@ const projects = [
     name: "proflowapp/",
     title: "ProFlowApp: E-Procurement System",
     category: "web",
-    tags: ["ASP.NET Core MVC", "EF Core", "SQL Server", "SSRS", "Flask"],
+    tags: ["ASP.NET Core", "SQL Server", "SSRS", "Flask", "Tailwind"],
     githubUrl: "https://github.com/jefriwahyu/ProflowApp",
     images: proflowImages,
     demoSrc: "/projects/Demo/proflow.mp4",
