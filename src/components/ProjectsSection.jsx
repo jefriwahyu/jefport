@@ -57,7 +57,7 @@ const projects = [
     name: "pemira/",
     title: "Pemira E-Voting Website",
     category: "web",
-    tags: ["Laravel", "Filament", "Blade", "MySQL"],
+    tags: ["Laravel", "JavaScript", "Tailwind", "MySQL"],
     githubUrl: "https://github.com/jefriwahyudiana/pemira",
     demoSrc: "/projects/Demo/pemira.mp4",
   },
