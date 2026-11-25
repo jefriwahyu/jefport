@@ -65,7 +65,7 @@ const projects = [
     name: "tuwangapp/",
     title: "Taktuntuwang: AI Personal Finance Tracker",
     category: "web",
-    tags: ["React 19", "Go / Gin", "Supabase", "Groq API", "Chart.js", "Vercel"],
+    tags: ["React 19", "Go / Gin", "Supabase", "Groq API", "Vercel"],
     githubUrl: "https://github.com/jefriwahyu/tuwangapp",
     liveUrl: "https://tuwangapp.vercel.app",
     demoSrc: "/projects/Demo/tuwangapp.mp4",

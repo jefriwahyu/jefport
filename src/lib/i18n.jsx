@@ -108,17 +108,17 @@ export const content = {
           description:
             "Pelacak keuangan pribadi berbasis AI yang mengubah chat bahasa Indonesia/Inggris menjadi catatan transaksi terstruktur hingga 5 transaksi per pesan, lengkap dengan laporan dan koreksi lewat chat.",
           badge: "Personal",
-          role: "Solo Personal Project — Full-Stack Developer",
+          role: "Solo Full-Stack Developer",
           year: "2026",
           overview:
-            "Taktuntuwang adalah pelacak keuangan pribadi berbasis percakapan AI untuk pengguna Indonesia. Pengguna cukup chat dengan bahasa sehari-hari — misalnya \"Beli kopi susu 18rb\" atau \"Gaji bulanan masuk 6 jt\" — dan LLM mengubahnya menjadi catatan transaksi terstruktur: jenis, nominal Rupiah, satu dari 12 kategori tetap, dan deskripsi singkat, hingga 5 transaksi per pesan. Ringkasan periode, koreksi/hapus lewat chat, serta panel insight (grafik tren + riwayat) tersedia di samping chat. Frontend React 19 + Vite + Chart.js + Supabase Auth; backend Go 1.25 + Gin + Supabase PostgreSQL/PostgREST; AI Groq API (openai/gpt-oss-20b) dengan JSON-mode structured output; deploy Vercel.",
+            "Pelacak keuangan pribadi berbasis percakapan AI untuk pengguna Indonesia yang menghilangkan kerumitan input form manual. Pengguna cukup mengirim pesan dengan bahasa sehari-hari (seperti \"Beli kopi susu 18rb\" atau \"Gaji bulanan masuk 6 jt\") untuk dicatat secara otomatis. Dibangun dengan arsitektur full-stack menggunakan React 19 dan Vite di sisi frontend, REST API Go (Gin) dengan Supabase PostgreSQL di sisi backend, integrasi Groq API (JSON-mode structured output), serta di-deploy ke Vercel.",
           features: [
-            "Chat bahasa Indonesia/Inggris → catatan transaksi otomatis (hingga 5 transaksi per pesan)",
-            "LLM mengekstrak jenis, nominal Rupiah, 1 dari 12 kategori tetap, dan deskripsi singkat",
-            "Laporan percakapan: hari ini, kemarin, minggu, bulan, tahun, atau rentang kustom",
-            "Koreksi & hapus transaksi lewat chat dengan kartu konfirmasi",
-            "Panel insight: ringkasan pengeluaran, grafik tren, dan riwayat transaksi",
-            "Auth Supabase + JWT diverifikasi terhadap Supabase JWKS; timezone Asia/Jakarta",
+            "Pencatatan otomatis dari chat bahasa Indonesia/Inggris hingga 5 transaksi dalam satu pesan",
+            "Ekstraksi terstruktur oleh LLM (jenis, nominal Rupiah, 1 dari 12 kategori tetap, dan deskripsi singkat)",
+            "Laporan keuangan berbasis percakapan untuk periode harian, mingguan, bulanan, tahunan, maupun rentang kustom",
+            "Koreksi dan penghapusan transaksi langsung lewat chat dilengkapi kartu konfirmasi",
+            "Panel insight interaktif berisi ringkasan pengeluaran, grafik tren (Chart.js), dan riwayat transaksi",
+            "Autentikasi Supabase dengan verifikasi JWT terhadap Supabase JWKS serta penyesuaian zona waktu Asia/Jakarta",
           ],
         },
         {
@@ -320,17 +320,17 @@ export const content = {
           description:
             "AI-powered personal finance tracker that turns Indonesian/English chat messages into structured records of up to 5 transactions per message, complete with reports and in-chat corrections.",
           badge: "Personal",
-          role: "Solo Personal Project — Full-Stack Developer",
+          role: "Solo Full-Stack Developer",
           year: "2026",
           overview:
-            "Taktuntuwang is an AI-powered conversational personal finance tracker for Indonesian users. Instead of filling in forms, users chat in everyday Indonesian or English — e.g. \"Beli kopi susu 18rb\" or \"Gaji bulanan masuk 6 jt\" — and the LLM turns each message into structured transaction records: type, Rupiah amount, one of 12 fixed categories, and a short description, up to 5 transactions per message. Period summaries, chat-based corrections/deletes, and an insight panel (trend charts + history) sit alongside the chat. Frontend: React 19 + Vite + Chart.js + Supabase Auth; backend: Go 1.25 + Gin + Supabase PostgreSQL/PostgREST; AI: Groq API (openai/gpt-oss-20b) with JSON-mode structured output; deployed on Vercel.",
+            "An AI-powered conversational personal finance tracker for Indonesian users that eliminates the hassle of manual form inputs. Users simply send everyday chat messages (such as \"Bought iced coffee 18k\" or \"Monthly salary 6m\") to log transactions automatically. Built with a full-stack architecture using React 19 and Vite on the frontend, a Go (Gin) REST API with Supabase PostgreSQL on the backend, Groq API integration (JSON-mode structured output), and deployed on Vercel.",
           features: [
-            "Indonesian/English chat → automatic transaction records (up to 5 transactions per message)",
-            "LLM extracts type, Rupiah amount, 1 of 12 fixed categories, and a short description",
-            "Conversational reports: today, yesterday, week, month, year, or a custom range",
-            "Chat-based corrections & deletes with confirmation cards",
-            "Insight panel: spending summary, trend charts, and transaction history",
-            "Supabase Auth + JWT verified against Supabase JWKS; Asia/Jakarta timezone",
+            "Automatic transaction logging from Indonesian/English chat messages (up to 5 transactions per message)",
+            "Structured LLM extraction (type, IDR amount, 1 of 12 fixed categories, and a brief description)",
+            "Conversational financial reports for daily, weekly, monthly, yearly, or custom date ranges",
+            "In-chat transaction editing and deletion complete with confirmation cards",
+            "Interactive insight panel featuring expense summaries, trend charts (Chart.js), and transaction history",
+            "Supabase authentication with JWT verification against Supabase JWKS and Asia/Jakarta timezone handling",
           ],
         },
         {
